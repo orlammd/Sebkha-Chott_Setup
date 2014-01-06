@@ -1,0 +1,800 @@
+Module 7 1 1181 16 0 0
+ColorP 0 0 1 31 250 200 50 180 180 180
+ColorP 1 1 1 31 250 200 50 180 180 180
+FSlider 1 0 3612 0 0 16384 1
+FSlider 1 1 16384 0 0 16384 1
+FSlider 1 2 16384 0 0 16384 1
+ComboBox 1 0 1 1
+FSMIDI 1 0 10 15 9
+Module 11 3 252 25 0 0
+ColorP 0 0 3 12 250 200 50 180 180 180
+ColorP 1 3 3 12 250 200 50 180 180 180
+FSlider 3 0 0 0 0 16384 1
+FSlider 3 1 -107219 1 -113176 0 1
+FSlider 3 2 0 0 0 16384 1
+FSlider 3 3 6803 0 0 16384 1
+FSlider 3 4 9869 0 0 16384 1
+FSlider 3 5 -3309 1 -113176 0 1
+FSlider 3 6 1638 0 1638 163840 1
+Module 2 4 878 9 0 0
+ColorP 0 0 4 3 250 200 50 180 180 180
+ColorP 2 0 4 20 250 200 50 180 180 180
+FSlider 4 0 9701 0 0 163840 1
+FSlider 4 1 0 0 0 163840 1
+FSlider 4 2 19529 0 0 32768 1
+FSlider 4 3 8192 0 0 32768 1
+FSlider 4 4 8192 0 0 32768 1
+Module 10 12 13 120 0 0
+FSlider 12 0 129 0 -16384 16384 1
+ISlider 12 0 24 1
+ComboBox 12 0 0 1
+Module 8 16 741 289 4 0
+ColorP 0 0 16 24 250 200 50 180 180 180
+ColorP 1 0 16 25 250 200 50 180 180 180
+ColorP 2 0 16 27 250 200 50 180 180 180
+ColorP 3 0 16 26 250 200 50 180 180 180
+FSlider 16 0 32768 0 0 32768 1
+FSlider 16 1 18755 0 0 32768 1
+FSlider 16 2 18123 0 0 32768 1
+FSlider 16 3 19221 0 0 32768 1
+FSlider 16 4 19221 0 0 32768 1
+Module 6 20 711 117 0 mvclpf24 Mvclpf-3
+ColorP 0 0 20 16 250 200 50 180 180 180
+ColorP 1 1 20 12 250 200 50 180 180 180
+ColorP 2 0 20 22 250 200 50 180 180 180
+FSlider 20 0 163840 0 -983040 163840 1
+FSlider 20 1 -25068 0 -81920 81920 1
+FSlider 20 2 119941 0 0 163840 1
+FSlider 20 3 7482 0 0 16384 1
+FSlider 20 4 0 0 0 16384 1
+FSlider 20 5 -9350 0 -245760 245760 1
+Module 22 22 71 340 0 0
+ColorP 0 0 22 12 250 200 50 180 180 180
+ColorP 1 3 22 12 250 200 50 180 180 180
+FSlider 22 0 52860 0 1638 163840 1
+FSlider 22 1 12264 0 0 16384 1
+FSlider 22 2 0 0 0 16384 1
+FSlider 22 3 86 0 0 16384 1
+FSlider 22 4 9677 0 0 16384 1
+FSlider 22 5 1437 0 0 16384 1
+FSlider 22 6 6707 0 0 16384 1
+FSlider 22 7 3353 0 0 16384 1
+FSlider 22 8 14745 0 0 16384 1
+FSlider 22 9 1638 0 0 16384 1
+FSlider 22 10 4896 0 0 16384 1
+FSlider 22 11 16384 0 0 16384 1
+FSlider 22 12 678 0 0 16384 1
+FSlider 22 13 3276 0 0 16384 1
+FSlider 22 14 254 0 0 16384 1
+Module 45 24 149 594 0 0
+ColorP 1 1 24 12 250 200 50 180 180 180
+ColorP 4 1 24 22 250 200 50 180 180 180
+FSlider 24 0 0 0 0 16384 1
+FSlider 24 1 1638 0 1638 14745 1
+FSlider 24 2 0 0 0 16384 1
+FSlider 24 3 9030 0 0 102940 1
+FSlider 24 4 0 0 0 163840 1
+FSlider 24 5 0 0 0 163840 1
+ISlider 24 0 0 1
+ISlider 24 1 1 1
+ISlider 24 2 1 1
+ComboBox 24 0 2 1
+Module 45 25 303 593 0 0
+ColorP 1 1 25 12 250 200 50 180 180 180
+ColorP 4 1 25 22 250 200 50 180 180 180
+FSlider 25 0 0 0 0 16384 1
+FSlider 25 1 8192 0 1638 14745 1
+FSlider 25 2 3928 0 0 16384 1
+FSlider 25 3 0 0 0 102940 1
+FSlider 25 4 0 0 0 163840 1
+FSlider 25 5 0 0 0 163840 1
+ISlider 25 0 1 1
+ISlider 25 1 1 1
+ISlider 25 2 1 1
+ComboBox 25 0 2 1
+Module 45 26 452 587 0 0
+ColorP 1 1 26 12 250 200 50 180 180 180
+ColorP 4 1 26 22 250 200 50 180 180 180
+FSlider 26 0 0 0 0 16384 1
+FSlider 26 1 8192 0 1638 14745 1
+FSlider 26 2 3928 0 0 16384 1
+FSlider 26 3 0 0 0 102940 1
+FSlider 26 4 0 0 0 163840 1
+FSlider 26 5 0 0 0 163840 1
+ISlider 26 0 1 1
+ISlider 26 1 1 1
+ISlider 26 2 1 1
+ComboBox 26 0 3 1
+Module 45 27 600 589 0 0
+ColorP 1 1 27 12 250 200 50 180 180 180
+ColorP 4 1 27 22 250 200 50 180 180 180
+FSlider 27 0 9869 0 0 16384 1
+FSlider 27 1 8192 0 1638 14745 1
+FSlider 27 2 0 0 0 16384 1
+FSlider 27 3 0 0 0 102940 1
+FSlider 27 4 0 0 0 163840 1
+FSlider 27 5 0 0 0 163840 1
+ISlider 27 0 0 1
+ISlider 27 1 2 1
+ISlider 27 2 1 1
+ComboBox 27 0 2 1
+Module 32 29 1054 158 8 0
+FSlider 29 0 0 1 -150902 37725 1
+FSlider 29 1 -150902 1 -150902 11356 1
+FSlider 29 2 118 0 -16384 16384 1
+FSlider 29 3 -150902 1 -150902 11356 1
+FSlider 29 4 -118 0 -16384 16384 1
+FSlider 29 5 -150902 1 -150902 11356 1
+FSlider 29 6 0 0 -16384 16384 1
+FSlider 29 7 -150902 1 -150902 11356 1
+FSlider 29 8 0 0 -16384 16384 1
+FSlider 29 9 -150902 1 -150902 11356 1
+FSlider 29 10 0 0 -16384 16384 1
+FSlider 29 11 -150902 1 -150902 11356 1
+FSlider 29 12 0 0 -16384 16384 1
+FSlider 29 13 -150902 1 -150902 11356 1
+FSlider 29 14 0 0 -16384 16384 1
+FSlider 29 15 -150902 1 -150902 11356 1
+FSlider 29 16 0 0 -16384 16384 1
+CheckBox 29 0 1 1
+CheckBox 29 1 0 1
+CheckBox 29 2 1 1
+CheckBox 29 3 0 1
+CheckBox 29 4 1 1
+CheckBox 29 5 0 1
+CheckBox 29 6 1 1
+CheckBox 29 7 0 1
+CheckBox 29 8 1 1
+CheckBox 29 9 0 1
+CheckBox 29 10 1 1
+CheckBox 29 11 0 1
+CheckBox 29 12 1 1
+CheckBox 29 13 0 1
+CheckBox 29 14 1 1
+CheckBox 29 15 0 1
+Module 32 31 1050 0 4 0
+ColorP 0 0 31 4 250 200 50 180 180 180
+ColorP 2 0 31 29 250 200 50 180 180 180
+ColorP 3 1 31 29 250 200 50 180 180 180
+FSlider 31 0 -11603 1 -150902 37725 1
+FSlider 31 1 0 1 -150902 11356 1
+FSlider 31 2 0 0 -16384 16384 1
+FSlider 31 3 0 1 -150902 11356 1
+FSlider 31 4 0 0 -16384 16384 1
+FSlider 31 5 0 1 -150902 11356 1
+FSlider 31 6 -16384 0 -16384 16384 1
+FSlider 31 7 0 1 -150902 11356 1
+FSlider 31 8 16384 0 -16384 16384 1
+CheckBox 31 0 0 1
+CheckBox 31 1 0 1
+CheckBox 31 2 0 1
+CheckBox 31 3 0 1
+CheckBox 31 4 0 1
+CheckBox 31 5 0 1
+CheckBox 31 6 0 1
+CheckBox 31 7 0 1
+Tab "Main"
+Tab "VCOs"
+Tab "Enveloppes"
+Tab "Filters"
+Frame "Mix" 0
+Parameter "Gain ID 1" 1 0 0 16384 0
+Frame "Tone" 0
+Parameter "Note Offset ID 12" 12 1
+Parameter "Pitch ID 12" 12 2 -16384 16384 0
+Frame "VCOMix" 1
+Parameter "Volume 0 ID 16" 16 1 0 32768 0
+Parameter "Volume 1 ID 16" 16 2 0 32768 0
+Parameter "Volume 2 ID 16" 16 3 0 32768 0
+Parameter "Volume 3 ID 16" 16 4 0 32768 0
+Frame "VCOWaveForm" 1
+Parameter "Wave Form ID 24" 24 0
+Parameter "Wave Form ID 25" 25 0
+Parameter "Wave Form ID 26" 26 0
+Parameter "Wave Form ID 27" 27 0
+Frame "VCOOctave" 1
+Parameter "Octave ID 24" 24 1
+Parameter "Octave ID 25" 25 1
+Parameter "Octave ID 26" 26 1
+Parameter "Octave ID 27" 27 1
+Frame "VCOTune" 1
+Parameter "Tune ID 24" 24 2 0 16384 0
+Parameter "Tune ID 25" 25 2 0 16384 0
+Parameter "Tune ID 26" 26 2 0 16384 0
+Parameter "Tune ID 27" 27 2 0 16384 0
+Frame "VCOHarm" 1
+Parameter "Harmonic ID 24" 24 3
+Parameter "Harmonic ID 25" 25 3
+Parameter "Harmonic ID 26" 26 3
+Parameter "Harmonic ID 27" 27 3
+Frame "VCOSubHarm" 1
+Parameter "Subharmonic ID 24" 24 4
+Parameter "Subharmonic ID 25" 25 4
+Parameter "Subharmonic ID 26" 26 4
+Parameter "Subharmonic ID 27" 27 4
+Frame "VCOPW" 1
+Parameter "PW ID 24" 24 5 1638 14745 0
+Parameter "PW Gain ID 24" 24 6 0 16384 0
+Parameter "PW ID 25" 25 5 1638 14745 0
+Parameter "PW Gain ID 25" 25 6 0 16384 0
+Parameter "PW ID 26" 26 5 1638 14745 0
+Parameter "PW Gain ID 26" 26 6 0 16384 0
+Parameter "PW ID 27" 27 5 1638 14745 0
+Parameter "PW Gain ID 27" 27 6 0 16384 0
+Frame "VCOPhi" 1
+Parameter "Phi0 ID 24" 24 7 0 102940 0
+Parameter "Phi0 ID 25" 25 7 0 102940 0
+Parameter "Phi0 ID 26" 26 7 0 102940 0
+Parameter "Phi0 ID 27" 27 7 0 102940 0
+Frame "VCOFM" 1
+Parameter "Exp. FM Gain ID 24" 24 8 0 163840 0
+Parameter "Lin. FM Gain ID 24" 24 9 0 163840 0
+Parameter "Exp. FM Gain ID 25" 25 8 0 163840 0
+Parameter "Lin. FM Gain ID 25" 25 9 0 163840 0
+Parameter "Exp. FM Gain ID 26" 26 8 0 163840 0
+Parameter "Lin. FM Gain ID 26" 26 9 0 163840 0
+Parameter "Exp. FM Gain ID 27" 27 8 0 163840 0
+Parameter "Lin. FM Gain ID 27" 27 9 0 163840 0
+Frame "Main" 2
+Parameter "Delay ID 3" 3 0 0 16384 0
+Parameter "Attack ID 3" 3 1 -113176 0 1
+Parameter "Hold ID 3" 3 2 0 16384 0
+Parameter "Decay ID 3" 3 3 0 16384 0
+Parameter "Sustain ID 3" 3 4 0 16384 0
+Parameter "Release ID 3" 3 5 -113176 0 1
+Parameter "Time Scale ID 3" 3 6 1638 163840 0
+Frame "Filters" 2
+Parameter "Time Scale ID 22" 22 0 1638 163840 0
+Parameter "Sustain ID 22" 22 1 0 16384 0
+Parameter "Delay ID 22" 22 2 0 16384 0
+Parameter "Attack Time 0 ID 22" 22 3 0 16384 0
+Parameter "Attack Level 0 ID 22" 22 4 0 16384 0
+Parameter "Attack Time 1 ID 22" 22 5 0 16384 0
+Parameter "Attack Level 1 ID 22" 22 6 0 16384 0
+Parameter "Attack Time 2 ID 22" 22 7 0 16384 0
+Parameter "Attack Level 2 ID 22" 22 8 0 16384 0
+Parameter "Attack Time 3 ID 22" 22 9 0 16384 0
+Parameter "Release Time 0 ID 22" 22 10 0 16384 0
+Parameter "Release Level 0 ID 22" 22 11 0 16384 0
+Parameter "Release Time 1 ID 22" 22 12 0 16384 0
+Parameter "Release Level 1 ID 22" 22 13 0 16384 0
+Parameter "Release Time 2 ID 22" 22 14 0 16384 0
+Frame "Mvclpf-3" 3
+Parameter "Input gain (dB) ID 20" 20 0 -983040 163840 0
+Parameter "Frequency ID 20" 20 1 -81920 81920 0
+Parameter "Exp FM gain ID 20" 20 2 0 163840 0
+Parameter "Resonance ID 20" 20 3 0 16384 0
+Parameter "Resonance gain ID 20" 20 4 0 16384 0
+Parameter "Output gain (dB) ID 20" 20 5 -245760 245760 0
+Program 0 6450
+Program 0 24
+Program 0 129
+Program 0 18755
+Program 0 18123
+Program 0 19221
+Program 0 19221
+Program 0 2
+Program 0 2
+Program 0 3
+Program 0 2
+Program 0 0
+Program 0 1
+Program 0 1
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 9869
+Program 0 1
+Program 0 1
+Program 0 1
+Program 0 2
+Program 0 1
+Program 0 1
+Program 0 1
+Program 0 1
+Program 0 1638
+Program 0 0
+Program 0 8192
+Program 0 3928
+Program 0 8192
+Program 0 3928
+Program 0 8192
+Program 0 0
+Program 0 9030
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 -107219
+Program 0 0
+Program 0 6803
+Program 0 9869
+Program 0 -3309
+Program 0 1638
+Program 0 13969
+Program 0 0
+Program 0 0
+Program 0 86
+Program 0 8796
+Program 0 4197
+Program 0 0
+Program 0 805
+Program 0 14745
+Program 0 1638
+Program 0 4896
+Program 0 16384
+Program 0 678
+Program 0 3276
+Program 0 254
+Program 0 163840
+Program 0 -34183
+Program 0 53014
+Program 0 7482
+Program 0 0
+Program 0 -9350
+Program 1 0
+Program 1 24
+Program 1 129
+Program 1 18755
+Program 1 18123
+Program 1 19221
+Program 1 19221
+Program 1 2
+Program 1 2
+Program 1 3
+Program 1 2
+Program 1 0
+Program 1 1
+Program 1 1
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 9869
+Program 1 1
+Program 1 1
+Program 1 1
+Program 1 2
+Program 1 1
+Program 1 1
+Program 1 1
+Program 1 1
+Program 1 1638
+Program 1 0
+Program 1 8192
+Program 1 3928
+Program 1 8192
+Program 1 3928
+Program 1 8192
+Program 1 0
+Program 1 9030
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 -107219
+Program 1 0
+Program 1 6803
+Program 1 9869
+Program 1 -3309
+Program 1 1638
+Program 1 13969
+Program 1 0
+Program 1 0
+Program 1 86
+Program 1 8796
+Program 1 4197
+Program 1 0
+Program 1 805
+Program 1 14745
+Program 1 1638
+Program 1 4896
+Program 1 16384
+Program 1 678
+Program 1 3276
+Program 1 254
+Program 1 163840
+Program 1 -34183
+Program 1 53014
+Program 1 7482
+Program 1 0
+Program 1 -9350
+Program 2 1935
+Program 2 24
+Program 2 129
+Program 2 18755
+Program 2 18123
+Program 2 19221
+Program 2 19221
+Program 2 2
+Program 2 2
+Program 2 3
+Program 2 2
+Program 2 2
+Program 2 1
+Program 2 1
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 9869
+Program 2 1
+Program 2 1
+Program 2 1
+Program 2 2
+Program 2 16
+Program 2 8
+Program 2 1
+Program 2 1
+Program 2 1638
+Program 2 14659
+Program 2 8192
+Program 2 16288
+Program 2 8192
+Program 2 15522
+Program 2 8192
+Program 2 8911
+Program 2 9030
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 -107219
+Program 2 0
+Program 2 1437
+Program 2 1725
+Program 2 -3309
+Program 2 1638
+Program 2 13969
+Program 2 0
+Program 2 0
+Program 2 86
+Program 2 8796
+Program 2 4197
+Program 2 0
+Program 2 805
+Program 2 14745
+Program 2 1638
+Program 2 4896
+Program 2 16384
+Program 2 678
+Program 2 3276
+Program 2 254
+Program 2 163840
+Program 2 81920
+Program 2 163840
+Program 2 7482
+Program 2 0
+Program 2 -9350
+Program 3 1935
+Program 3 24
+Program 3 129
+Program 3 18755
+Program 3 18123
+Program 3 19221
+Program 3 19221
+Program 3 2
+Program 3 2
+Program 3 3
+Program 3 2
+Program 3 2
+Program 3 1
+Program 3 1
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 9869
+Program 3 1
+Program 3 1
+Program 3 1
+Program 3 2
+Program 3 16
+Program 3 8
+Program 3 1
+Program 3 1
+Program 3 1638
+Program 3 13605
+Program 3 8192
+Program 3 16288
+Program 3 8192
+Program 3 15522
+Program 3 8192
+Program 3 8911
+Program 3 9030
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 -107219
+Program 3 0
+Program 3 1437
+Program 3 13031
+Program 3 -3309
+Program 3 1638
+Program 3 4484
+Program 3 0
+Program 3 0
+Program 3 86
+Program 3 16384
+Program 3 3162
+Program 3 0
+Program 3 805
+Program 3 0
+Program 3 1638
+Program 3 4896
+Program 3 16384
+Program 3 678
+Program 3 3276
+Program 3 254
+Program 3 163840
+Program 3 -78322
+Program 3 100031
+Program 3 7482
+Program 3 0
+Program 3 -9350
+Program 4 3612
+Program 4 24
+Program 4 129
+Program 4 18755
+Program 4 18123
+Program 4 19221
+Program 4 19221
+Program 4 2
+Program 4 2
+Program 4 3
+Program 4 2
+Program 4 0
+Program 4 1
+Program 4 1
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 9869
+Program 4 1
+Program 4 1
+Program 4 1
+Program 4 2
+Program 4 1
+Program 4 1
+Program 4 1
+Program 4 1
+Program 4 1638
+Program 4 0
+Program 4 8192
+Program 4 3928
+Program 4 8192
+Program 4 3928
+Program 4 8192
+Program 4 0
+Program 4 9030
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 0
+Program 4 -107219
+Program 4 0
+Program 4 6803
+Program 4 9869
+Program 4 -3309
+Program 4 1638
+Program 4 13969
+Program 4 0
+Program 4 0
+Program 4 86
+Program 4 8796
+Program 4 4197
+Program 4 0
+Program 4 805
+Program 4 14745
+Program 4 1638
+Program 4 4896
+Program 4 16384
+Program 4 678
+Program 4 3276
+Program 4 254
+Program 4 163840
+Program 4 -34183
+Program 4 53014
+Program 4 7482
+Program 4 0
+Program 4 -9350
+Program 5 3612
+Program 5 24
+Program 5 129
+Program 5 18755
+Program 5 18123
+Program 5 19221
+Program 5 19221
+Program 5 2
+Program 5 2
+Program 5 3
+Program 5 2
+Program 5 0
+Program 5 1
+Program 5 1
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 9869
+Program 5 1
+Program 5 1
+Program 5 1
+Program 5 2
+Program 5 1
+Program 5 1
+Program 5 1
+Program 5 1
+Program 5 1638
+Program 5 0
+Program 5 8192
+Program 5 3928
+Program 5 8192
+Program 5 3928
+Program 5 8192
+Program 5 0
+Program 5 9030
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 0
+Program 5 -107219
+Program 5 0
+Program 5 6803
+Program 5 9869
+Program 5 -3309
+Program 5 1638
+Program 5 52860
+Program 5 12264
+Program 5 0
+Program 5 86
+Program 5 9677
+Program 5 1437
+Program 5 6707
+Program 5 3353
+Program 5 14745
+Program 5 1638
+Program 5 4896
+Program 5 16384
+Program 5 678
+Program 5 3276
+Program 5 254
+Program 5 163840
+Program 5 -25068
+Program 5 119941
+Program 5 7482
+Program 5 0
+Program 5 -9350
+Program 6 9041
+Program 6 24
+Program 6 129
+Program 6 18755
+Program 6 18123
+Program 6 19221
+Program 6 19221
+Program 6 2
+Program 6 2
+Program 6 3
+Program 6 2
+Program 6 0
+Program 6 0
+Program 6 1
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 9869
+Program 6 1
+Program 6 1
+Program 6 1
+Program 6 1
+Program 6 1
+Program 6 1
+Program 6 1
+Program 6 1
+Program 6 1638
+Program 6 0
+Program 6 8192
+Program 6 3928
+Program 6 8192
+Program 6 3928
+Program 6 8192
+Program 6 0
+Program 6 9030
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 0
+Program 6 -107219
+Program 6 0
+Program 6 1820
+Program 6 1916
+Program 6 -113176
+Program 6 1638
+Program 6 5432
+Program 6 12168
+Program 6 0
+Program 6 86
+Program 6 8796
+Program 6 4197
+Program 6 0
+Program 6 805
+Program 6 14745
+Program 6 1638
+Program 6 4896
+Program 6 16384
+Program 6 678
+Program 6 3276
+Program 6 254
+Program 6 163840
+Program 6 -40180
+Program 6 11754
+Program 6 7482
+Program 6 0
+Program 6 -9350
+PresetName " Bass Theme Your Soul"
+PresetName " Bass Mute"
+PresetName " Bass Pont Your Soul"
+PresetName " Bass Couplet Part II Your Soul"
+PresetName " Bass Refrain Your Soul"
+PresetName " Bass Metal Zappatesk"
+PresetName " Bass Mario"

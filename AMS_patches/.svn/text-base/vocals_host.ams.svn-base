@@ -1,0 +1,338 @@
+Module 17 1 5 100 0 0
+FSlider 1 0 16384 0 0 16384 1
+FSlider 1 1 16384 0 0 16384 1
+FSlider 1 2 16384 0 0 16384 1
+FSMIDI 1 0 10 9 0
+Module 7 2 1026 279 0 0
+ColorP 0 0 2 5 250 200 50 180 180 180
+ColorP 1 1 2 5 250 200 50 180 180 180
+FSlider 2 0 16384 0 0 16384 1
+FSlider 2 1 0 1 -150902 0 1
+FSlider 2 2 0 1 -150902 0 1
+ComboBox 2 0 0 1
+FSMIDI 2 0 10 9 11
+FSMIDI 2 1 10 9 10
+FSMIDI 2 2 10 9 10
+Module 6 3 113 0 0 am_pitchshift_1433 amPitchshift
+ColorP 0 0 3 1 250 200 50 180 180 180
+FSlider 3 0 0 1 -22713 22713 1
+LSlider 3 0 4 1
+Module 6 5 874 41 0 tap_reverb tap_reverb
+ColorP 0 0 5 15 250 200 50 180 180 180
+ColorP 1 0 5 14 250 200 50 180 180 180
+FSlider 5 0 46509420 0 0 163840000 1
+FSlider 5 1 0 0 -1146880 163840 1
+FSlider 5 2 -182867 0 -1146880 163840 1
+LSlider 5 0 0 1
+CheckBox 5 0 1 1
+CheckBox 5 1 1 1
+CheckBox 5 2 1 1
+CheckBox 5 3 1 1
+Module 6 6 500 13 0 lcr_delay_1436 lcrDelay
+ColorP 0 0 6 7 250 200 50 180 180 180
+ColorP 1 0 6 10 250 200 50 180 180 180
+FSlider 6 0 2904436 0 0 44236800 1
+FSlider 6 1 819200 0 0 819200 1
+FSlider 6 2 11394327 0 0 44236800 1
+FSlider 6 3 0 0 0 819200 1
+FSlider 6 4 2681018 0 0 44236800 1
+FSlider 6 5 819200 0 0 819200 1
+FSlider 6 6 33099 0 -1638400 1638400 1
+FSlider 6 7 0 0 0 1638400 1
+FSlider 6 8 0 0 0 1638400 1
+FSlider 6 9 479935 0 0 819200 1
+FSlider 6 10 8192 0 0 16384 1
+Module 6 7 309 8 0 cmt disintegrator
+ColorP 0 0 7 3 250 200 50 180 180 180
+FSlider 7 0 0 0 0 16384 1
+FSlider 7 1 -7516 0 -16384 16384 1
+Module 6 9 111 245 0 am_pitchshift_1433 amPitchshift
+ColorP 0 1 9 1 250 200 50 180 180 180
+FSlider 9 0 206 1 -22713 22713 1
+LSlider 9 0 4 1
+Module 6 10 285 210 0 cmt disintegrator
+ColorP 0 0 10 9 250 200 50 180 180 180
+FSlider 10 0 0 0 0 16384 1
+FSlider 10 1 -12100 0 -16384 16384 1
+Module 6 12 515 276 0 caps Scape
+ColorP 0 0 12 7 250 200 50 180 180 180
+FSlider 12 0 2140899 0 491520 3932160 1
+FSlider 12 1 16384 0 0 16384 1
+FSlider 12 2 4096 0 0 16384 1
+FSlider 12 3 12288 0 0 16384 1
+LSlider 12 0 2 1
+Module 8 14 734 116 2 0
+ColorP 0 1 14 6 250 200 50 180 180 180
+ColorP 1 1 14 12 250 200 50 180 180 180
+FSlider 14 0 16384 0 0 32768 1
+FSlider 14 1 16384 0 0 32768 1
+FSlider 14 2 21415 0 0 32768 1
+FSMIDI 14 2 10 7 1
+Module 8 15 736 0 2 0
+ColorP 0 0 15 6 250 200 50 180 180 180
+ColorP 1 0 15 12 250 200 50 180 180 180
+FSlider 15 0 16384 0 0 32768 1
+FSlider 15 1 16384 0 0 32768 1
+FSlider 15 2 21415 0 0 32768 1
+FSMIDI 15 2 10 7 1
+Tab "PitchShifters"
+Tab "Disintegrators"
+Tab "LCR Delay"
+Tab "Scape Delay"
+Tab "Reverb"
+Frame "Pitch" 0
+Parameter "Pitch shift ID 3" 3 0 -22713 22713 1
+Parameter "Pitch shift ID 9" 9 0 -22713 22713 1
+Frame "Buffers" 0
+Parameter "Buffer size ID 3" 3 1
+Parameter "Buffer size ID 9" 9 1
+Frame "Probability" 1
+Parameter "Probability ID 7" 7 0 0 16384 0
+Parameter "Probability ID 10" 10 0 0 16384 0
+Frame "Multiplier" 1
+Parameter "Multiplier ID 7" 7 1 -16384 16384 0
+Parameter "Multiplier ID 10" 10 1 -16384 16384 0
+Frame "Times" 2
+Parameter "L delay (ms) ID 6" 6 0 0 44236800 0
+Parameter "C delay (ms) ID 6" 6 2 0 44236800 0
+Parameter "R delay (ms) ID 6" 6 4 0 44236800 0
+Frame "Levels" 2
+Parameter "L level ID 6" 6 1 0 819200 0
+Parameter "C level ID 6" 6 3 0 819200 0
+Parameter "R level ID 6" 6 5 0 819200 0
+Frame "General" 2
+Parameter "Feedback ID 6" 6 6 -1638400 1638400 0
+Parameter "High damp (%) ID 6" 6 7 0 1638400 0
+Parameter "Low damp (%) ID 6" 6 8 0 1638400 0
+Parameter "Spread ID 6" 6 9 0 819200 0
+Parameter "Dry/Wet level ID 6" 6 10 0 16384 0
+Frame "Temps" 3
+Parameter "bpm ID 12" 12 0 491520 3932160 0
+Parameter "divider ID 12" 12 1
+Frame "Paramètres" 3
+Parameter "feedback ID 12" 12 2 0 16384 0
+Parameter "dry ID 12" 12 3 0 16384 0
+Parameter "blend ID 12" 12 4 0 16384 0
+Parameter "Volume 1 ID 14" 14 2 0 32768 0
+Parameter "Volume 1 ID 15" 15 2 0 32768 0
+Frame "Temporel" 4
+Parameter "Decay [ms] ID 5" 5 0 0 163840000 0
+Parameter "Reverb Type ID 5" 5 7
+Frame "Spatial et Frequentiel" 4
+Parameter "Enhanced Stereo ID 5" 5 6
+Parameter "Bandpass Filter ID 5" 5 5
+Parameter "Allpass Filters ID 5" 5 4
+Parameter "Comb Filters ID 5" 5 3
+Frame "Niveaux" 4
+Parameter "Wet Level [dB] ID 5" 5 2 -1146880 163840 0
+Parameter "Dry Level [dB] ID 5" 5 1 -1146880 163840 0
+Program 0 0
+Program 0 206
+Program 0 4
+Program 0 4
+Program 0 0
+Program 0 0
+Program 0 -7516
+Program 0 -12100
+Program 0 15639273
+Program 0 11394327
+Program 0 9606982
+Program 0 326853
+Program 0 281341
+Program 0 281341
+Program 0 430287
+Program 0 1050893
+Program 0 711628
+Program 0 479935
+Program 0 2565
+Program 0 1351680
+Program 0 2
+Program 0 4096
+Program 0 4096
+Program 0 12288
+Program 0 0
+Program 0 0
+Program 0 71878192
+Program 0 0
+Program 0 1
+Program 0 1
+Program 0 1
+Program 0 1
+Program 0 -461923
+Program 0 0
+Program 1 1857
+Program 1 -2064
+Program 1 4
+Program 1 4
+Program 1 8342
+Program 1 6651
+Program 1 -12626
+Program 1 -12100
+Program 1 15639273
+Program 1 11394327
+Program 1 9606982
+Program 1 326853
+Program 1 281341
+Program 1 281341
+Program 1 430287
+Program 1 1050893
+Program 1 711628
+Program 1 479935
+Program 1 0
+Program 1 1351680
+Program 1 2
+Program 1 4096
+Program 1 4096
+Program 1 12288
+Program 1 0
+Program 1 0
+Program 1 71878192
+Program 1 0
+Program 1 1
+Program 1 1
+Program 1 1
+Program 1 1
+Program 1 -377361
+Program 1 0
+Program 2 -11150
+Program 2 -10118
+Program 2 4
+Program 2 4
+Program 2 0
+Program 2 0
+Program 2 -12626
+Program 2 -12100
+Program 2 15639273
+Program 2 11394327
+Program 2 9606982
+Program 2 326853
+Program 2 281341
+Program 2 281341
+Program 2 430287
+Program 2 1050893
+Program 2 711628
+Program 2 479935
+Program 2 0
+Program 2 1351680
+Program 2 2
+Program 2 4096
+Program 2 4096
+Program 2 12288
+Program 2 0
+Program 2 0
+Program 2 71878192
+Program 2 0
+Program 2 1
+Program 2 1
+Program 2 1
+Program 2 1
+Program 2 -986211
+Program 2 0
+Program 3 0
+Program 3 206
+Program 3 4
+Program 3 4
+Program 3 0
+Program 3 0
+Program 3 -7516
+Program 3 -12100
+Program 3 2904436
+Program 3 11394327
+Program 3 2681018
+Program 3 819200
+Program 3 0
+Program 3 819200
+Program 3 33099
+Program 3 0
+Program 3 0
+Program 3 479935
+Program 3 8192
+Program 3 2140899
+Program 3 2
+Program 3 16384
+Program 3 4096
+Program 3 12288
+Program 3 0
+Program 3 0
+Program 3 46509420
+Program 3 0
+Program 3 1
+Program 3 1
+Program 3 1
+Program 3 1
+Program 3 -182867
+Program 3 0
+Program 4 0
+Program 4 206
+Program 4 4
+Program 4 4
+Program 4 0
+Program 4 0
+Program 4 -7516
+Program 4 -12100
+Program 4 15639273
+Program 4 11394327
+Program 4 9606982
+Program 4 326853
+Program 4 281341
+Program 4 281341
+Program 4 430287
+Program 4 1050893
+Program 4 711628
+Program 4 479935
+Program 4 0
+Program 4 1351680
+Program 4 2
+Program 4 4096
+Program 4 4096
+Program 4 12288
+Program 4 16067
+Program 4 15644
+Program 4 71878192
+Program 4 0
+Program 4 1
+Program 4 1
+Program 4 1
+Program 4 1
+Program 4 -22198
+Program 4 0
+Program 5 0
+Program 5 206
+Program 5 4
+Program 5 4
+Program 5 939
+Program 5 1578
+Program 5 -7516
+Program 5 -12100
+Program 5 15639273
+Program 5 11394327
+Program 5 9606982
+Program 5 326853
+Program 5 281341
+Program 5 281341
+Program 5 430287
+Program 5 1050893
+Program 5 711628
+Program 5 479935
+Program 5 0
+Program 5 1351680
+Program 5 2
+Program 5 4096
+Program 5 4096
+Program 5 12288
+Program 5 16067
+Program 5 15644
+Program 5 71878192
+Program 5 0
+Program 5 1
+Program 5 1
+Program 5 1
+Program 5 1
+Program 5 -22198
+Program 5 0
+PresetName " Ohreland"
+PresetName "BlackDeath"
+PresetName "Octavers"
+PresetName "Slapback"
+PresetName "Reverb"
+PresetName "Reverb glauque"

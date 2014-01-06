@@ -1,0 +1,131 @@
+Module 17 1 60 98 0 0
+FSlider 1 0 0 0 0 16384 1
+FSlider 1 1 16384 0 0 16384 1
+FSlider 1 2 8192 0 0 16384 1
+FSMIDI 1 0 10 10 0
+Module 6 2 273 66 0 am_pitchshift_1433 amPitchshift
+ColorP 0 0 2 1 250 200 50 180 180 180
+FSlider 2 0 169 1 -22713 22713 1
+LSlider 2 0 2 1
+Module 7 5 853 105 0 0
+ColorP 0 0 5 8 250 200 50 180 180 180
+ColorP 1 1 5 8 250 200 50 180 180 180
+FSlider 5 0 16384 0 0 16384 1
+FSlider 5 1 -76046 1 -150902 0 1
+FSlider 5 2 -76046 1 -150902 0 1
+ComboBox 5 0 0 1
+FSMIDI 5 0 10 10 5
+FSMIDI 5 1 10 10 4
+FSMIDI 5 2 10 10 4
+Module 3 6 56 369 0 0
+FSlider 6 0 66599 1 -150902 75451 1
+FSlider 6 1 0 0 0 102940 1
+Module 32 8 585 81 4 0
+ColorP 0 0 8 2 250 200 50 180 180 180
+ColorP 1 0 8 12 250 200 50 180 180 180
+ColorP 2 0 8 14 250 200 50 180 180 180
+ColorP 3 0 8 16 250 200 50 180 180 180
+FSlider 8 0 26758 1 -150902 37725 1
+FSlider 8 1 0 1 -150902 11356 1
+FSlider 8 2 0 0 -16384 16384 1
+FSlider 8 3 2770 1 -150902 11356 1
+FSlider 8 4 0 0 -16384 16384 1
+FSlider 8 5 3628 1 -150902 11356 1
+FSlider 8 6 0 0 -16384 16384 1
+FSlider 8 7 -663 1 -150902 11356 1
+FSlider 8 8 0 0 -16384 16384 1
+CheckBox 8 0 0 1
+CheckBox 8 1 0 1
+CheckBox 8 2 1 1
+CheckBox 8 3 0 1
+CheckBox 8 4 1 1
+CheckBox 8 5 0 1
+CheckBox 8 6 1 1
+CheckBox 8 7 0 1
+Module 9 12 392 165 0 0
+ColorP 0 0 12 1 250 200 50 180 180 180
+ColorP 2 1 12 6 250 200 50 180 180 180
+FSlider 12 0 16384 0 0 163840 1
+FSlider 12 1 47596 0 0 163840 1
+FSlider 12 2 156518 0 0 163840 1
+FSlider 12 3 0 0 0 163840 1
+FSlider 12 4 13107 0 163 16384 1
+FSlider 12 5 8329 0 0 16384 1
+ComboBox 12 0 0 1
+Module 5 14 318 467 0 0
+ColorP 0 0 14 1 250 200 50 180 180 180
+ColorP 1 4 14 6 250 200 50 180 180 180
+FSlider 14 0 54003 0 0 81920 1
+Module 6 16 544 506 0 revdelay_1605 revdelay
+ColorP 0 0 16 14 250 200 50 180 180 180
+FSlider 16 0 5912 0 0 81920 1
+FSlider 16 1 0 0 -1146880 0 1
+FSlider 16 2 0 0 -1146880 0 1
+FSlider 16 3 2365 0 0 16384 1
+LSlider 16 0 1250 1
+Tab "AMpitchshifter"
+Tab "LFO"
+Tab "General Mixer"
+Frame "Pitch" 0
+Parameter "Pitch shift ID 2" 2 0 -22713 22713 1
+Frame "Buffer" 0
+Parameter "Buffer size ID 2" 2 1
+Frame "Freq" 1
+Parameter "Frequency ID 6" 6 0 -150902 75451 1
+Frame "Phi0" 1
+Parameter "Phi0 ID 6" 6 1 0 102940 0
+Frame "AMpitchshifter Mute" 2
+Parameter "Mute 0 ID 8" 8 1
+Frame "AMpitchshifter Vol" 2
+Parameter "Volume 0 ID 8" 8 3 -150902 11356 1
+Frame "VCF Mute" 2
+Parameter "Mute 1 ID 8" 8 5
+Frame "VCF Vol" 2
+Parameter "Volume 1 ID 8" 8 7 -150902 11356 1
+Frame "RingMod Mute" 2
+Parameter "Mute 2 ID 8" 8 9
+Frame "RingMod Vol" 2
+Parameter "Volume 2 ID 8" 8 11 -150902 11356 1
+Frame "Delay Mute" 2
+Parameter "Mute 3 ID 8" 8 13
+Frame "Delay Vol" 2
+Parameter "Volume 3 ID 8" 8 15 -150902 11356 1
+Program 0 169
+Program 0 2
+Program 0 66599
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 1
+Program 0 2770
+Program 0 1
+Program 0 3628
+Program 0 1
+Program 0 -663
+Program 1 169
+Program 1 2
+Program 1 66599
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 2770
+Program 1 0
+Program 1 3628
+Program 1 0
+Program 1 -663
+Program 2 -3068
+Program 2 2
+Program 2 66599
+Program 2 0
+Program 2 0
+Program 2 0
+Program 2 1
+Program 2 2770
+Program 2 1
+Program 2 3628
+Program 2 1
+Program 2 -663
+PresetName "Pitch"
+PresetName "Gore"
+PresetName "Pitch 4endessous"

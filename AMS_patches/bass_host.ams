@@ -1,0 +1,243 @@
+Module 17 1 24 168 0 0
+FSlider 1 0 16384 0 0 16384 1
+FSlider 1 1 16384 0 0 16384 1
+FSlider 1 2 8192 0 0 16384 1
+FSMIDI 1 0 10 11 0
+Module 7 2 792 273 0 0
+ColorP 0 0 2 43 250 200 50 180 180 180
+ColorP 1 1 2 43 250 200 50 180 180 180
+FSlider 2 0 16384 0 0 16384 1
+FSlider 2 1 16384 0 0 16384 1
+FSlider 2 2 0 1 -150902 0 1
+ComboBox 2 0 0 1
+FSMIDI 2 0 10 11 11
+FSMIDI 2 1 10 11 10
+FSMIDI 2 2 10 11 10
+Module 6 9 218 6 0 am_pitchshift_1433 amPitchshift
+ColorP 0 0 9 1 250 200 50 180 180 180
+FSlider 9 0 -11396 1 -22713 22713 1
+LSlider 9 0 5 1
+Module 6 10 218 68 0 caps ChorusI
+ColorP 0 0 10 1 250 200 50 180 180 180
+FSlider 10 0 18040 1 15012 60438 1
+FSlider 10 1 110660 0 8192 163840 1
+FSlider 10 2 11947 0 0 81920 1
+FSlider 10 3 16384 0 0 16384 1
+FSlider 10 4 13517 0 0 16384 1
+FSlider 10 5 0 0 0 16384 1
+Module 6 18 390 62 0 caps Plate
+ColorP 0 0 18 10 250 200 50 180 180 180
+FSlider 18 0 11673 0 81 16367 1
+FSlider 18 1 7288 0 0 12271 1
+FSlider 18 2 16384 0 8 16384 1
+FSlider 18 3 3434 0 0 16384 1
+Module 9 21 374 245 0 0
+ColorP 0 0 21 25 250 200 50 180 180 180
+ColorP 3 0 21 22 250 200 50 180 180 180
+FSlider 21 0 16384 0 0 163840 1
+FSlider 21 1 81462 0 0 163840 1
+FSlider 21 2 0 0 0 163840 1
+FSlider 21 3 13730 0 0 163840 1
+FSlider 21 4 13107 0 163 16384 1
+FSlider 21 5 0 0 0 16384 1
+ComboBox 21 0 0 1
+Module 3 22 228 245 0 0
+FSlider 22 0 -9273 1 -150902 75451 1
+FSlider 22 1 0 0 0 102940 1
+Module 6 25 190 182 0 revdelay_1605 revdelay
+ColorP 0 0 25 1 250 200 50 180 180 180
+FSlider 25 0 6475 0 0 81920 1
+FSlider 25 1 -1146880 0 -1146880 0 1
+FSlider 25 2 0 0 -1146880 0 1
+FSlider 25 3 6137 0 0 16384 1
+LSlider 25 0 2320 1
+Module 6 35 301 441 0 cmt lofi
+ColorP 0 0 35 38 250 200 50 180 180 180
+ColorP 1 0 35 38 250 200 50 180 180 180
+FSlider 35 0 1248151 0 0 1638400 1
+FSlider 35 1 7756082 0 16384 163840000 1
+LSlider 35 0 0 1
+Module 6 38 130 442 0 dyson_compress_1403 dysonCompress
+ColorP 0 0 38 1 250 200 50 180 180 180
+FSlider 38 0 -5502 0 -491520 0 1
+FSlider 38 1 856 0 0 16384 1
+FSlider 38 2 8742 0 0 16384 1
+FSlider 38 3 5441 0 0 16384 1
+Module 32 43 625 117 8 0
+ColorP 0 0 43 18 250 200 50 180 180 180
+ColorP 1 1 43 18 250 200 50 180 180 180
+ColorP 2 0 43 25 250 200 50 180 180 180
+ColorP 3 0 43 21 250 200 50 180 180 180
+ColorP 4 0 43 35 250 200 50 180 180 180
+ColorP 5 1 43 35 250 200 50 180 180 180
+ColorP 6 0 43 9 250 200 50 180 180 180
+FSlider 43 0 -15014 1 -150902 37725 1
+FSlider 43 1 -20838 1 -150902 11356 1
+FSlider 43 2 -16384 0 -16384 16384 1
+FSlider 43 3 -1520 1 -150902 11356 1
+FSlider 43 4 16384 0 -16384 16384 1
+FSlider 43 5 -37730 1 -150902 11356 1
+FSlider 43 6 16384 0 -16384 16384 1
+FSlider 43 7 -37730 1 -150902 11356 1
+FSlider 43 8 -16384 0 -16384 16384 1
+FSlider 43 9 -15258 1 -150902 11356 1
+FSlider 43 10 -16384 0 -16384 16384 1
+FSlider 43 11 -15258 1 -150902 11356 1
+FSlider 43 12 16384 0 -16384 16384 1
+FSlider 43 13 11356 1 -150902 11356 1
+FSlider 43 14 0 0 -16384 16384 1
+FSlider 43 15 0 1 -150902 11356 1
+FSlider 43 16 0 0 -16384 16384 1
+CheckBox 43 0 1 1
+CheckBox 43 1 0 1
+CheckBox 43 2 1 1
+CheckBox 43 3 0 1
+CheckBox 43 4 1 1
+CheckBox 43 5 0 1
+CheckBox 43 6 1 1
+CheckBox 43 7 0 1
+CheckBox 43 8 1 1
+CheckBox 43 9 0 1
+CheckBox 43 10 1 1
+CheckBox 43 11 0 1
+CheckBox 43 12 0 1
+CheckBox 43 13 0 1
+CheckBox 43 14 0 1
+CheckBox 43 15 0 1
+Tab "AMpitchshifter"
+Tab "Chorus/Reverb"
+Tab "ReverseDelay"
+Tab "Distorsion"
+Tab "General Mixer"
+Frame "Shift" 0
+Parameter "Pitch shift ID 9" 9 0 -22713 22713 1
+Frame "Buffer" 0
+Parameter "Buffer size ID 9" 9 1
+Frame "Damping" 1
+Parameter "damping ID 18" 18 2 8 16384 0
+Frame "DelayTime" 2
+Parameter "Delay Time (s) ID 25" 25 0 0 81920 0
+Frame "LoFi Overdrive" 3
+Parameter "Powersupply Overloading (%) ID 35" 35 1 0 1638400 0
+Frame "Chorus/Reverb Mute" 4
+Parameter "Mute 0 ID 43" 43 1
+Parameter "Mute 1 ID 43" 43 5
+Frame "ReverseDelay Mute" 4
+Parameter "Mute 2 ID 43" 43 9
+Parameter "Mute 3 ID 43" 43 13
+Frame "Distorsion Mute" 4
+Parameter "Mute 4 ID 43" 43 17
+Parameter "Mute 5 ID 43" 43 21
+Frame "AMpitchshifter Mute" 4
+Parameter "Mute 6 ID 43" 43 25
+Frame "Chorus/Reverb Volume" 4
+Parameter "Volume 0 ID 43" 43 3 -150902 11356 1
+Parameter "Volume 1 ID 43" 43 7 -150902 11356 1
+Frame "ReverseDelay Volume" 4
+Parameter "Volume 2 ID 43" 43 11 -150902 11356 1
+Parameter "Volume 3 ID 43" 43 15 -150902 11356 1
+Frame "Distorsion Volume" 4
+Parameter "Volume 4 ID 43" 43 19 -150902 11356 1
+Parameter "Volume 5 ID 43" 43 23 -150902 11356 1
+Frame "AMpitchshifter Volume" 4
+Parameter "Volume 6 ID 43" 43 27 -150902 11356 1
+Program 0 -11356
+Program 0 5
+Program 0 16384
+Program 0 6475
+Program 0 1248151
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 0
+Program 0 1
+Program 0 1
+Program 0 1
+Program 0 -20838
+Program 0 -1521
+Program 0 -37730
+Program 0 -37730
+Program 0 -15258
+Program 0 -15258
+Program 0 0
+Program 1 -11356
+Program 1 5
+Program 1 16384
+Program 1 6475
+Program 1 1248151
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 0
+Program 1 1
+Program 1 1
+Program 1 1
+Program 1 -20838
+Program 1 -1521
+Program 1 -37730
+Program 1 -37730
+Program 1 -15258
+Program 1 -15258
+Program 1 0
+Program 2 -11396
+Program 2 5
+Program 2 16384
+Program 2 6475
+Program 2 1248151
+Program 2 1
+Program 2 1
+Program 2 1
+Program 2 1
+Program 2 1
+Program 2 1
+Program 2 0
+Program 2 -20838
+Program 2 -1521
+Program 2 -37730
+Program 2 -37730
+Program 2 -15258
+Program 2 -15258
+Program 2 11356
+Program 3 -11396
+Program 3 5
+Program 3 16384
+Program 3 6475
+Program 3 1248151
+Program 3 1
+Program 3 1
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 0
+Program 3 1
+Program 3 -20838
+Program 3 -1521
+Program 3 -35003
+Program 3 -35003
+Program 3 -15258
+Program 3 -15258
+Program 3 11356
+Program 4 -11396
+Program 4 5
+Program 4 1439
+Program 4 6475
+Program 4 1248151
+Program 4 0
+Program 4 0
+Program 4 1
+Program 4 1
+Program 4 1
+Program 4 1
+Program 4 1
+Program 4 -20838
+Program 4 -1521
+Program 4 -35003
+Program 4 -35003
+Program 4 -15258
+Program 4 -15258
+Program 4 11356
+PresetName " "
+PresetName "Jazz_Deluxe"
+PresetName "Octaver-1"
+PresetName "Gros"
+PresetName "Reverb_Gavleuc"

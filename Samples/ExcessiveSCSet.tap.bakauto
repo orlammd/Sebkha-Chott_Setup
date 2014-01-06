@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tapeutape version="0.1.0">
+  <options globalvolume="0.400000" max_polyphony="100">
+    <jack-output name="output0"/>
+    <jack-output name="Snares"/>
+    <jack-output name="Cymbales"/>
+    <jack-output name="Continua"/>
+    <jack-output name="Samples"/>
+    <jack-output name="Kicks"/>
+    <jack-output name="clic"/>
+  </options>
+  <creation>
+    <setup name="ExcessiveSCset" channel="1" cc="-1">
+      <kit name="ExcessiveSCkit">
+        <instrument name="MetaBKick" minnote="48" maxnote="48" rootnote="48" channel="10" cut="-1" polyphony="0" output="Kicks" volume="1.420000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/Gunshot1/Gunshot1_00-20.wav" sampleRelative="Kicks/Gunshot1/Gunshot1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/Gunshot1/Gunshot1_21-40.wav" sampleRelative="Kicks/Gunshot1/Gunshot1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/Gunshot1/Gunshot1_41-60.wav" sampleRelative="Kicks/Gunshot1/Gunshot1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/Gunshot1/Gunshot1_61-80.wav" sampleRelative="Kicks/Gunshot1/Gunshot1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/Gunshot1/Gunshot1_81-100.wav" sampleRelative="Kicks/Gunshot1/Gunshot1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/Gunshot1/Gunshot1_101-127.wav" sampleRelative="Kicks/Gunshot1/Gunshot1_101-127.wav"/>
+        </instrument>
+        <instrument name="HxCSnare" minnote="64" maxnote="64" rootnote="64" channel="10" cut="-1" polyphony="0" output="Snares" volume="2.460000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SNTasch/SNTasch_00-20.wav" sampleRelative="Snares/SNTasch/SNTasch_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SNTasch/SNTasch_21-40.wav" sampleRelative="Snares/SNTasch/SNTasch_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SNTasch/SNTasch_41-60.wav" sampleRelative="Snares/SNTasch/SNTasch_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SNTasch/SNTasch_61-80.wav" sampleRelative="Snares/SNTasch/SNTasch_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SNTasch/SNTasch_81-100.wav" sampleRelative="Snares/SNTasch/SNTasch_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SNTasch/SNTasch_101-127.wav" sampleRelative="Snares/SNTasch/SNTasch_101-127.wav"/>
+        </instrument>
+        <instrument name="DestructHH" minnote="76" maxnote="76" rootnote="76" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="2.730000" pan="-0.560000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/CymbTrp1/CymTrp1_00-20.wav" sampleRelative="Cymbales/CymbTrp1/CymTrp1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/CymbTrp1/CymTrp1_21-40.wav" sampleRelative="Cymbales/CymbTrp1/CymTrp1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/CymbTrp1/CymTrp1_41-60.wav" sampleRelative="Cymbales/CymbTrp1/CymTrp1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/CymbTrp1/CymTrp1_61-80.wav" sampleRelative="Cymbales/CymbTrp1/CymTrp1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/CymbTrp1/CymTrp1_81-100.wav" sampleRelative="Cymbales/CymbTrp1/CymTrp1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/CymbTrp1/CymTrp1_101-127.wav" sampleRelative="Cymbales/CymbTrp1/CymTrp1_101-127.wav"/>
+        </instrument>
+        <instrument name="DerboukRide" minnote="79" maxnote="79" rootnote="79" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="3.000000" pan="0.400000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1Fine_00-20.wav" sampleRelative="Percs/Derbouk1/Derbouk1Fine_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1Fine_21-40.wav" sampleRelative="Percs/Derbouk1/Derbouk1Fine_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1Fine_41-60.wav" sampleRelative="Percs/Derbouk1/Derbouk1Fine_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1Fine_61-80.wav" sampleRelative="Percs/Derbouk1/Derbouk1Fine_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1Fine_81-100.wav" sampleRelative="Percs/Derbouk1/Derbouk1Fine_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1Fine_101-127.wav" sampleRelative="Percs/Derbouk1/Derbouk1Fine_101-127.wav"/>
+        </instrument>
+        <instrument name="DerboukCrash" minnote="77" maxnote="77" rootnote="77" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1_00-20.wav" sampleRelative="Percs/Derbouk1/Derbouk1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1_21-40.wav" sampleRelative="Percs/Derbouk1/Derbouk1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1_41-60.wav" sampleRelative="Percs/Derbouk1/Derbouk1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1_61-80.wav" sampleRelative="Percs/Derbouk1/Derbouk1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1_81-100.wav" sampleRelative="Percs/Derbouk1/Derbouk1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Percs/Derbouk1/Derbouk1_101-127.wav" sampleRelative="Percs/Derbouk1/Derbouk1_101-127.wav"/>
+        </instrument>
+        <instrument name="MetaBKickR" minnote="49" maxnote="49" rootnote="49" channel="10" cut="-1" polyphony="0" output="Kicks" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="101" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/Gunshot1/Gunshot1_101-127.wav" sampleRelative="Kicks/Gunshot1/Gunshot1_101-127.wav"/>
+        </instrument>
+        <instrument name="BKickSnare" minnote="50" maxnote="50" rootnote="50" channel="10" cut="-1" polyphony="0" output="Snares" volume="2.440000" pan="-0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/GunShot1/GunShot1_00-20.wav" sampleRelative="Snares/GunShot1/GunShot1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/GunShot1/GunShot1_21-40.wav" sampleRelative="Snares/GunShot1/GunShot1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/GunShot1/GunShot1_41-60.wav" sampleRelative="Snares/GunShot1/GunShot1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/GunShot1/GunShot1_61-80.wav" sampleRelative="Snares/GunShot1/GunShot1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/GunShot1/GunShot1_81-100.wav" sampleRelative="Snares/GunShot1/GunShot1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/GunShot1/GunShot1_101-127.wav" sampleRelative="Snares/GunShot1/GunShot1_101-127.wav"/>
+        </instrument>
+        <instrument name="BKickSnareR" minnote="51" maxnote="51" rootnote="51" channel="10" cut="-1" polyphony="0" output="Snares" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="101" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/GunShot1/GunShot1_101-127.wav" sampleRelative="Snares/GunShot1/GunShot1_101-127.wav"/>
+        </instrument>
+        <instrument name="QKick1" minnote="52" maxnote="52" rootnote="52" channel="10" cut="-1" polyphony="0" output="Kicks" volume="1.560000" pan="0.250000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick1/BKick1_00-20.wav" sampleRelative="Kicks/BKick1/BKick1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick1/BKick1_21-40.wav" sampleRelative="Kicks/BKick1/BKick1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick1/BKick1_41-60.wav" sampleRelative="Kicks/BKick1/BKick1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick1/BKick1_61-80.wav" sampleRelative="Kicks/BKick1/BKick1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick1/BKick1_81-100.wav" sampleRelative="Kicks/BKick1/BKick1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick1/BKick1_101-127.wav" sampleRelative="Kicks/BKick1/BKick1_101-127.wav"/>
+        </instrument>
+        <instrument name="QKick2" minnote="53" maxnote="53" rootnote="60" channel="10" cut="-1" polyphony="0" output="Kicks" volume="1.570000" pan="-0.240000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick2/BKick2_00-20.wav" sampleRelative="Kicks/BKick2/BKick2_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick2/BKick2_21-40.wav" sampleRelative="Kicks/BKick2/BKick2_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick2/BKick2_41-60.wav" sampleRelative="Kicks/BKick2/BKick2_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick2/BKick2_61-80.wav" sampleRelative="Kicks/BKick2/BKick2_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick2/BKick2_81-100.wav" sampleRelative="Kicks/BKick2/BKick2_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick2/BKick2_101-127.wav" sampleRelative="Kicks/BKick2/BKick2_101-127.wav"/>
+        </instrument>
+        <instrument name="QKick3" minnote="54" maxnote="54" rootnote="54" channel="10" cut="-1" polyphony="0" output="Kicks" volume="1.460000" pan="0.230000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick3/BKick3_00-20.wav" sampleRelative="Kicks/BKick3/BKick3_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick3/BKick3_21-40.wav" sampleRelative="Kicks/BKick3/BKick3_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick3/BKick3_41-60.wav" sampleRelative="Kicks/BKick3/BKick3_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick3/BKick3_61-80.wav" sampleRelative="Kicks/BKick3/BKick3_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick3/BKick3_81-100.wav" sampleRelative="Kicks/BKick3/BKick3_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick3/BKick3_101-127.wav" sampleRelative="Kicks/BKick3/BKick3_101-127.wav"/>
+        </instrument>
+        <instrument name="QKick4" minnote="55" maxnote="55" rootnote="55" channel="10" cut="-1" polyphony="0" output="Kicks" volume="1.400000" pan="-0.260000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick4/BKick4_00-20.wav" sampleRelative="Kicks/BKick4/BKick4_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick4/BKick4_21-40.wav" sampleRelative="Kicks/BKick4/BKick4_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick4/BKick4_41-60.wav" sampleRelative="Kicks/BKick4/BKick4_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick4/BKick4_61-80.wav" sampleRelative="Kicks/BKick4/BKick4_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick4/BKick4_81-100.wav" sampleRelative="Kicks/BKick4/BKick4_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/BKick4/BKick4_101-127.wav" sampleRelative="Kicks/BKick4/BKick4_101-127.wav"/>
+        </instrument>
+        <instrument name="QClap1" minnote="60" maxnote="60" rootnote="60" channel="10" cut="-1" polyphony="0" output="Snares" volume="2.460000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap1/Qclap1_00-20.wav" sampleRelative="Snares/QClap1/Qclap1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap1/Qclap1_21-40.wav" sampleRelative="Snares/QClap1/Qclap1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap1/Qclap1_41-60.wav" sampleRelative="Snares/QClap1/Qclap1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap1/Qclap1_61-80.wav" sampleRelative="Snares/QClap1/Qclap1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap1/Qclap1_81-100.wav" sampleRelative="Snares/QClap1/Qclap1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap1/Qclap1_101-127.wav" sampleRelative="Snares/QClap1/Qclap1_101-127.wav"/>
+        </instrument>
+        <instrument name="QClap2" minnote="62" maxnote="62" rootnote="62" channel="10" cut="-1" polyphony="0" output="Snares" volume="2.440000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap2/QClap2_00-20.wav" sampleRelative="Snares/QClap2/QClap2_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap2/QClap2_21-40.wav" sampleRelative="Snares/QClap2/QClap2_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap2/QClap2_41-60.wav" sampleRelative="Snares/QClap2/QClap2_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap2/QClap2_61-80.wav" sampleRelative="Snares/QClap2/QClap2_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap2/QClap2_81-100.wav" sampleRelative="Snares/QClap2/QClap2_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap2/QClap2_101-127.wav" sampleRelative="Snares/QClap2/QClap2_101-127.wav"/>
+        </instrument>
+        <instrument name="TriggyKick" minnote="56" maxnote="56" rootnote="56" channel="10" cut="-1" polyphony="0" output="Kicks" volume="1.390000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/FX_Kick1/FX_Kick1_00-20.wav" sampleRelative="Kicks/FX_Kick1/FX_Kick1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/FX_Kick1/FX_Kick1_21-40.wav" sampleRelative="Kicks/FX_Kick1/FX_Kick1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/FX_Kick1/FX_Kick1_41-60.wav" sampleRelative="Kicks/FX_Kick1/FX_Kick1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/FX_Kick1/FX_Kick1_61-80.wav" sampleRelative="Kicks/FX_Kick1/FX_Kick1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/FX_Kick1/FX_Kick1_81-100.wav" sampleRelative="Kicks/FX_Kick1/FX_Kick1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/FX_Kick1/FX_Kick1_101-127.wav" sampleRelative="Kicks/FX_Kick1/FX_Kick1_101-127.wav"/>
+        </instrument>
+        <instrument name="NKick" minnote="58" maxnote="58" rootnote="58" channel="10" cut="-1" polyphony="0" output="Kicks" volume="1.180000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="" sampleRelative=""/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Toms/Toung1/Toung1_21-40.wav" sampleRelative="Toms/Toung1/Toung1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Toms/Toung1/Toung1_41-60.wav" sampleRelative="Toms/Toung1/Toung1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Toms/Toung1/Toung1_61-80.wav" sampleRelative="Toms/Toung1/Toung1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Toms/Toung1/Toung1_81-100.wav" sampleRelative="Toms/Toung1/Toung1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Toms/Toung1/Toung1_101-127.wav" sampleRelative="Toms/Toung1/Toung1_101-127.wav"/>
+        </instrument>
+        <instrument name="ShortSnare" minnote="65" maxnote="65" rootnote="65" channel="10" cut="-1" polyphony="0" output="Snares" volume="1.040000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SN_seche1/SN_seche1_00-20.wav" sampleRelative="Snares/SN_seche1/SN_seche1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SN_seche1/SN_seche1_21-40.wav" sampleRelative="Snares/SN_seche1/SN_seche1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SN_seche1/SN_seche1_41-60.wav" sampleRelative="Snares/SN_seche1/SN_seche1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SN_seche1/SN_seche1_61-80.wav" sampleRelative="Snares/SN_seche1/SN_seche1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SN_seche1/SN_seche1_81-100.wav" sampleRelative="Snares/SN_seche1/SN_seche1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/SN_seche1/SN_seche1_101-127.wav" sampleRelative="Snares/SN_seche1/SN_seche1_101-127.wav"/>
+        </instrument>
+        <instrument name="VstructCymb" minnote="83" maxnote="83" rootnote="83" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="0.640000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ring2/Ring2_00-20.wav" sampleRelative="Cymbales/Ring2/Ring2_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ring2/Ring2_21-40.wav" sampleRelative="Cymbales/Ring2/Ring2_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ring2/Ring2_41-60.wav" sampleRelative="Cymbales/Ring2/Ring2_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ring2/Ring2_61-80.wav" sampleRelative="Cymbales/Ring2/Ring2_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ring2/Ring2_81-100.wav" sampleRelative="Cymbales/Ring2/Ring2_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ring2/Ring2_101-127.wav" sampleRelative="Cymbales/Ring2/Ring2_101-127.wav"/>
+        </instrument>
+        <instrument name="LKick" minnote="57" maxnote="57" rootnote="57" channel="10" cut="-1" polyphony="0" output="Kicks" volume="1.330000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/eKick1/eKick1_00-20.wav" sampleRelative="Kicks/eKick1/eKick1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/eKick1/eKick1_21-40.wav" sampleRelative="Kicks/eKick1/eKick1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/eKick1/eKick1_41-60.wav" sampleRelative="Kicks/eKick1/eKick1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/eKick1/eKick1_61-80.wav" sampleRelative="Kicks/eKick1/eKick1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/eKick1/eKick1_81-100.wav" sampleRelative="Kicks/eKick1/eKick1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/eKick1/eKick1_101-127.wav" sampleRelative="Kicks/eKick1/eKick1_101-127.wav"/>
+        </instrument>
+        <instrument name="CerbPeche" minnote="72" maxnote="72" rootnote="72" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Cerberus_Peche/Cerberus_Peche_00-20.wav" sampleRelative="Cymbales/Cerberus_Peche/Cerberus_Peche_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Cerberus_Peche/Cerberus_Peche_21-40.wav" sampleRelative="Cymbales/Cerberus_Peche/Cerberus_Peche_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Cerberus_Peche/Cerberus_Peche_41-60.wav" sampleRelative="Cymbales/Cerberus_Peche/Cerberus_Peche_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Cerberus_Peche/Cerberus_Peche_61-80.wav" sampleRelative="Cymbales/Cerberus_Peche/Cerberus_Peche_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Cerberus_Peche/Cerberus_Peche_81-100.wav" sampleRelative="Cymbales/Cerberus_Peche/Cerberus_Peche_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Cerberus_Peche/Cerberus_Peche_101-127.wav" sampleRelative="Cymbales/Cerberus_Peche/Cerberus_Peche_101-127.wav"/>
+        </instrument>
+        <instrument name="CerbPecheR" minnote="74" maxnote="74" rootnote="74" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="101" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Cerberus_Peche/Cerberus_Peche_rev_101-127.wav" sampleRelative="Cymbales/Cerberus_Peche/Cerberus_Peche_rev_101-127.wav"/>
+        </instrument>
+        <instrument name="SSS" minnote="81" maxnote="81" rootnote="81" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/SSHH/SSHH_00-20.wav" sampleRelative="Cymbales/SSHH/SSHH_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/SSHH/SSHH_21-40.wav" sampleRelative="Cymbales/SSHH/SSHH_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/SSHH/SSHH_41-60.wav" sampleRelative="Cymbales/SSHH/SSHH_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/SSHH/SSHH_61-80.wav" sampleRelative="Cymbales/SSHH/SSHH_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/SSHH/SSHH_81-100.wav" sampleRelative="Cymbales/SSHH/SSHH_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/SSHH/SSHH_101-127.wav" sampleRelative="Cymbales/SSHH/SSHH_101-127.wav"/>
+        </instrument>
+        <instrument name="CerbCont1" minnote="84" maxnote="84" rootnote="84" channel="10" cut="-1" polyphony="0" output="Continua" volume="2.500000" pan="-0.530000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont1/CerbCont1_00-20.wav" sampleRelative="Samples/CerbCont1/CerbCont1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont1/CerbCont1_21-40.wav" sampleRelative="Samples/CerbCont1/CerbCont1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont1/CerbCont1_41-60.wav" sampleRelative="Samples/CerbCont1/CerbCont1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont1/CerbCont1_61-80.wav" sampleRelative="Samples/CerbCont1/CerbCont1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont1/CerbCont1_81-100.wav" sampleRelative="Samples/CerbCont1/CerbCont1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont1/CerbCont1_101-127.wav" sampleRelative="Samples/CerbCont1/CerbCont1_101-127.wav"/>
+        </instrument>
+        <instrument name="CerbCont2" minnote="86" maxnote="86" rootnote="86" channel="10" cut="-1" polyphony="0" output="Continua" volume="2.500000" pan="0.690000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont2/CerbCont2_00-20.wav" sampleRelative="Samples/CerbCont2/CerbCont2_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont2/CerbCont2_21-40.wav" sampleRelative="Samples/CerbCont2/CerbCont2_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont2/CerbCont2_41-60.wav" sampleRelative="Samples/CerbCont2/CerbCont2_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont2/CerbCont2_61-80.wav" sampleRelative="Samples/CerbCont2/CerbCont2_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont2/CerbCont2_81-100.wav" sampleRelative="Samples/CerbCont2/CerbCont2_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont2/CerbCont2_101-127.wav" sampleRelative="Samples/CerbCont2/CerbCont2_101-127.wav"/>
+        </instrument>
+        <instrument name="CerbCont3" minnote="88" maxnote="88" rootnote="88" channel="10" cut="-1" polyphony="0" output="Continua" volume="2.500000" pan="-0.650000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont3/CerbCont3_00-20.wav" sampleRelative="Samples/CerbCont3/CerbCont3_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont3/CerbCont3_21-40.wav" sampleRelative="Samples/CerbCont3/CerbCont3_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont3/CerbCont3_41-60.wav" sampleRelative="Samples/CerbCont3/CerbCont3_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont3/CerbCont3_61-80.wav" sampleRelative="Samples/CerbCont3/CerbCont3_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont3/CerbCont3_81-100.wav" sampleRelative="Samples/CerbCont3/CerbCont3_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont3/CerbCont3_101-127.wav" sampleRelative="Samples/CerbCont3/CerbCont3_101-127.wav"/>
+        </instrument>
+        <instrument name="CerbCont4" minnote="89" maxnote="89" rootnote="89" channel="10" cut="-1" polyphony="0" output="Continua" volume="2.500000" pan="0.600000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont4/CerbCont4_00-20.wav" sampleRelative="Samples/CerbCont4/CerbCont4_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont4/CerbCont4_21-40.wav" sampleRelative="Samples/CerbCont4/CerbCont4_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont4/CerbCont4_41-60.wav" sampleRelative="Samples/CerbCont4/CerbCont4_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont4/CerbCont4_61-80.wav" sampleRelative="Samples/CerbCont4/CerbCont4_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont4/CerbCont4_81-100.wav" sampleRelative="Samples/CerbCont4/CerbCont4_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont4/CerbCont4_101-127.wav" sampleRelative="Samples/CerbCont4/CerbCont4_101-127.wav"/>
+        </instrument>
+        <instrument name="CerbCont5" minnote="91" maxnote="91" rootnote="91" channel="10" cut="-1" polyphony="0" output="Continua" volume="2.500000" pan="-0.740000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont5/CerbCont5_00-20.wav" sampleRelative="Samples/CerbCont5/CerbCont5_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont5/CerbCont5_21-40.wav" sampleRelative="Samples/CerbCont5/CerbCont5_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont5/CerbCont5_41-60.wav" sampleRelative="Samples/CerbCont5/CerbCont5_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont5/CerbCont5_61-80.wav" sampleRelative="Samples/CerbCont5/CerbCont5_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont5/CerbCont5_81-100.wav" sampleRelative="Samples/CerbCont5/CerbCont5_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont5/CerbCont5_101-127.wav" sampleRelative="Samples/CerbCont5/CerbCont5_101-127.wav"/>
+        </instrument>
+        <instrument name="CerbCont6" minnote="93" maxnote="93" rootnote="93" channel="10" cut="-1" polyphony="0" output="Continua" volume="2.500000" pan="0.690000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont6/CerbCont6_00-20.wav" sampleRelative="Samples/CerbCont6/CerbCont6_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont6/CerbCont6_21-40.wav" sampleRelative="Samples/CerbCont6/CerbCont6_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont6/CerbCont6_41-60.wav" sampleRelative="Samples/CerbCont6/CerbCont6_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont6/CerbCont6_61-80.wav" sampleRelative="Samples/CerbCont6/CerbCont6_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont6/CerbCont6_81-100.wav" sampleRelative="Samples/CerbCont6/CerbCont6_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/CerbCont6/CerbCont6_101-127.wav" sampleRelative="Samples/CerbCont6/CerbCont6_101-127.wav"/>
+        </instrument>
+        <instrument name="FlamCont" minnote="95" maxnote="119" rootnote="107" channel="10" cut="-1" polyphony="0" output="Continua" volume="2.500000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/Tabla/tabla_pattern.wav" sampleRelative="Samples/Tabla/tabla_pattern.wav"/>
+        </instrument>
+        <instrument name="LocoRail" minnote="37" maxnote="37" rootnote="37" channel="10" cut="-1" polyphony="0" output="Kicks" volume="3.000000" pan="0.920000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_00-20.wav" sampleRelative="Samples/TrainsYS/DecHigh_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_21-40.wav" sampleRelative="Samples/TrainsYS/DecHigh_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_41-60.wav" sampleRelative="Samples/TrainsYS/DecHigh_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/Roues_61-80.wav" sampleRelative="Samples/TrainsYS/Roues_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/Roues_81-100.wav" sampleRelative="Samples/TrainsYS/Roues_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/Roues_101-127.wav" sampleRelative="Samples/TrainsYS/Roues_101-127.wav"/>
+        </instrument>
+        <instrument name="LocoDecompLow" minnote="38" maxnote="38" rootnote="38" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="1.210000" pan="0.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_00-20.wav" sampleRelative="Samples/TrainsYS/DecHigh_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_21-40.wav" sampleRelative="Samples/TrainsYS/DecHigh_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_41-60.wav" sampleRelative="Samples/TrainsYS/DecHigh_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_61-80.wav" sampleRelative="Samples/TrainsYS/DecHigh_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/Roues_81-100.wav" sampleRelative="Samples/TrainsYS/Roues_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecLow_101-127.wav" sampleRelative="Samples/TrainsYS/DecLow_101-127.wav"/>
+        </instrument>
+        <instrument name="LocoDecompMid" minnote="39" maxnote="39" rootnote="39" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="1.170000" pan="-0.420000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecMed_00-20.wav" sampleRelative="Samples/TrainsYS/DecMed_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecMed_21-40.wav" sampleRelative="Samples/TrainsYS/DecMed_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecMed_41-60.wav" sampleRelative="Samples/TrainsYS/DecMed_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecMed_61-80.wav" sampleRelative="Samples/TrainsYS/DecMed_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecMed_81-100.wav" sampleRelative="Samples/TrainsYS/DecMed_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecMed_101-127.wav" sampleRelative="Samples/TrainsYS/DecMed_101-127.wav"/>
+        </instrument>
+        <instrument name="LocoDecompHigh" minnote="40" maxnote="41" rootnote="40" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="2.500000" pan="1.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_00-20.wav" sampleRelative="Samples/TrainsYS/DecHigh_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_21-40.wav" sampleRelative="Samples/TrainsYS/DecHigh_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_41-60.wav" sampleRelative="Samples/TrainsYS/DecHigh_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_61-80.wav" sampleRelative="Samples/TrainsYS/DecHigh_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_81-100.wav" sampleRelative="Samples/TrainsYS/DecHigh_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_101-127.wav" sampleRelative="Samples/TrainsYS/DecHigh_101-127.wav"/>
+        </instrument>
+        <instrument name="SamplesGlockDownPhial" minnote="24" maxnote="24" rootnote="24" channel="10" cut="-1" polyphony="0" output="Samples" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Zappatesk/vibra_down.wav" sampleRelative="Samples_Orl/Zappatesk/vibra_down.wav"/>
+        </instrument>
+        <instrument name="SamplesGlockNormPhial" minnote="36" maxnote="36" rootnote="36" channel="10" cut="-1" polyphony="0" output="Samples" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Zappatesk/vibra.wav" sampleRelative="Samples_Orl/Zappatesk/vibra.wav"/>
+        </instrument>
+        <instrument name="SamplesGlockRevPhial" minnote="25" maxnote="25" rootnote="25" channel="10" cut="-1" polyphony="0" output="Samples" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Zappatesk/vibra_rev.wav" sampleRelative="Samples_Orl/Zappatesk/vibra_rev.wav"/>
+        </instrument>
+        <instrument name="SamplesGlockRevDistoPhial" minnote="26" maxnote="26" rootnote="26" channel="10" cut="-1" polyphony="0" output="Samples" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Zappatesk/vibra_rev_disto.wav" sampleRelative="Samples_Orl/Zappatesk/vibra_rev_disto.wav"/>
+        </instrument>
+        <instrument name="PianoMDO" minnote="12" maxnote="12" rootnote="12" channel="10" cut="-1" polyphony="0" output="Samples" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Malicouille/MDO_Key.wav" sampleRelative="Samples_Orl/Malicouille/MDO_Key.wav"/>
+        </instrument>
+        <instrument name="Voix_MDO_Low" minnote="13" maxnote="13" rootnote="13" channel="10" cut="-1" polyphony="0" output="Samples" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Malicouille/MDO_Vx_Low.wav" sampleRelative="Samples_Orl/Malicouille/MDO_Vx_Low.wav"/>
+        </instrument>
+        <instrument name="Voix_MDO_High" minnote="14" maxnote="14" rootnote="14" channel="10" cut="-1" polyphony="0" output="Samples" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Malicouille/MDO_Vx_High.wav" sampleRelative="Samples_Orl/Malicouille/MDO_Vx_High.wav"/>
+        </instrument>
+        <instrument name="Vx_Ania" minnote="16" maxnote="22" rootnote="19" channel="10" cut="-1" polyphony="0" output="Samples" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Malicouille/Refrain_Vx_slave.wav" sampleRelative="Samples_Orl/Malicouille/Refrain_Vx_slave.wav"/>
+        </instrument>
+        <instrument name="Orage" minnote="15" maxnote="15" rootnote="15" channel="10" cut="-1" polyphony="0" output="Samples" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Malicouille/Mx_Orage.wav" sampleRelative="Samples_Orl/Malicouille/Mx_Orage.wav"/>
+        </instrument>
+        <instrument name="Sabra_Femmes" minnote="23" maxnote="23" rootnote="23" channel="10" cut="-1" polyphony="0" output="Samples" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Sabra/bashir_sabra.wav" sampleRelative="Samples_Orl/Sabra/bashir_sabra.wav"/>
+        </instrument>
+        <instrument name="Soufflants_Nougat" minnote="28" maxnote="28" rootnote="28" channel="10" cut="-1" polyphony="0" output="Samples" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/Soufflants_Nougat.wav" sampleRelative="Samples_Orl/Nougat/Soufflants_Nougat.wav"/>
+        </instrument>
+        <instrument name="BBT_Perc_1" minnote="31" maxnote="31" rootnote="31" channel="10" cut="-1" polyphony="0" output="Kicks" volume="0.980000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/BBT_Perc_1.wav" sampleRelative="Samples_Orl/Nougat/BBT_Perc_1.wav"/>
+        </instrument>
+        <instrument name="BBT_Perc_2" minnote="32" maxnote="32" rootnote="32" channel="10" cut="-1" polyphony="0" output="Kicks" volume="1.390000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/BBT_Perc_2.wav" sampleRelative="Samples_Orl/Nougat/BBT_Perc_2.wav"/>
+        </instrument>
+        <instrument name="BBT_Perc_3" minnote="33" maxnote="33" rootnote="33" channel="10" cut="-1" polyphony="0" output="Snares" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/BBT_Perc_3.wav" sampleRelative="Samples_Orl/Nougat/BBT_Perc_3.wav"/>
+        </instrument>
+        <instrument name="BBT_Perc_4" minnote="34" maxnote="34" rootnote="34" channel="10" cut="-1" polyphony="0" output="Continua" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/BBT_temoin.wav" sampleRelative="Samples_Orl/Nougat/BBT_temoin.wav"/>
+        </instrument>
+        <instrument name="Ping" minnote="82" maxnote="82" rootnote="82" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="22" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ping1/Dr_Cymb_Ping1_00-20.wav" sampleRelative="Cymbales/Ping1/Dr_Cymb_Ping1_00-20.wav"/>
+          <variation minveloc="23" maxveloc="44" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ping1/Dr_Cymb_Ping1_21-40.wav" sampleRelative="Cymbales/Ping1/Dr_Cymb_Ping1_21-40.wav"/>
+          <variation minveloc="45" maxveloc="66" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ping1/Dr_Cymb_Ping1_41-60.wav" sampleRelative="Cymbales/Ping1/Dr_Cymb_Ping1_41-60.wav"/>
+          <variation minveloc="67" maxveloc="88" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ping1/Dr_Cymb_Ping1_61-80.wav" sampleRelative="Cymbales/Ping1/Dr_Cymb_Ping1_61-80.wav"/>
+          <variation minveloc="89" maxveloc="110" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ping1/Dr_Cymb_Ping1_81-100.wav" sampleRelative="Cymbales/Ping1/Dr_Cymb_Ping1_81-100.wav"/>
+          <variation minveloc="111" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ping1/Dr_Cymb_Ping1_101-127.wav" sampleRelative="Cymbales/Ping1/Dr_Cymb_Ping1_101-127.wav"/>
+        </instrument>
+        <instrument name="Clic" minnote="120" maxnote="120" rootnote="120" channel="1" cut="-1" polyphony="0" output="clic" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="normal">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ping1/Dr_Cymb_Ping1_101-127.wav" sampleRelative="Cymbales/Ping1/Dr_Cymb_Ping1_101-127.wav"/>
+        </instrument>
+      </kit>
+    </setup>
+  </creation>
+</tapeutape>
