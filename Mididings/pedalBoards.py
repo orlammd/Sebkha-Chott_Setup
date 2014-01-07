@@ -10,7 +10,8 @@ import liblo
 config(
 	backend='jack',
 	client_name='PedalBoardsRoutes',
-	out_ports=['PBseq24', 'PBAMSBassSynth', 'PBAMSChordsSynth', 'PBAMSLeadSynth', 'PBAMSCtLeadSynth', 'PBTapeutape'],
+	out_ports=['PBseq24', 'PBAMSBassSynth', 'PBAMSChordsSynth', 'PBAMSLeadSynth', 'PBAMSCtLeadSynth', 'PBTapeutape', 'PBCtrlOut'],
+	in_ports=['PBCtrlIn']
 )
 
 hook(
@@ -36,6 +37,35 @@ alead=Output('PBAMSLeadSynth',5)
 actlead=Output('PBAMSCtLeadSynth',6)
 
 tapeutape=Output('PBTapeutape',10)
+
+
+
+#### Functions #############################################
+
+#### Trigger seq24 ####
+p_firstpart=[range(1,65)]
+p_secondpart=[range(65,129)]
+
+note2seq = ProgramFilter(p_firstpart) >> seq24 # mute-groups seq24
+note2seqNplay = ProgramFilter(p_secondpart) >> [ # mute-groups + play
+			NoteOn(EVENT_PROGRAM,127) >> Transpose(-62) >> Program('PBseq24',1,EVENT_NOTE) >> seq24,
+			Program('PBseq24',1,1),
+		]
+
+
+seqtrigger = Filter(PROGRAM) >> [
+		ChannelFilter(1) >> [ 
+             		note2seq,
+			note2seqNplay,
+		],
+		ChannelFilter(2) >> [
+			seq24once,
+		]
+	]
+
+cseqtrigger = Channel(1) >> seqtrigger
+
+
 
 
 #### Scenes ################################################
@@ -66,7 +96,11 @@ run(
 		),
 		Scene("Bank Select",
 		    Discard()
+		),
+		Scene("Tune Select",
+		    Discard()
 		)
+
 	    ]
         ),
         2: SceneGroup("Dummy", [
@@ -92,6 +126,9 @@ run(
 		    Discard()
 		),
 		Scene("Bank Select",
+		    Discard()
+		),
+		Scene("Tune Select",
 		    Discard()
 		)
 	    ]

@@ -2,6 +2,8 @@ from mididings import Call
 import mididings.engine as _engine
 import mididings.setup as _setup
 import mididings.misc as _misc
+import mididings.event as _event
+import mididings.util as _util
 
 import mididings.extra.panic as _panic
 
@@ -24,9 +26,19 @@ class OSCCustomInterface(object):
 
     @_liblo.make_method('/pedalBoard/button', 'i')
     def button_cb(self, path, args):
-        if _engine.current_subscene() == 8:
+        if _engine.current_subscene() == 9:
          _engine.switch_scene(args[0])
          _engine.switch_subscene(1)
-        if args[0] == 12 and _engine.current_subscene() != 8:
-         _engine.switch_subscene(8)
+	else:
+            if args[0] == 12:
+             _engine.switch_subscene(9)
+   	    if args[0] < 12:
+	     _engine.output_event(_event.ProgramEvent('PBCtrlOut', _util.NoDataOffset(1), args[0]))
+            if _engine.current_subscene() == 8:
+             _engine.switch_subscene(args[0]-12)
+	    else:
+                if args[0] == 24:
+                 _engine.switch_subscene(8)
+   	        if args[0] < 24 and args[0] > 12:
+	         _engine.output_event(_event.ProgramEvent('PBCtrlOut', _util.NoDataOffset(1), args[0]))
 
