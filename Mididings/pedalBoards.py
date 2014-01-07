@@ -10,7 +10,7 @@ import liblo
 config(
 	backend='jack',
 	client_name='PedalBoardsRoutes',
-	out_ports=['PBseq24', 'PBAMSBassSynth', 'PBAMSChordsSynth', 'PBAMSLeadSynth', 'PBAMSCtLeadSynth', 'PBTapeutape', 'PBCtrlOut'],
+	out_ports=['PBseq24', 'PBAMSBassSynth', 'PBAMSChordsSynth', 'PBAMSLeadSynth', 'PBAMSCtLeadSynth', 'PBAMSClassicalSynth', 'PBTapeutape', 'PBCtrlOut'],
 	in_ports=['PBCtrlIn']
 )
 
@@ -35,6 +35,8 @@ abass=Output('PBAMSBassSynth',3)
 achords=Output('PBAMSChordsSynth',4)
 alead=Output('PBAMSLeadSynth',5)
 actlead=Output('PBAMSCtLeadSynth',6)
+aclass=Output('PBAMSClassicalSynth',7)
+
 
 tapeutape=Output('PBTapeutape',10)
 
@@ -74,7 +76,14 @@ run(
     scenes = {
         1: SceneGroup("Dummy", [
   		Scene("Bass ORL",
-		    Discard()
+		    ProgramFilter(2) >> [ # Intro
+			Program(65) >> cseqtrigger,
+			Program(10) >> achords,
+
+			SendOSC(slport, '/set', 'eight_per_cycle', 24),
+			SendOSC(slport, '/set', 'tempo', 120),
+
+		    ]
 		),
 		Scene("Guitar ORL",
 		    Discard()
