@@ -118,13 +118,17 @@ run(
 			    abass_mute,
 			    actlead_mute,
 
-			    SendOSC(slport, '/set', 'eight_per_cycle', 24),
-			    SendOSC(slport, '/set', 'tempo', 120),
+			    [
+				SendOSC(slport, '/set', 'eight_per_cycle', 16),
+				SendOSC(slport, '/set', 'tempo', 120),
 
-			    SendOSC(klickport, '/klick/simple/set_tempo', 120),
-			    SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-			    SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-			    SendOSC(klickport, '/klick/metro/start'),
+#			    SendOSC(slport, '/sl/2/hit', 'record'),
+
+				SendOSC(klickport, '/klick/simple/set_tempo', 120),
+				SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+				SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+				SendOSC(klickport, '/klick/metro/start'),
+			    ] >> Discard(),
 
 			    gtrdag_clean
 			],
@@ -137,13 +141,17 @@ run(
 			    Program(1) >> abass,
 			    actlead_mute,
 
-			    SendOSC(slport, '/set', 'eight_per_cycle', 24),
-			    SendOSC(slport, '/set', 'tempo', 120),
+			    [
+				SendOSC(slport, '/set', 'eight_per_cycle', 16),
+				SendOSC(slport, '/set', 'tempo', 120),
 
-			    SendOSC(klickport, '/klick/simple/set_tempo', 120),
-			    SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-			    SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-			    SendOSC(klickport, '/klick/metro/start'),
+#			    SendOSC(slport, '/sl/2/hit', 'record'),
+
+				SendOSC(klickport, '/klick/simple/set_tempo', 120),
+				SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+				SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+				SendOSC(klickport, '/klick/metro/start'),
+			    ] >> Discard(),
 
 			    gtrdag_clean
 			],
@@ -155,13 +163,17 @@ run(
 			    Program(9) >> alead,
 			    actlead_mute,
 
-			    SendOSC(slport, '/set', 'eight_per_cycle', 24),
-			    SendOSC(slport, '/set', 'tempo', 120),
+			    [
+				SendOSC(slport, '/set', 'eight_per_cycle', 16),
+				SendOSC(slport, '/set', 'tempo', 120),
 
-			    SendOSC(klickport, '/klick/simple/set_tempo', 120),
-			    SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-			    SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-			    SendOSC(klickport, '/klick/metro/start'),
+#			    SendOSC(slport, '/sl/2/hit', 'record'),
+
+				SendOSC(klickport, '/klick/simple/set_tempo', 120),
+				SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+				SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+				SendOSC(klickport, '/klick/metro/start'),
+			    ] >> Discard(),
 
 			    gtrdag_clean
 			],
@@ -178,42 +190,91 @@ run(
 			    abass_mute,
 			    actlead_mute,
 
-			    SendOSC(slport, '/set', 'eight_per_cycle', 16),
-			    SendOSC(slport, '/set', 'tempo', 120),
+			    [
+				SendOSC(slport, '/set', 'eight_per_cycle', 16),
+				SendOSC(slport, '/set', 'tempo', 120),
 
 #			    SendOSC(slport, '/sl/2/hit', 'record'),
 
-			    SendOSC(klickport, '/klick/simple/set_tempo', 120),
-			    SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-			    SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-			    SendOSC(klickport, '/klick/metro/start'),
+				SendOSC(klickport, '/klick/simple/set_tempo', 120),
+				SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+				SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+				SendOSC(klickport, '/klick/metro/start'),
+			    ] >> Discard(),
 
 			    gtrdag_clean,
 			    gtrorl_clean
 
 			],
-			ProgramFilter(8) >> [
+			ProgramFilter(8) >> [ # MathoMag - Bouton 8
 			    Program(69) >> cseqtrigger,
 
 			    Program(10) >> achords,
 			    Program(1) >> abass,
 			    actlead_mute,
 
-			    SendOSC(slport, '/set', 'eight_per_cycle', 16),
-			    SendOSC(slport, '/set', 'tempo', 120),
+			    [
+				SendOSC(slport, '/set', 'eight_per_cycle', 16),
+				SendOSC(slport, '/set', 'tempo', 120),
 
 #			    SendOSC(slport, '/sl/2/hit', 'record'),
 
-			    SendOSC(klickport, '/klick/simple/set_tempo', 120),
-			    SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-			    SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-			    SendOSC(klickport, '/klick/metro/start'),
+				SendOSC(klickport, '/klick/simple/set_tempo', 120),
+				SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+				SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+				SendOSC(klickport, '/klick/metro/start'),
+			    ] >> Discard(),
 
 			    gtrdag_clean,
 			    gtrorl_clean
-
-
 			],
+			ProgramFilter(9) >> [ # MathoMag II - Bouton 9
+			    Program(70) >> cseqtrigger,
+
+			    Program(9) >> achords,
+			    Program(1) >> abass,
+			    actlead_mute,
+
+			    [
+				SendOSC(slport, '/set', 'eight_per_cycle', 16),
+				SendOSC(slport, '/set', 'tempo', 120),
+
+				SendOSC(slport, '/sl/2/hit', 'pause_on'),
+
+#			    SendOSC(slport, '/sl/2/hit', 'record'),
+
+				SendOSC(klickport, '/klick/simple/set_tempo', 120),
+				SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+				SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+				SendOSC(klickport, '/klick/metro/start'),
+			    ] >> Discard(),
+
+			    gtrdag_disto,
+			    gtrorl_clean
+			],
+			ProgramFilter(10) >> [ # DeathoDeb - Bouton 10
+			    Program(71) >> cseqtrigger,
+
+			    Program(7) >> achords,
+			    Program(1) >> abass,
+			    actlead_mute,
+
+			    [
+				SendOSC(slport, '/set', 'eight_per_cycle', 16),
+				SendOSC(slport, '/set', 'tempo', 120),
+
+#			    SendOSC(slport, '/sl/2/hit', 'record'),
+
+				SendOSC(klickport, '/klick/simple/set_tempo', 120),
+				SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+				SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+				SendOSC(klickport, '/klick/metro/start'),
+			    ] >> Discard(),
+
+			    gtrdag_clean,
+			    gtrorl_disto
+			],
+
 
 
 
