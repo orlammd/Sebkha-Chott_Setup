@@ -84,17 +84,21 @@ stop = [
 	Program(6) >> actlead
 ]
 
+#### Synths ####
+abass_mute = Program(2) >> abass
+actlead_mute = Program(6) >> actlead
+
 
 #### Guitars ####
 
 # Dag
-gtrdagclean = Program(3) >> guitardag
-gtrdagdisto = Program(2) >> guitardag
+gtrdag_clean = Program(3) >> guitardag
+gtrdag_disto = Program(2) >> guitardag
 # gtrdagmute = SendOSC()
 
 # ORL
-gtrorlclean = Program(3) >> guitarorl
-gtrorldisto = Program(2) >> guitarorl
+gtrorl_clean = Program(3) >> guitarorl
+gtrorl_disto = Program(2) >> guitarorl
 # gtrdagmute = SendOSC()
 
 
@@ -111,8 +115,8 @@ run(
 			ProgramFilter(2) >> [ # Intro - Bouton 2
 			    Program(65) >> cseqtrigger,
 			    Program(10) >> achords,
-			    Program(2) >> abass,
-			    Program(6) >> actlead,
+			    abass_mute,
+			    actlead_mute,
 
 			    SendOSC(slport, '/set', 'eight_per_cycle', 24),
 			    SendOSC(slport, '/set', 'tempo', 120),
@@ -122,7 +126,7 @@ run(
 			    SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
 			    SendOSC(klickport, '/klick/metro/start'),
 
-			    gtrdagclean
+			    gtrdag_clean
 			],
 		        ProgramFilter(3) >> [ # Intro Up - Bouton 3
 			    Program(6) >> Channel(2) >> seqtrigger,
@@ -131,7 +135,7 @@ run(
 			    Program(66) >> cseqtrigger,
 			    Program(10) >> achords,
 			    Program(1) >> abass,
-			    Program(6) >> actlead,
+			    actlead_mute,
 
 			    SendOSC(slport, '/set', 'eight_per_cycle', 24),
 			    SendOSC(slport, '/set', 'tempo', 120),
@@ -141,7 +145,7 @@ run(
 			    SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
 			    SendOSC(klickport, '/klick/metro/start'),
 
-			    gtrdagclean
+			    gtrdag_clean
 			],
 			ProgramFilter(5) >> [ # Post Bustas - Bouton 5
 			    Program(67) >> cseqtrigger,
@@ -149,7 +153,7 @@ run(
 			    Program(10) >> achords,
 			    Program(1) >> abass,
 			    Program(9) >> alead,
-			    Program(6) >> actlead,
+			    actlead_mute,
 
 			    SendOSC(slport, '/set', 'eight_per_cycle', 24),
 			    SendOSC(slport, '/set', 'tempo', 120),
@@ -159,7 +163,7 @@ run(
 			    SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
 			    SendOSC(klickport, '/klick/metro/start'),
 
-			    gtrdagclean
+			    gtrdag_clean
 			],
 		        ProgramFilter(6) >> [ # Final Couplet - Bouton 6
 			    [
@@ -168,22 +172,28 @@ run(
 			    ] >> Channel(2) >> seqtrigger,
 		        ],
 			ProgramFilter(7) >> [ # Debut Riff MathoMagma - Bouton 7
-			    stop,
+			    Program(68) >> cseqtrigger,
+
+			    Program(10) >> achords,
+			    abass_mute,
+			    actlead_mute,
 
 			    SendOSC(slport, '/set', 'eight_per_cycle', 16),
 			    SendOSC(slport, '/set', 'tempo', 120),
 
-			    SendOSC(slport, '/sl/2/hit', 'record'),
+#			    SendOSC(slport, '/sl/2/hit', 'record'),
 
 			    SendOSC(klickport, '/klick/simple/set_tempo', 120),
 			    SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
 			    SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
 			    SendOSC(klickport, '/klick/metro/start'),
 
-			    gtrdagclean,
-			    gtrorlclean
+			    gtrdag_clean,
+			    gtrorl_clean
 
-			]
+			],
+			ProgramFilter(8) >> [
+			],
 
 
 
