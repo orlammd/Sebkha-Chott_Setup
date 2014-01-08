@@ -274,6 +274,28 @@ run(
 			    gtrdag_clean,
 			    gtrorl_disto
 			],
+			ProgramFilter(11) >> [ # Forain I - Bouton 10
+			    Program(72) >> cseqtrigger,
+
+			    Program(7) >> achords,
+			    Program(1) >> abass,
+			    Program(1) >> actlead,
+
+			    [
+				SendOSC(slport, '/set', 'eight_per_cycle', 16),
+				SendOSC(slport, '/set', 'tempo', 120),
+
+#			    SendOSC(slport, '/sl/2/hit', 'record'),
+
+				SendOSC(klickport, '/klick/simple/set_tempo', 120),
+				SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+				SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+				SendOSC(klickport, '/klick/metro/start'),
+			    ] >> Discard(),
+
+			    gtrdag_disto,
+			    gtrorl_clean
+			],
 
 
 
