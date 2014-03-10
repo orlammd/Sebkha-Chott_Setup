@@ -7,6 +7,7 @@ from customosc import OSCCustomInterface
 
 import liblo
 
+
 config(
 	backend='jack',
 	client_name='PedalBoardsRoutes',
@@ -44,10 +45,8 @@ tapeutape=Output('PBTapeutape',10)
 guitardag=Output('PBGuitarDag', 1)
 guitarorl=Output('PBGuitarORL', 1)
 
+
 #### Functions #############################################
-
-
-
 #### Trigger seq24 ####
 p_firstpart=[range(1,65)]
 p_secondpart=[range(65,129)]
@@ -103,14 +102,10 @@ gtrorl_disto = Program(1) >> guitarorl
 
 
 
-
 #### Scenes ################################################
 
-run(
-    scenes = {
-        1: SceneGroup("Dummy", [
-  		Scene("Bass ORL",
-		    PortFilter('PBCtrlIn') >> [ 
+#### ACTE 1 ####
+acte1 =		    PortFilter('PBCtrlIn') >> [ 
 			ProgramFilter(1) >> stop, # !!!STOP!!! #
 			ProgramFilter(2) >> [ # Intro - Bouton 2
 			    Program(65) >> cseqtrigger,
@@ -302,6 +297,14 @@ run(
 
 		    ]
 
+
+#### RUN ###################################################
+
+run(
+    scenes = {
+        1: SceneGroup("Acte 0", [
+  		Scene("Bass ORL",
+                    Discard()
 		),
 		Scene("Guitar ORL",
 		    Discard()
@@ -330,9 +333,9 @@ run(
 
 	    ]
         ),
-        2: SceneGroup("Dummy", [
+        2: SceneGroup("Acte I", [
   		Scene("Bass ORL",
-		    Discard()
+                    acte1		    
 		),
 		Scene("Guitar ORL",
 		    Discard()
