@@ -29,6 +29,7 @@ class OSCCustomInterface(object):
         if _engine.current_subscene() == 9:
          _engine.switch_scene(args[0])
          _engine.switch_subscene(1)
+         _engine.output_event(_event.ProgramEvent('PBseq24', _util.NoDataOffset(1), args[0] + 112))
 	else:
             if args[0] == 12:
              _engine.switch_subscene(9)
@@ -36,6 +37,7 @@ class OSCCustomInterface(object):
 	     _engine.output_event(_event.ProgramEvent('PBCtrlOut', _util.NoDataOffset(1), args[0]))
             if _engine.current_subscene() == 8:
              _engine.switch_subscene(args[0]-12)
+
 	    else:
                 if args[0] == 24:
                  _engine.switch_subscene(8)

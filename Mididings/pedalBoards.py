@@ -338,28 +338,28 @@ run(
                     acte1		    
 		),
 		Scene("Guitar ORL",
-		    Discard()
+		    acte1
 		),
 		Scene("Voix ORL",
-		    Discard()
+		    acte1
 	        ),
 		Scene("Bass Dag",
-		    Discard()
+		    acte1
 		),
 		Scene("Guitar Dag",
-		    Discard()
+		    acte1
 		),
 		Scene("Voix Dag",
-		    Discard()
+		    acte1
 		),
 		Scene("Boucles",
-		    Discard()
+		    acte1
 		),
 		Scene("Bank Select",
-		    Discard()
+		    acte1
 		),
 		Scene("Tune Select",
-		    Discard()
+		    acte1
 		)
 	    ]
         ),
