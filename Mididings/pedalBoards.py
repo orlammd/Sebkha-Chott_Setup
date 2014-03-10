@@ -180,7 +180,7 @@ run(
 		        ProgramFilter(6) >> [ # Final Couplet - Bouton 6
 			    [
 				Program(19),
-				Program(23)
+				Program(22)
 			    ] >> Channel(2) >> seqtrigger,
 		        ],
 			ProgramFilter(7) >> [ # Debut Riff MathoMagma - Bouton 7
