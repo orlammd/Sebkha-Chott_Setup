@@ -97,8 +97,8 @@ gtrdag_disto = Program(2) >> guitardag
 # gtrdagmute = SendOSC()
 
 # ORL
-gtrorl_clean = Program(3) >> guitarorl
-gtrorl_disto = Program(2) >> guitarorl
+gtrorl_clean = Program(4) >> guitarorl
+gtrorl_disto = Program(1) >> guitarorl
 # gtrdagmute = SendOSC()
 
 
