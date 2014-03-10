@@ -29,7 +29,10 @@ class OSCCustomInterface(object):
         if _engine.current_subscene() == 9:
          _engine.switch_scene(args[0])
          _engine.switch_subscene(1)
-         _engine.output_event(_event.ProgramEvent('PBseq24', _util.NoDataOffset(1), args[0] + 112))
+         if args[0] == 1: # Rustine car acte 0 sur screen 14 !!!
+             _engine.output_event(_event.ProgramEvent('PBseq24', _util.NoDataOffset(1), 127))
+         else:
+             _engine.output_event(_event.ProgramEvent('PBseq24', _util.NoDataOffset(1), args[0] + 111))
 	else:
             if args[0] == 12:
              _engine.switch_subscene(9)
