@@ -2,7 +2,7 @@
 <!--
 ladish Studio configuration.
 -->
-<!-- Tue Mar 11 07:51:30 2014 -->
+<!-- Tue Mar 11 09:32:06 2014 -->
 <studio>
   <jack>
     <conf>
@@ -402,6 +402,7 @@ ladish Studio configuration.
           <port name="MxLead/out-2" uuid="63e5dcb9-5185-4bfa-bbd6-59d6a93dfbae" />
           <port name="MxClassical/in-2" uuid="887045c5-2812-49f9-bfe9-c3eada7e7f5e" />
           <port name="MxClassical/out-2" uuid="2f403905-88c7-4829-8af8-3db4bf472da8" />
+          <port name="MxCtLead/out-2" uuid="1aae9bb3-b291-4b40-8c01-8812c3f3bb46" />
         </ports>
       </client>
       <client name="AMSClassicalSynth" uuid="dfc73001-e346-4190-bf3a-f49d832ba421">
@@ -955,6 +956,7 @@ ladish Studio configuration.
         <port name="MxChords/out-2" uuid="b9105e91-7d4d-41aa-89d5-2ef15628d015" type="audio" direction="output" />
         <port name="MxLead/out-2" uuid="63e5dcb9-5185-4bfa-bbd6-59d6a93dfbae" type="audio" direction="output" />
         <port name="MxClassical/out-2" uuid="2f403905-88c7-4829-8af8-3db4bf472da8" type="audio" direction="output" />
+        <port name="MxCtLead/out-2" uuid="1aae9bb3-b291-4b40-8c01-8812c3f3bb46" type="audio" direction="output" />
       </ports>
       <dict>
         <key name="http://ladish.org/ns/canvas/x">1826.000000</key>
@@ -1622,7 +1624,6 @@ ladish Studio configuration.
     <connection port1="d928be78-681f-4d0b-a0c2-7d6e52f749bb" port2="ff117881-f553-4dbf-b190-014df27a9298" />
     <connection port1="b706c9a4-0cc1-4806-9fb6-a00e8dfd184f" port2="0ec73b8b-626b-4459-bdda-57601dd16074" />
     <connection port1="4f0a50e8-1aa8-4d3d-b223-12242a19777e" port2="ea53353f-3418-47db-ba32-dcdcc5e09815" />
-    <connection port1="807da29a-fc9e-4dd1-8e5f-d430a69e82e2" port2="9d627f28-10bc-4aa0-adfe-a8cb7414059c" />
     <connection port1="c100de69-94f4-4613-a5fe-07d422e9bab5" port2="d796ae73-d197-40f1-b335-c976644f4b0e" />
     <connection port1="af843627-b24e-4e49-ba55-76c712cef397" port2="e666eb9b-c2f1-4c70-a2a2-e80413f3dd1a" />
     <connection port1="5ceb477a-cbcb-4544-a5cf-b537f74c74f7" port2="ff117881-f553-4dbf-b190-014df27a9298" />
@@ -1658,6 +1659,7 @@ ladish Studio configuration.
     <connection port1="993eac29-9b1a-4ce8-91df-058b77b99536" port2="5025376a-11af-42af-adf1-119534141e66" />
     <connection port1="248a773c-ef5f-4833-a07b-8e5567df1a9c" port2="ccebd0d7-32cf-48c5-9e1c-298ccf261c5d" />
     <connection port1="45395332-99d5-4072-96dd-e8c25d96f05d" port2="51e749d6-0ea3-49e4-99a7-bb1587640a5f" />
+    <connection port1="807da29a-fc9e-4dd1-8e5f-d430a69e82e2" port2="9d627f28-10bc-4aa0-adfe-a8cb7414059c" />
   </connections>
   <applications>
     <application name="a2j" uuid="65bce9a0-8285-4cb3-9630-321ba19b43a4" terminal="false" level="0" autorun="true">a2j -e</application>
