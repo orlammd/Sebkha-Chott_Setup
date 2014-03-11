@@ -159,6 +159,23 @@ acte0 = PortFilter('PBCtrlIn') >> [
         Program(6) >> abass,
         
         ],
+    ProgramFilter(5) >> [ # Every Machines Full - Bouton 5
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 7),
+            SendOSC(slport, '/set', 'tempo', 120),
+
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        Program(6) >> cseqtrigger,
+        Program(3) >> actlead,
+        Program(6) >> abass,
+        Program(1) >> achords,
+        Program(1) >> aclass,
+        gtrdag_disto,
+        ],
     ]
 
 #### ACTE 1 ####
