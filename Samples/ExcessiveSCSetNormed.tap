@@ -106,21 +106,6 @@
         <instrument name="LocoDecompHigh" minnote="40" maxnote="41" rootnote="40" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="0.833333" pan="1.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/TrainsYS/DecHigh_101-127.wav" sampleRelative="Samples/TrainsYS/DecHigh_101-127.wav"/>
         </instrument>
-        <instrument name="SamplesGlockDownPhial" minnote="24" maxnote="24" rootnote="24" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Zappatesk/vibra_down.wav" sampleRelative="Samples_Orl/Zappatesk/vibra_down.wav"/>
-        </instrument>
-        <instrument name="SamplesGlockNormPhial" minnote="36" maxnote="36" rootnote="36" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Zappatesk/vibra.wav" sampleRelative="Samples_Orl/Zappatesk/vibra.wav"/>
-        </instrument>
-        <instrument name="SamplesGlockRevPhial" minnote="25" maxnote="25" rootnote="25" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Zappatesk/vibra_rev.wav" sampleRelative="Samples_Orl/Zappatesk/vibra_rev.wav"/>
-        </instrument>
-        <instrument name="SamplesGlockRevDistoPhial" minnote="26" maxnote="26" rootnote="26" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="0.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Zappatesk/vibra_rev_disto.wav" sampleRelative="Samples_Orl/Zappatesk/vibra_rev_disto.wav"/>
-        </instrument>
-        <instrument name="PianoMDO" minnote="12" maxnote="12" rootnote="12" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Malicouille/MDO_Key.wav" sampleRelative="Samples_Orl/Malicouille/MDO_Key.wav"/>
-        </instrument>
         <instrument name="Voix_MDO_Low" minnote="13" maxnote="13" rootnote="13" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Malicouille/MDO_Vx_Low.wav" sampleRelative="Samples_Orl/Malicouille/MDO_Vx_Low.wav"/>
         </instrument>
@@ -135,21 +120,6 @@
         </instrument>
         <instrument name="Sabra_Femmes" minnote="23" maxnote="23" rootnote="23" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="1.010000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Sabra/bashir_sabra.wav" sampleRelative="Samples_Orl/Sabra/bashir_sabra.wav"/>
-        </instrument>
-        <instrument name="Soufflants_Nougat" minnote="28" maxnote="28" rootnote="28" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/Soufflants_Nougat.wav" sampleRelative="Samples_Orl/Nougat/Soufflants_Nougat.wav"/>
-        </instrument>
-        <instrument name="BBT_Perc_1" minnote="31" maxnote="31" rootnote="31" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="0.980000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/BBT_Perc_1.wav" sampleRelative="Samples_Orl/Nougat/BBT_Perc_1.wav"/>
-        </instrument>
-        <instrument name="BBT_Perc_2" minnote="32" maxnote="32" rootnote="32" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="0.463333" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/BBT_Perc_2.wav" sampleRelative="Samples_Orl/Nougat/BBT_Perc_2.wav"/>
-        </instrument>
-        <instrument name="BBT_Perc_3" minnote="33" maxnote="33" rootnote="33" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Snares" volume="1.270000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/BBT_Perc_3.wav" sampleRelative="Samples_Orl/Nougat/BBT_Perc_3.wav"/>
-        </instrument>
-        <instrument name="BBT_Perc_4" minnote="34" maxnote="34" rootnote="34" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="1.180000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples_Orl/Nougat/BBT_temoin.wav" sampleRelative="Samples_Orl/Nougat/BBT_temoin.wav"/>
         </instrument>
         <instrument name="Ping" minnote="82" maxnote="82" rootnote="82" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Cymbales" volume="0.333333" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/Ping1/Dr_Cymb_Ping1_101-127.wav" sampleRelative="Cymbales/Ping1/Dr_Cymb_Ping1_101-127.wav"/>
