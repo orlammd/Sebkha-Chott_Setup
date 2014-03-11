@@ -107,7 +107,25 @@ gtrorl_disto = Program(1) >> guitarorl
 #### ACTE 0 ####
 acte0 = PortFilter('PBCtrlIn') >> [
     ProgramFilter(1) >> stop, # !!!STOP!!! #
-    ProgramFilter(2) >> [
+    ProgramFilter(2) >> [ # Intro - Bouton 2
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 7),
+            SendOSC(slport, '/set', 'tempo', 120),
+
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        Program(65) >> cseqtrigger,
+        abass_mute,
+        [
+            NoteOn('c#-2',127),
+            Program(3) 
+            ] >> actlead,
+        
+        ],
+    ProgramFilter(3) >> [ # Stop - Bouton 3
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 7),
             SendOSC(slport, '/set', 'tempo', 120),
@@ -118,6 +136,27 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         Program(66) >> cseqtrigger,
+        abass_mute,
+        actlead_mute,
+        NoteOff('c#2', 0) >> actlead,
+        
+        ],
+    ProgramFilter(4) >> [ # Every Machines - Bouton 4
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 7),
+            SendOSC(slport, '/set', 'tempo', 120),
+
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        Program(67) >> cseqtrigger,
+        [
+            NoteOff('c#-2', 0),
+            Program(3)
+            ] >> actlead,
+        Program(6) >> abass,
         
         ],
     ]
