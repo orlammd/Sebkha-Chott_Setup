@@ -463,7 +463,6 @@ acte2 =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(1) >> stop, # !!!STOP!!! #
     ProgramFilter(2) >> [ # Pattern percus Had Gadya - Bouton 2
         Program(65) >> cseqtrigger,
-        Program(10) >> achords,
         abass_mute,
         actlead_mute,
         [
@@ -480,25 +479,20 @@ acte2 =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(3) >> [ # Sample Had Gadya - Bouton 3
         Program(6) >> Channel(2) >> seqtrigger,
         ],
-    ProgramFilter(4) >> [ # Bustas - Bouton 4
+    ProgramFilter(4) >> [ # Tutti Had Gadya - Bouton 4
         Program(66) >> cseqtrigger,
-        Program(10) >> achords,
-        Program(1) >> abass,
-        actlead_mute,
-        
+        abass_mute,
+        Program(1) >> alead,
+        Program(1) >> actlead,
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
-            
-            #			    SendOSC(slport, '/sl/2/hit', 'record'),
-            
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        
-        gtrdag_clean
+        gtrdag_disto
         ],
     ProgramFilter(5) >> [ # Post Bustas - Bouton 5
         Program(67) >> cseqtrigger,
