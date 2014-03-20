@@ -497,12 +497,6 @@ acte2 =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(5) >> [ # Pont Had Gadya - Bouton 5
         Program(65) >> cseqtrigger,        
         Program(6) >> Channel(2) >> seqtrigger,
-        [
-            Program(1),
-            Ctrl(64,0),
-            Ctrl(65,34),
-            Ctrl(66,21),
-            ] >> achords,
         abass_mute,
         actlead_mute,
         [
@@ -515,9 +509,25 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         gtrdag_disto
         ],
-    ProgramFilter(6) >> [ # Filtre Pont Had Gadya - Bouton 6
-        Program(65) >> cseqtrigger,
-        Program(7) >> Channel(2) >> seqtrigger,
+    ProgramFilter(6) >> [ # Filtre Pont Had Gadya & suite - Bouton 6
+        Program(67) >> cseqtrigger,
+        [
+            Program(1),
+            Ctrl(64,0),
+            Ctrl(65,34),
+            Ctrl(66,21),
+            ] >> achords,
+        Program(1) >> abass,
+        Program(1) >> actlead,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_disto
         ],
     ProgramFilter(7) >> [ # Debut Riff MathoMagma - Bouton 7
         Program(68) >> cseqtrigger,
