@@ -461,7 +461,7 @@ acte1 =	PortFilter('PBCtrlIn') >> [
 #### ACTE 2 ####
 acte2 =	PortFilter('PBCtrlIn') >> [ 
     ProgramFilter(1) >> stop, # !!!STOP!!! #
-    ProgramFilter(2) >> [ # Had Gadya - Bouton 2
+    ProgramFilter(2) >> [ # Pattern percus Had Gadya - Bouton 2
         Program(65) >> cseqtrigger,
         Program(10) >> achords,
         abass_mute,
@@ -477,7 +477,7 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         gtrdag_clean
         ],
-    ProgramFilter(3) >> [ # Intro Up - Bouton 3
+    ProgramFilter(3) >> [ # Sample Had Gadya - Bouton 3
         Program(6) >> Channel(2) >> seqtrigger,
         ],
     ProgramFilter(4) >> [ # Bustas - Bouton 4
