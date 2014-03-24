@@ -538,9 +538,6 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 12),
             SendOSC(slport, '/set', 'tempo', 150),
-            
-            #			    SendOSC(slport, '/sl/2/hit', 'record'),
-            
             SendOSC(klickport, '/klick/simple/set_tempo', 150),
             SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
@@ -550,7 +547,7 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean
         
         ],
-    ProgramFilter(8) >> [ # Break Couplet + Suite Couplet - Bouton 8
+    ProgramFilter(8) >> [ # Break Couplet - Bouton 8
         Program(70) >> cseqtrigger,
         
         Program(1) >> achords,
@@ -560,9 +557,6 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 12),
             SendOSC(slport, '/set', 'tempo', 150),
-            
-            #			    SendOSC(slport, '/sl/2/hit', 'record'),
-            
             SendOSC(klickport, '/klick/simple/set_tempo', 150),
             SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
@@ -572,24 +566,22 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         gtrorl_clean
         ],
-    ProgramFilter(9) >> [ # MathoMag II - Bouton 9
-        Program(70) >> cseqtrigger,
+    ProgramFilter(9) >> [ # Couplet Part II - Bouton 9
+        Program(71) >> cseqtrigger,
         
-        Program(9) >> achords,
-        Program(1) >> abass,
+        Program(9) >> alead,
+        Program(8) >> achords,
+        abass_mute,
         actlead_mute,
         
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
             
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
-            
-            #			    SendOSC(slport, '/sl/2/hit', 'record'),
-            
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
