@@ -547,12 +547,30 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean
         
         ],
-    ProgramFilter(8) >> [ # Break Couplet - Bouton 8
+    ProgramFilter(8) >> [ # Pont ternaire - Bouton 8
+        Program(72) >> cseqtrigger,
+        
+        Program(1) >> abass,
+        Program(11) >> actlead,
+        
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        gtrdag_clean,
+        gtrorl_clean
+        ],
+    ProgramFilter(9) >> [ # Break Couplet - Bouton 9
         Program(70) >> cseqtrigger,
         
         Program(1) >> achords,
         Program(1) >> abass,
-        Program(1) >> actlead,
+        Program(11) >> actlead,
         
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 12),
@@ -566,7 +584,7 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         gtrorl_clean
         ],
-    ProgramFilter(9) >> [ # Couplet Part II - Bouton 9
+    ProgramFilter(10) >> [ # Couplet Part II - Bouton 10
         Program(71) >> cseqtrigger,
         
         Program(9) >> alead,
@@ -587,28 +605,6 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         
         gtrdag_disto,
         gtrorl_clean
-        ],
-    ProgramFilter(10) >> [ # DeathoDeb - Bouton 10
-        Program(71) >> cseqtrigger,
-        
-        Program(7) >> achords,
-        Program(1) >> abass,
-        actlead_mute,
-        
-        [
-            SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
-            
-            #			    SendOSC(slport, '/sl/2/hit', 'record'),
-            
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
-        
-        gtrdag_clean,
-        gtrorl_disto
         ],
     ProgramFilter(11) >> [ # Forain I - Bouton 10
         Program(72) >> cseqtrigger,
