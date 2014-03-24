@@ -529,25 +529,23 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         gtrdag_disto
         ],
-    ProgramFilter(7) >> [ # Debut Riff MathoMagma - Bouton 7
-        Program(68) >> cseqtrigger,
-        
-        Program(10) >> achords,
+    ProgramFilter(7) >> [ # Debut Couplet - Bouton 7
+        Program(69) >> cseqtrigger,
+
+        Program(8) >> achords,
         abass_mute,
         actlead_mute,
-        
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
             
             #			    SendOSC(slport, '/sl/2/hit', 'record'),
             
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        
         gtrdag_clean,
         gtrorl_clean
         
