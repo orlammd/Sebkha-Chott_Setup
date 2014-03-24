@@ -550,26 +550,26 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean
         
         ],
-    ProgramFilter(8) >> [ # MathoMag - Bouton 8
-        Program(69) >> cseqtrigger,
+    ProgramFilter(8) >> [ # Break Couplet + Suite Couplet - Bouton 8
+        Program(70) >> cseqtrigger,
         
-        Program(10) >> achords,
+        Program(1) >> achords,
         Program(1) >> abass,
-        actlead_mute,
+        Program(1) >> actlead,
         
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
             
             #			    SendOSC(slport, '/sl/2/hit', 'record'),
             
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_clean,
+        gtrdag_disto,
         gtrorl_clean
         ],
     ProgramFilter(9) >> [ # MathoMag II - Bouton 9
