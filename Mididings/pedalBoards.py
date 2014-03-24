@@ -650,7 +650,7 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(4) >> [ # Forain Acte II Classical - Bouton 4
         Program(13) >> Channel(2) >> seqtrigger
         ],
-    ProgramFilter(5) >> [ # Forain Acte II Solo Flute - Bouton 5
+    ProgramFilter(5) >> [ # Forain Acte II Bîîîîm - Bouton 5
         Program(66) >> cseqtrigger,
         
         Program(1) >> abass,
@@ -669,9 +669,37 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         gtrorl_clean        
         ],
-    ProgramFilter(6) >> [ # Forain Léger Avant Baroque - Bouton 6)
+    ProgramFilter(6) >> [ # Forain Léger Avant Baroque - Bouton 6
         Program(67) >> cseqtrigger,
         abass_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        ],
+    ProgramFilter(7) >> [ # Forain Léger Après Baroque - Bouton 7
+        Program(68) >> cseqtrigger,
+        Program(1) >> abass,
+        Program(8) >> actlead,
+        Program(1) >> alead,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        ],
+    ProgramFilter(8) >> [ # Forain Solo flûte - Bouton 8
+        Program(69) >> cseqtrigger,
+        Program(1) >> abass,
+        Program(8) >> actlead,
+        Program(5) >> achords,
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 12),
             SendOSC(slport, '/set', 'tempo', 150),
