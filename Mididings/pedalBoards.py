@@ -709,11 +709,178 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         ],
-    
-    
-    
-    
     ]
+
+
+
+#### ACTE 3 ####
+acte3 =	PortFilter('PBCtrlIn') >> [ 
+    ProgramFilter(1) >> stop, # !!!STOP!!! #
+    ProgramFilter(2) >> [ # Sortie solo flûte - Bouton 2
+        stop,
+        abass_mute,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrorl_clean,
+        gtrdag_clean
+        ],
+    ProgramFilter(3) >> [ # Hell Entry - Bouton 3
+        Program(65) >> cseqtrigger,
+        Program(1) >> abass,
+        Program(1) >> achords,
+        Program(9) >> alead,
+        Program(10) >> actlead,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrorl_clean,
+        gtrdag_clean
+        ],
+    ProgramFilter(4) >> [ # Tutti Had Gadya - Bouton 4
+        Program(66) >> cseqtrigger,
+        abass_mute,
+        Program(1) >> alead,
+        Program(1) >> actlead,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_disto
+        ],
+    ProgramFilter(5) >> [ # Pont Had Gadya - Bouton 5
+        Program(65) >> cseqtrigger,        
+        Program(6) >> Channel(2) >> seqtrigger,
+        abass_mute,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_disto
+        ],
+    ProgramFilter(6) >> [ # Filtre Pont Had Gadya & suite - Bouton 6
+        Program(67) >> cseqtrigger,
+        [
+            Program(1),
+            Ctrl(64,0),
+            Ctrl(65,34),
+            Ctrl(66,21),
+            ] >> achords,
+        Program(1) >> abass,
+        Program(1) >> actlead,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_disto
+        ],
+    ProgramFilter(7) >> [ # Debut Couplet - Bouton 7
+        Program(69) >> cseqtrigger,
+
+        Program(8) >> achords,
+        abass_mute,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_clean,
+        gtrorl_clean
+        
+        ],
+    ProgramFilter(8) >> [ # Pont ternaire - Bouton 8
+        Program(72) >> cseqtrigger,
+        
+        Program(1) >> abass,
+        Program(11) >> actlead,
+        
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        gtrdag_clean,
+        gtrorl_clean
+        ],
+    ProgramFilter(9) >> [ # Break Couplet - Bouton 9
+        Program(70) >> cseqtrigger,
+        
+        Program(1) >> achords,
+        Program(1) >> abass,
+        Program(11) >> actlead,
+        
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        gtrdag_disto,
+        gtrorl_clean
+        ],
+    ProgramFilter(10) >> [ # Couplet Part II - Bouton 10
+        Program(71) >> cseqtrigger,
+        
+        Program(9) >> alead,
+        Program(8) >> achords,
+        abass_mute,
+        actlead_mute,
+        
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
+            
+            SendOSC(slport, '/sl/2/hit', 'pause_on'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        gtrdag_disto,
+        gtrorl_clean
+        ],
+    ProgramFilter(11) >> [ # Switch to Forain Acte II - Bouton 11
+        Program(115) >> seq24once,
+        SceneSwitch(4)
+        ],
+    ]
+
 
 
 #### RUN ###################################################
@@ -838,6 +1005,36 @@ run(
 		),
 		Scene("Tune Select",
 		    forainacte2
+		)
+	    ]
+        ),
+        5: SceneGroup("Acte III", [
+  		Scene("Bass ORL",
+                    acte3		    
+		),
+		Scene("Guitar ORL",
+		    acte3
+		),
+		Scene("Voix ORL",
+		    acte3
+	        ),
+		Scene("Bass Dag",
+		    acte3
+		),
+		Scene("Guitar Dag",
+		    acte3
+		),
+		Scene("Voix Dag",
+		    acte3
+		),
+		Scene("Boucles",
+		    acte3
+		),
+		Scene("Bank Select",
+		    acte3
+		),
+		Scene("Tune Select",
+		    acte3
 		)
 	    ]
         ),
