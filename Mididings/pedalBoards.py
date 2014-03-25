@@ -748,20 +748,19 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         gtrdag_clean
         ],
-    ProgramFilter(4) >> [ # Tutti Had Gadya - Bouton 4
+    ProgramFilter(4) >> [ # Couplet - Bouton 4
         Program(66) >> cseqtrigger,
-        abass_mute,
-        Program(1) >> alead,
-        Program(1) >> actlead,
+        Program(1) >> abass,
+        actlead_mute,
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 150),
-            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_disto
+        gtrdag_clean
         ],
     ProgramFilter(5) >> [ # Pont Had Gadya - Bouton 5
         Program(65) >> cseqtrigger,        
