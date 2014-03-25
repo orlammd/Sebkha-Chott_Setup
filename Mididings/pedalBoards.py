@@ -681,7 +681,22 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         ],
-    ProgramFilter(7) >> [ # Forain Léger Après Baroque - Bouton 7
+    ProgramFilter(7) >> [ # Barocko by MX - Bouton 7
+        Program(71) >> cseqtrigger,
+        abass_mute,
+        actlead_mute,
+        Program(9) >> alead,
+        Program(8) >> achords,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_tempo', 150),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        ],
+    ProgramFilter(8) >> [ # Forain Léger Après Baroque - Bouton 8
         Program(68) >> cseqtrigger,
         Program(1) >> abass,
         Program(8) >> actlead,
@@ -695,7 +710,7 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         ],
-    ProgramFilter(8) >> [ # Forain Solo flûte - Bouton 8
+    ProgramFilter(9) >> [ # Forain Solo flûte - Bouton 9
         Program(69) >> cseqtrigger,
         Program(1) >> abass,
         Program(8) >> actlead,
