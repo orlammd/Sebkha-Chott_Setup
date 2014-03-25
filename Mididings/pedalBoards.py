@@ -762,20 +762,13 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         gtrdag_clean
         ],
-    ProgramFilter(5) >> [ # Pont Had Gadya - Bouton 5
-        Program(65) >> cseqtrigger,        
-        Program(6) >> Channel(2) >> seqtrigger,
-        abass_mute,
-        actlead_mute,
+    ProgramFilter(5) >> [ # Pont glauque - Bouton 5
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 150),
-            SendOSC(klickport, '/klick/simple/set_tempo', 150),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
-        gtrdag_disto
+            Program(14),
+            Program(15)
+            ] >> Channel(2) >> seqtrigger,
+        actlead_mute,
+        gtrdag_clean
         ],
     ProgramFilter(6) >> [ # Filtre Pont Had Gadya & suite - Bouton 6
         Program(67) >> cseqtrigger,
