@@ -886,6 +886,7 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(2) >> [ # Acte III - Couplet II - Bouton 2
         Program(65) >> cseqtrigger,
         Program(1) >> abass,
+        Program(8) >> alead,
         actlead_mute,
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 10),
@@ -898,11 +899,14 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         gtrdag_clean
         ],
-    ProgramFilter(3) >> [ # Hell Entry - Bouton 3
-        Program(65) >> cseqtrigger,
+    ProgramFilter(3) >> [ # Acte III - Couplet Alterno - Bouton 3
+        [
+            Program(6),
+            Program(7)
+            ] >> Channel(2) >> seqtrigger,
         Program(1) >> abass,
-        Program(1) >> achords,
-        Program(9) >> alead,
+        Program(7) >> achords,
+        Program(8) >> alead,
         Program(10) >> actlead,
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 16),
