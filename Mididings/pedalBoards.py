@@ -836,41 +836,40 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         gtrorl_clean
         ],
-    ProgramFilter(9) >> [ #  - Bouton 9
+    ProgramFilter(9) >> [ # Hip Hop ?? - Bouton 9
         Program(70) >> cseqtrigger,
         
         Program(1) >> achords,
         Program(1) >> abass,
-        Program(11) >> actlead,
+        actlead_mute,
         
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 12),
-            SendOSC(slport, '/set', 'tempo', 150),
-            SendOSC(klickport, '/klick/simple/set_tempo', 150),
-            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
         gtrdag_disto,
         gtrorl_clean
         ],
-    ProgramFilter(10) >> [ #  - Bouton 10
+    ProgramFilter(10) >> [ # Mises en place - Bouton 10
         Program(71) >> cseqtrigger,
         
-        Program(9) >> alead,
-        Program(8) >> achords,
-        abass_mute,
+        Program(1) >> abass,
+        Program(1) >> achords,
         actlead_mute,
         
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 12),
-            SendOSC(slport, '/set', 'tempo', 150),
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
             
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
-            SendOSC(klickport, '/klick/simple/set_tempo', 150),
-            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
