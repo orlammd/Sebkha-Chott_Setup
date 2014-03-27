@@ -874,13 +874,165 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         
         gtrdag_disto,
-        gtrorl_clean
-        ],
-    ProgramFilter(11) >> [ #  - Bouton 11
-        Program(115) >> seq24once,
-        SceneSwitch(4)
+        gtrorl_clean,
+        Program(117) >> seq24once,
+        SceneSwitch(6)
+
         ],
     ]
+
+acte3partII =	PortFilter('PBCtrlIn') >> [ 
+    ProgramFilter(1) >> stop, # !!!STOP!!! #
+    ProgramFilter(2) >> [ # Acte III - Couplet II - Bouton 2
+        Program(65) >> cseqtrigger,
+        Program(1) >> abass,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 10),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 5, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrorl_clean,
+        gtrdag_clean
+        ],
+    ProgramFilter(3) >> [ # Hell Entry - Bouton 3
+        Program(65) >> cseqtrigger,
+        Program(1) >> abass,
+        Program(1) >> achords,
+        Program(9) >> alead,
+        Program(10) >> actlead,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrorl_clean,
+        gtrdag_clean
+        ],
+    ProgramFilter(4) >> [ # Couplet - Bouton 4
+        Program(66) >> cseqtrigger,
+        Program(1) >> abass,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_clean
+        ],
+    ProgramFilter(5) >> [ # Pont glauque - Bouton 5
+        [
+            Program(14),
+            Program(15)
+            ] >> Channel(2) >> seqtrigger,
+        actlead_mute,
+        gtrdag_clean
+        ],
+    ProgramFilter(6) >> [ # 6/8 Magasin - Bouton 6
+        Program(67) >> cseqtrigger,
+        Program(1) >> achords,
+        Program(1) >> abass,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 90),
+            SendOSC(klickport, '/klick/simple/set_tempo', 90),
+            SendOSC(klickport, '/klick/simple/set_meter', 6, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_disto
+        ],
+    ProgramFilter(7) >> [ # Couplet v2 - Bouton 7
+        Program(68) >> cseqtrigger,
+
+        Program(10) >> achords,
+        Program(1) >> abass,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_clean,
+        gtrorl_clean
+        
+        ],
+    ProgramFilter(8) >> [ # Hell Entry Tutti - Bouton 8
+        Program(69) >> cseqtrigger,
+        Program(1) >> abass,
+        Program(1) >> achords,
+        Program(9) >> alead,
+        Program(10) >> actlead,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),        
+        
+        gtrdag_disto,
+        gtrorl_clean
+        ],
+    ProgramFilter(9) >> [ # Hip Hop ?? - Bouton 9
+        Program(70) >> cseqtrigger,
+        
+        Program(1) >> achords,
+        Program(1) >> abass,
+        actlead_mute,
+        
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        gtrdag_disto,
+        gtrorl_clean
+        ],
+    ProgramFilter(10) >> [ # Mises en place - Bouton 10
+        Program(71) >> cseqtrigger,
+        
+        Program(1) >> abass,
+        Program(1) >> achords,
+        actlead_mute,
+        
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            
+            SendOSC(slport, '/sl/2/hit', 'pause_on'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        gtrdag_disto,
+        gtrorl_clean,
+        Program(117) >> seq24once,
+        SceneSwitch(6)
+
+        ],
+    ]
+
 
 
 
@@ -1036,6 +1188,36 @@ run(
 		),
 		Scene("Tune Select",
 		    acte3
+		)
+	    ]
+        ),
+        6: SceneGroup("Acte III Part II", [
+  		Scene("Bass ORL",
+                    acte3partII		    
+		),
+		Scene("Guitar ORL",
+		    acte3partII
+		),
+		Scene("Voix ORL",
+		    acte3partII
+	        ),
+		Scene("Bass Dag",
+		    acte3partII
+		),
+		Scene("Guitar Dag",
+		    acte3partII
+		),
+		Scene("Voix Dag",
+		    acte3partII
+		),
+		Scene("Boucles",
+		    acte3partII
+		),
+		Scene("Bank Select",
+		    acte3partII
+		),
+		Scene("Tune Select",
+		    acte3partII
 		)
 	    ]
         ),
