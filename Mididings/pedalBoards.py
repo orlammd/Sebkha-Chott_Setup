@@ -904,20 +904,6 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             Program(6),
             Program(7)
             ] >> Channel(2) >> seqtrigger,
-        Program(1) >> abass,
-        Program(7) >> achords,
-        Program(8) >> alead,
-        Program(10) >> actlead,
-        [
-            SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
-        gtrorl_clean,
-        gtrdag_clean
         ],
     ProgramFilter(4) >> [ # Acte III - Couplet Ternaire - Bouton 4
         Program(66) >> cseqtrigger,
@@ -935,12 +921,20 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         gtrdag_clean
         ],
-    ProgramFilter(5) >> [ # Pont glauque - Bouton 5
-        [
-            Program(14),
-            Program(15)
-            ] >> Channel(2) >> seqtrigger,
+    ProgramFilter(5) >> [ # Acte III - Couplet II - Secondo - Bouton 5
+        Program(67) >> cseqtrigger,
+        Program(1) >> abass,
+        Program(8) >> alead,
         actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 10),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 5, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrorl_clean,
         gtrdag_clean
         ],
     ProgramFilter(6) >> [ # 6/8 Magasin - Bouton 6
