@@ -937,20 +937,20 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         gtrdag_clean
         ],
-    ProgramFilter(6) >> [ # 6/8 Magasin - Bouton 6
-        Program(67) >> cseqtrigger,
+    ProgramFilter(6) >> [ # Evil - Bouton 6
+        Program(68) >> cseqtrigger,
         Program(1) >> achords,
         Program(1) >> abass,
         actlead_mute,
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 12),
-            SendOSC(slport, '/set', 'tempo', 90),
-            SendOSC(klickport, '/klick/simple/set_tempo', 90),
-            SendOSC(klickport, '/klick/simple/set_meter', 6, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxx'),
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_disto
+        gtrorl_disto
         ],
     ProgramFilter(7) >> [ # Couplet v2 - Bouton 7
         Program(68) >> cseqtrigger,
