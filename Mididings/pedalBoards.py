@@ -953,11 +953,9 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         gtrorl_disto
         ],
-    ProgramFilter(7) >> [ # Couplet v2 - Bouton 7
-        Program(68) >> cseqtrigger,
-
-        Program(10) >> achords,
-        Program(1) >> abass,
+    ProgramFilter(7) >> [ # Solo batterie - Bouton 7
+        Program(69) >> cseqtrigger,
+        abass_mute,
         actlead_mute,
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 16),
