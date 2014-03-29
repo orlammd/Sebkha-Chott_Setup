@@ -969,22 +969,22 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean
         
         ],
-    ProgramFilter(8) >> [ # Hell Entry Tutti - Bouton 8
-        Program(69) >> cseqtrigger,
+    ProgramFilter(8) >> [ # 6/8 Safety Bourre - Bouton 8
+        Program(70) >> cseqtrigger,
         Program(1) >> abass,
         Program(1) >> achords,
-        Program(9) >> alead,
+        Program(10) >> alead,
         Program(10) >> actlead,
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 90),
+            SendOSC(klickport, '/klick/simple/set_tempo', 90),
+            SendOSC(klickport, '/klick/simple/set_meter', 6, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),        
         
-        gtrdag_disto,
+        gtrdag_clean,
         gtrorl_clean
         ],
     ProgramFilter(9) >> [ # Hip Hop ?? - Bouton 9
