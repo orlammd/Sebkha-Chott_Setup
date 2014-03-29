@@ -1001,28 +1001,6 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         gtrorl_clean
         ],
-    ProgramFilter(10) >> [ # 13/8 Prog - Bouton 10
-        Program(71) >> cseqtrigger,
-        
-        Program(1) >> abass,
-        Program(10) >> achords,
-        actlead_mute,
-        
-        [
-            SendOSC(slport, '/set', 'eight_per_cycle', 26),
-            SendOSC(slport, '/set', 'tempo', 180),
-            
-            SendOSC(slport, '/sl/2/hit', 'pause_on'),
-            SendOSC(klickport, '/klick/simple/set_tempo', 180),
-            SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
-        
-        gtrdag_clean,
-        gtrorl_clean,
-
-        ],
     ]
 acte3partIII =	PortFilter('PBCtrlIn') >> [ 
     ProgramFilter(1) >> stop, # !!!STOP!!! #
@@ -1048,11 +1026,26 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
 
         ],
-    ProgramFilter(3) >> [ # Acte III - Couplet Alterno - Bouton 3
+    ProgramFilter(3) >> [ # 13/8 Prog bourrin - Bouton 3
+        Program(66) >> cseqtrigger,
+        
+        Program(1) >> abass,
+        Program(1) >> achords,
+        actlead_mute,
+        
         [
-            Program(6),
-            Program(7)
-            ] >> Channel(2) >> seqtrigger,
+            SendOSC(slport, '/set', 'eight_per_cycle', 26),
+            SendOSC(slport, '/set', 'tempo', 180),
+            
+            SendOSC(slport, '/sl/2/hit', 'pause_on'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 180),
+            SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        gtrdag_clean,
+        gtrorl_clean,
         ],
     ProgramFilter(4) >> [ # Acte III - Couplet Ternaire - Bouton 4
         Program(66) >> cseqtrigger,
