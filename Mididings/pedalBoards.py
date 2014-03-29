@@ -1115,6 +1115,72 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
     ]
 
 
+#### ACTE 4 ####
+acte4 =	PortFilter('PBCtrlIn') >> [ 
+    ProgramFilter(1) >> stop, # !!!STOP!!! #
+    ProgramFilter(2) >> [ # Première occurrence machines Carmeno Saoule - Bouton 2
+        Program(65) >> cseqtrigger, 
+        abass_mute,
+        actlead_mute,
+        Program(9) >> achords,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrorl_clean,
+        gtrdag_clean
+        ],
+    ProgramFilter(3) >> [ # Seconde occurrence machines Mises en place - Bouton 3
+        Program(66) >> cseqtrigger,
+        Program(1) >> abass,
+        Program(9) >> alead,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrorl_clean,
+        gtrdag_clean
+        ],
+    ProgramFilter(4) >> [ # Troisième occurrence machines Carmeno Saoule 2 - Bouton 4
+        Program(67) >> cseqtrigger,
+        Program(1) >> abass,
+        Program(9) >> achords,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_clean
+        ],
+    ProgramFilter(5) >> [ # Début bouclage Your Soul - Bouton 5
+        stop,
+        abass_mute,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        gtrdag_clean
+        ],
+    ]
+
 
 
 #### RUN ###################################################
@@ -1329,6 +1395,36 @@ run(
 		),
 		Scene("Tune Select",
 		    acte3partIII
+		)
+	    ]
+        ),
+        8: SceneGroup("Acte IV", [
+  		Scene("Bass ORL",
+                    acte4		    
+		),
+		Scene("Guitar ORL",
+		    acte4
+		),
+		Scene("Voix ORL",
+		    acte4
+	        ),
+		Scene("Bass Dag",
+		    acte4
+		),
+		Scene("Guitar Dag",
+		    acte4
+		),
+		Scene("Voix Dag",
+		    acte4
+		),
+		Scene("Boucles",
+		    acte4
+		),
+		Scene("Bank Select",
+		    acte4
+		),
+		Scene("Tune Select",
+		    acte4
 		)
 	    ]
         ),
