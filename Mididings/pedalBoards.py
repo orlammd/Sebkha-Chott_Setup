@@ -1069,6 +1069,49 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
 
         ],
+    ProgramFilter(5) >> [ # Metal - Bouton 5
+        Program(68) >> cseqtrigger,
+        
+        Program(1) >> abass,
+        Program(10) >> achords,
+        Program(10) >> actlead,
+        
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 14),
+            SendOSC(slport, '/set', 'tempo', 180),
+            
+            SendOSC(slport, '/sl/2/hit', 'pause_on'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 180),
+            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'XxXxXxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        gtrdag_clean,
+        gtrorl_clean,
+
+        ],
+    ProgramFilter(6) >> [ # Metal Alterno - Bouton 6
+        Program(69) >> cseqtrigger,
+
+        Program(1) >> abass,
+        Program(10) >> achords,
+        Program(10) >> actlead,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 14),
+            SendOSC(slport, '/set', 'tempo', 180),
+            
+            SendOSC(slport, '/sl/2/hit', 'pause_on'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 180),
+            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'XxXxXxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        gtrdag_clean,
+        gtrorl_clean,
+
+        ],
     ]
 
 
