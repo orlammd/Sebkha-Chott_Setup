@@ -987,13 +987,8 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         gtrorl_clean
         ],
-    ProgramFilter(9) >> [ # Hip Hop ?? - Bouton 9
-        Program(70) >> cseqtrigger,
-        
-        Program(1) >> achords,
-        Program(1) >> abass,
-        actlead_mute,
-        
+    ProgramFilter(9) >> [ # 12/8 Prog - Bouton 9
+        stop,
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 16),
             SendOSC(slport, '/set', 'tempo', 120),
@@ -1003,31 +998,29 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_disto,
+        gtrdag_clean,
         gtrorl_clean
         ],
-    ProgramFilter(10) >> [ # Mises en place - Bouton 10
+    ProgramFilter(10) >> [ # 13/8 Prog - Bouton 10
         Program(71) >> cseqtrigger,
         
         Program(1) >> abass,
-        Program(1) >> achords,
+        Program(10) >> achords,
         actlead_mute,
         
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(slport, '/set', 'eight_per_cycle', 26),
+            SendOSC(slport, '/set', 'tempo', 180),
             
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 180),
+            SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_disto,
+        gtrdag_clean,
         gtrorl_clean,
-        Program(117) >> seq24once,
-        SceneSwitch(6)
 
         ],
     ]
