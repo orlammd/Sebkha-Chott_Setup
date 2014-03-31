@@ -263,6 +263,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
         Program(11) >> alead,
         gtrorl_clean,
         ],
+    ProgramFilter(11) >> gtrorl_disto,
     
     
     ]
@@ -793,9 +794,9 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 12),
             SendOSC(slport, '/set', 'tempo', 90),
-            SendOSC(klickport, '/klick/simple/set_tempo', 90),
+            SendOSC(klickport, '/klick/simple/set_tempo', 180),
             SendOSC(klickport, '/klick/simple/set_meter', 6, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxx'),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         gtrdag_disto
