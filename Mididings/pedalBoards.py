@@ -87,17 +87,6 @@ seqtrigger = Filter(PROGRAM) >> [
 cseqtrigger = Channel(1) >> seqtrigger
 
 
-#### Stop ####
-
-stop = [
-        Program(2) >> cseqtrigger,
-#        vxfx_ohreland,
-        SendOSC(slport, '/sl/-1/hit', 'pause_on') >> Discard(),
-        SendOSC(klickport, '/klick/metro/stop') >> Discard(),
-
-	Program(2) >> abass,
-	Program(6) >> actlead
-]
 
 #### Synths ####
 abass_mute = Program(2) >> abass
@@ -134,6 +123,35 @@ bassorlon = [
     SendOSC(bassesport, '/strip/BassFX_ORL/Gain/Mute', 0.0)
     ]
 
+#### Vocals ####
+
+#Dag
+flutesolo_on = [
+    SendOSC(vocalsport, '/strip/Vx_Dag/Smooth%20Decimator/Resample%20rate', 4000.0),
+    SendOSC(vocalsport, '/strip/Vx_Dag/Ringmod%20with%20LFO/Modulation%20depth%20(0=none%2C%201=AM%2C%202=RM)', 1.0),
+    SendOSC(vocalsport, '/strip/Vx_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 1.0)
+    ] >> Discard()
+
+flutesolo_off =[
+    SendOSC(vocalsport, '/strip/Vx_Dag/Smooth%20Decimator/Resample%20rate', 48000.0),
+    SendOSC(vocalsport, '/strip/Vx_Dag/Ringmod%20with%20LFO/Modulation%20depth%20(0=none%2C%201=AM%2C%202=RM)', 0.0),
+    SendOSC(vocalsport, '/strip/Vx_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 0.0)
+        ] >> Discard()
+
+
+#### Stop ####
+
+stop = [
+        Program(2) >> cseqtrigger,
+#        vxfx_ohreland,
+        SendOSC(slport, '/sl/-1/hit', 'pause_on') >> Discard(),
+        SendOSC(klickport, '/klick/metro/stop') >> Discard(),
+
+	Program(2) >> abass,
+	Program(6) >> actlead,
+
+        flutesolo_off
+]
 
 
 
@@ -322,7 +340,7 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_clean
+        gtrdag_clean,
         ],
     ProgramFilter(3) >> [ # Intro Up - Bouton 3
         Program(6) >> Channel(2) >> seqtrigger,
@@ -757,6 +775,7 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+        flutesolo_on,
         ],
     ]
 
@@ -766,6 +785,7 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
 acte3 =	PortFilter('PBCtrlIn') >> [ 
     ProgramFilter(1) >> stop, # !!!STOP!!! #
     ProgramFilter(2) >> [ # Sortie solo flûte - Bouton 2
+        flutesolo_off,
         stop,
         abass_mute,
         actlead_mute,
