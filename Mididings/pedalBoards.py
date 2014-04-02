@@ -28,6 +28,20 @@ klickport = 1234
 slport = 9951
 testport = 1111
 
+# Non Mixers
+mainmixport = 6666
+drumsport = 6667
+bassesport = 6668
+guitarsport = 6669
+mxsynthport = 6670
+mxdrumsport = 6671
+vocalsport = 6672
+tomsport = 6673
+mondagport = 6674
+monjeport = 6675
+monorlport = 6676
+mainsport = 6677
+
 
 
 #### Outputs ################################################
@@ -95,12 +109,31 @@ actlead_mute = Program(6) >> actlead
 # Dag
 gtrdag_clean = Program(3) >> guitardag
 gtrdag_disto = Program(2) >> guitardag
-# gtrdagmute = SendOSC()
+gtrdagmute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0)
+gtrdagon = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0)
 
 # ORL
 gtrorl_clean = Program(4) >> guitarorl
 gtrorl_disto = Program(1) >> guitarorl
-# gtrdagmute = SendOSC()
+gtrorlmute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0)
+gtrorlon = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0)
+
+#### Bass ####
+
+# Dag
+bassdagmute = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 1.0)
+bassdagon = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 0.0)
+
+# ORL
+bassorlmute = [
+    SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 1.0),
+    SendOSC(bassesport, '/strip/BassFX_ORL/Gain/Mute', 1.0)
+    ]
+bassorlon = [
+    SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 0.0),
+    SendOSC(bassesport, '/strip/BassFX_ORL/Gain/Mute', 0.0)
+    ]
+
 
 
 
@@ -424,7 +457,7 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             
             #			    SendOSC(slport, '/sl/2/hit', 'record'),
             
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 240),
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
@@ -433,7 +466,7 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         gtrorl_disto
         ],
-    ProgramFilter(11) >> [ # Forain I - Bouton 10
+    ProgramFilter(11) >> [ # Forain I - Bouton 11
         Program(72) >> cseqtrigger,
         
         Program(7) >> achords,
@@ -913,11 +946,11 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         Program(8) >> alead,
         Program(10) >> actlead,
         [
-            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
             SendOSC(slport, '/set', 'tempo', 120),
             SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 6, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxx'),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         gtrdag_clean
