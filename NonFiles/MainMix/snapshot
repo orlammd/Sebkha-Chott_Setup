@@ -38,4 +38,10 @@
 	Gain_Module 0x22 create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0x20 :active 1
 	Meter_Module 0x23 create :is_default 1 :chain 0x20 :active 1
 	JACK_Module 0x24 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x20 :active 1
+	Mixer_Strip 0x5A create :name "Acoustics" :width "narrow" :tab "fader" :color 577433254 :gain_mode 0 :mute_mode 0 :group 0x25 :auto_input "" :manual_connection 0
+	Chain 0x5B create :strip 0x5A :tab "chain"
+	JACK_Module 0x5C create :parameter_values "0,000000:2,000000" :is_default 1 :chain 0x5B :active 1
+	Gain_Module 0x5D create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0x5B :active 1
+	Meter_Module 0x5E create :is_default 1 :chain 0x5B :active 1
+	JACK_Module 0x5F create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x5B :active 1
 }

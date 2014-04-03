@@ -37,10 +37,11 @@ mxsynthport = 6670
 mxdrumsport = 6671
 vocalsport = 6672
 tomsport = 6673
-mondagport = 6674
-monjeport = 6675
-monorlport = 6676
-mainsport = 6677
+acousticsport = 6674
+mondagport = 6675
+monjeport = 6676
+monorlport = 6677
+mainsport = 6678
 
 
 
@@ -96,8 +97,8 @@ actlead_mute = Program(6) >> actlead
 #### Guitars ####
 
 # Dag
-gtrdag_mute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0)
-gtrdag_on = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0)
+gtrdag_mute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0) >> Discard()
+gtrdag_on = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0) >> Discard()
 gtrdag_clean = [
     Program(3) >> guitardag,
     gtrdag_on
@@ -109,8 +110,8 @@ gtrdag_disto = [
 
 
 # ORL
-gtrorl_mute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0)
-gtrorl_on = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0)
+gtrorl_mute = SendOSC(guitarsport, '/strip/Guitar_ORL/Gain/Mute', 1.0) >> Discard()
+gtrorl_on = SendOSC(guitarsport, '/strip/Guitar_ORL/Gain/Mute', 0.0) >> Discard()
 gtrorl_clean = [
     Program(4) >> guitarorl,
     gtrorl_on
@@ -119,7 +120,14 @@ gtrorl_disto = [
     Program(1) >> guitarorl,
     gtrorl_on
     ]
-
+gtrdag_chromdelay_on = [
+    SendOSC(guitarsport, '/strip/Guitar_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 1.0),
+    SendOSC(guitarsport, '/strip/Guitar_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/dry', 0.73)
+    ] >> Discard()
+gtrdag_chromdelay_off = [
+    SendOSC(guitarsport, '/strip/Guitar_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 0.0),
+    SendOSC(guitarsport, '/strip/Guitar_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/dry', 1.0)
+    ] >> Discard()
 
 #### Bass ####
 
@@ -161,13 +169,30 @@ stop = [
         SendOSC(slport, '/sl/-1/hit', 'pause_on') >> Discard(),
         SendOSC(klickport, '/klick/metro/stop') >> Discard(),
 
-	Program(2) >> abass,
-	Program(6) >> actlead,
+	abass_mute,
+	actlead_mute,
 
         flutesolo_off
 ]
 
 
+
+#### FX Pedals #############################################
+orl_basspedal = PortFilter('PBCtrlIn') >> [
+    ProgramFilter(13) >> bassorl_on,
+    ProgramFilter(14) >> SendOSC(slport, '/sl/0/hit', 'record') >> Discard(),
+    ProgramFilter(15) >> SendOSC(slport, '/sl/0/hit', 'pause_on') >> Discard(),
+    ProgramFilter(16) >> SendOSC(slport, '/sl/0/hit', 'overdub') >> Discard(),
+    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
+    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
+#    ProgramFilter(18) >> bassfx_suboctaves,
+#    ProgramFilter(19) >> bassfx_jazzdeluxe,
+#    ProgramFilter(20) >> bassfx_sabra,
+#    ProgramFilter(21) >> bassfx_revgav,
+#    ProgramFilter(22) >> bassfx_mute,
+    ]
+#orl_gtrpedal =
+#orl_vxpedal =
 
 #### Scenes ################################################
 
@@ -1029,7 +1054,61 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         gtrdag_clean
         ],
-    ProgramFilter(6) >> [ # Evil - Bouton 6
+    ProgramFilter(6) >> [ # 6/8 Safety Bourre - Bouton 6
+        Program(70) >> cseqtrigger,
+        Program(1) >> abass,
+        Program(1) >> achords,
+        Program(10) >> alead,
+        Program(10) >> actlead,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 90),
+            SendOSC(klickport, '/klick/simple/set_tempo', 90),
+            SendOSC(klickport, '/klick/simple/set_meter', 6, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),        
+        
+        gtrdag_disto,
+        gtrorl_mute
+        ],
+    ProgramFilter(7) >> [ # Solo guitare arpège - Bouton 7
+        stop,
+        flutesolo_on,
+        gtrorl_clean,
+        gtrdag_clean,
+        gtrdag_chromdelay_on,
+        actlead_mute,
+        abass_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),        
+        
+        ],
+    ProgramFilter(8) >> [ # Solo guitare arpège - Bouton 8
+        stop,
+        flutesolo_off,
+        gtrorl_clean,
+        gtrdag_clean,
+        gtrdag_chromdelay_off,
+        actlead_mute,
+        abass_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),        
+        
+        ],
+    ProgramFilter(9) >> [ # Evil - Bouton 9
         Program(68) >> cseqtrigger,
         Program(1) >> achords,
         Program(1) >> abass,
@@ -1045,7 +1124,7 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         gtrorl_disto
         ],
-    ProgramFilter(7) >> [ # Solo batterie - Bouton 7
+    ProgramFilter(10) >> [ # Solo batterie - Bouton 10
         Program(69) >> cseqtrigger,
         abass_mute,
         actlead_mute,
@@ -1061,25 +1140,8 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean
         
         ],
-    ProgramFilter(8) >> [ # 6/8 Safety Bourre - Bouton 8
-        Program(70) >> cseqtrigger,
-        Program(1) >> abass,
-        Program(1) >> achords,
-        Program(10) >> alead,
-        Program(10) >> actlead,
-        [
-            SendOSC(slport, '/set', 'eight_per_cycle', 12),
-            SendOSC(slport, '/set', 'tempo', 90),
-            SendOSC(klickport, '/klick/simple/set_tempo', 90),
-            SendOSC(klickport, '/klick/simple/set_meter', 6, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),        
-        
-        gtrdag_clean,
-        gtrorl_clean
-        ],
-    ProgramFilter(9) >> [ # 12/8 Prog - Bouton 9
+
+    ProgramFilter(11) >> [ # 12/8 Prog - Bouton 11
         stop,
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 16),
@@ -1091,7 +1153,7 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         
         gtrdag_clean,
-        gtrorl_clean
+        gtrorl_mute
         ],
     ]
 acte3partIII =	PortFilter('PBCtrlIn') >> [ 
@@ -1136,8 +1198,8 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_clean,
-        gtrorl_clean,
+        gtrdag_disto,
+        gtrorl_mute,
         ],
     ProgramFilter(4) >> [ # 13/8 Prog en G - Bouton 4
         Program(67) >> cseqtrigger,
@@ -1158,7 +1220,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         
         gtrdag_clean,
-        gtrorl_clean,
+        gtrorl_mute,
 
         ],
     ProgramFilter(5) >> [ # Metal - Bouton 5
@@ -1179,8 +1241,8 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_clean,
-        gtrorl_clean,
+        gtrdag_disto,
+        gtrorl_mute,
 
         ],
     ProgramFilter(6) >> [ # Metal Alterno - Bouton 6
@@ -1281,22 +1343,28 @@ run(
     scenes = {
         1: SceneGroup("Acte 0", [
   		Scene("Bass ORL",
-                    acte0
+                      acte0,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
-		    acte0
+                      acte0,
+                      #orl_gtrpedal
 		),
 		Scene("Voix ORL",
-		    acte0
+                      acte0,
+                      #orl_vxpedal
 	        ),
 		Scene("Bass Dag",
-		    acte0
+                      acte0,
+                      #dag_basspedal,
 		),
 		Scene("Guitar Dag",
-		    acte0
+                      acte0,
+                      #dag_gtrpedal
 		),
 		Scene("Voix Dag",
-		    acte0
+                      acte0,
+                      #dag_vx_pedal
 		),
 		Scene("Boucles",
 		    acte0
@@ -1312,13 +1380,15 @@ run(
         ),
         2: SceneGroup("Acte I", [
   		Scene("Bass ORL",
-                    acte1		    
+                      acte1,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
-		    acte1
+                      acte1,
+                      #orl_gtrpedal
 		),
 		Scene("Voix ORL",
-		    acte1
+                      acte1,
 	        ),
 		Scene("Bass Dag",
 		    acte1
@@ -1342,7 +1412,8 @@ run(
         ),
         3: SceneGroup("Acte II", [
   		Scene("Bass ORL",
-                    acte2		    
+                      acte2,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
 		    acte2
@@ -1372,7 +1443,8 @@ run(
         ),
         4: SceneGroup("Forain Acte II", [
   		Scene("Bass ORL",
-                    forainacte2		    
+                      forainacte2,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
 		    forainacte2
@@ -1402,7 +1474,8 @@ run(
         ),
         5: SceneGroup("Acte III", [
   		Scene("Bass ORL",
-                    acte3		    
+                      acte3,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
 		    acte3
@@ -1432,7 +1505,8 @@ run(
         ),
         6: SceneGroup("Acte III Part II", [
   		Scene("Bass ORL",
-                    acte3partII		    
+                      acte3partII,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
 		    acte3partII
@@ -1462,7 +1536,8 @@ run(
         ),
         7: SceneGroup("Acte III Part III", [
   		Scene("Bass ORL",
-                    acte3partIII		    
+                      acte3partIII,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
 		    acte3partIII
@@ -1492,7 +1567,8 @@ run(
         ),
         8: SceneGroup("Acte IV", [
   		Scene("Bass ORL",
-                    acte4		    
+                      acte4,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
 		    acte4
