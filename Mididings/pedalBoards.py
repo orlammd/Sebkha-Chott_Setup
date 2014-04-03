@@ -1241,8 +1241,8 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_disto,
-        gtrorl_mute,
+        gtrdag_mute,
+        gtrorl_disto,
 
         ],
     ProgramFilter(6) >> [ # Metal Alterno - Bouton 6
@@ -1262,8 +1262,8 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_clean,
-        gtrorl_clean,
+        gtrdag_disto,
+        gtrorl_disto,
 
         ],
     ]

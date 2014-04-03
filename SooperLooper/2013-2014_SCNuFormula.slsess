@@ -82,10 +82,10 @@
         <Control name="quantize" value="1"/>
         <Control name="round" value="0"/>
         <Control name="redo_is_tap" value="0"/>
-        <Control name="sync" value="0"/>
+        <Control name="sync" value="1"/>
         <Control name="use_rate" value="0"/>
         <Control name="fade_samples" value="64"/>
-        <Control name="playback_sync" value="0"/>
+        <Control name="playback_sync" value="1"/>
         <Control name="use_safety_feedback" value="1"/>
         <Control name="input_latency" value="0"/>
         <Control name="output_latency" value="0"/>
@@ -113,10 +113,10 @@
         <Control name="quantize" value="1"/>
         <Control name="round" value="0"/>
         <Control name="redo_is_tap" value="0"/>
-        <Control name="sync" value="0"/>
+        <Control name="sync" value="1"/>
         <Control name="use_rate" value="0"/>
         <Control name="fade_samples" value="64"/>
-        <Control name="playback_sync" value="0"/>
+        <Control name="playback_sync" value="1"/>
         <Control name="use_safety_feedback" value="1"/>
         <Control name="input_latency" value="0"/>
         <Control name="output_latency" value="0"/>
@@ -144,10 +144,10 @@
         <Control name="quantize" value="1"/>
         <Control name="round" value="0"/>
         <Control name="redo_is_tap" value="0"/>
-        <Control name="sync" value="0"/>
+        <Control name="sync" value="1"/>
         <Control name="use_rate" value="0"/>
         <Control name="fade_samples" value="64"/>
-        <Control name="playback_sync" value="0"/>
+        <Control name="playback_sync" value="1"/>
         <Control name="use_safety_feedback" value="1"/>
         <Control name="input_latency" value="0"/>
         <Control name="output_latency" value="0"/>
@@ -175,10 +175,10 @@
         <Control name="quantize" value="1"/>
         <Control name="round" value="0"/>
         <Control name="redo_is_tap" value="0"/>
-        <Control name="sync" value="0"/>
+        <Control name="sync" value="1"/>
         <Control name="use_rate" value="0"/>
         <Control name="fade_samples" value="64"/>
-        <Control name="playback_sync" value="0"/>
+        <Control name="playback_sync" value="1"/>
         <Control name="use_safety_feedback" value="1"/>
         <Control name="input_latency" value="0"/>
         <Control name="output_latency" value="0"/>
@@ -206,10 +206,10 @@
         <Control name="quantize" value="1"/>
         <Control name="round" value="0"/>
         <Control name="redo_is_tap" value="0"/>
-        <Control name="sync" value="0"/>
+        <Control name="sync" value="1"/>
         <Control name="use_rate" value="0"/>
         <Control name="fade_samples" value="64"/>
-        <Control name="playback_sync" value="0"/>
+        <Control name="playback_sync" value="1"/>
         <Control name="use_safety_feedback" value="1"/>
         <Control name="input_latency" value="0"/>
         <Control name="output_latency" value="0"/>
@@ -238,10 +238,10 @@
         <Control name="quantize" value="1"/>
         <Control name="round" value="0"/>
         <Control name="redo_is_tap" value="0"/>
-        <Control name="sync" value="0"/>
+        <Control name="sync" value="1"/>
         <Control name="use_rate" value="0"/>
         <Control name="fade_samples" value="64"/>
-        <Control name="playback_sync" value="0"/>
+        <Control name="playback_sync" value="1"/>
         <Control name="use_safety_feedback" value="1"/>
         <Control name="input_latency" value="0"/>
         <Control name="output_latency" value="0"/>
