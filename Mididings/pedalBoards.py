@@ -96,29 +96,43 @@ actlead_mute = Program(6) >> actlead
 #### Guitars ####
 
 # Dag
-gtrdag_clean = Program(3) >> guitardag
-gtrdag_disto = Program(2) >> guitardag
-gtrdagmute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0)
-gtrdagon = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0)
+gtrdag_mute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0)
+gtrdag_on = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0)
+gtrdag_clean = [
+    Program(3) >> guitardag,
+    gtrdag_on
+    ]
+gtrdag_disto = [
+    Program(2) >> guitardag,
+    gtrdag_on
+    ]
+
 
 # ORL
-gtrorl_clean = Program(4) >> guitarorl
-gtrorl_disto = Program(1) >> guitarorl
-gtrorlmute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0)
-gtrorlon = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0)
+gtrorl_mute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0)
+gtrorl_on = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0)
+gtrorl_clean = [
+    Program(4) >> guitarorl,
+    gtrorl_on
+    ]
+gtrorl_disto = [
+    Program(1) >> guitarorl,
+    gtrorl_on
+    ]
+
 
 #### Bass ####
 
 # Dag
-bassdagmute = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 1.0)
-bassdagon = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 0.0)
+bassdag_mute = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 1.0)
+bassdag_on = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 0.0)
 
 # ORL
-bassorlmute = [
+bassorl_mute = [
     SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 1.0),
     SendOSC(bassesport, '/strip/BassFX_ORL/Gain/Mute', 1.0)
     ]
-bassorlon = [
+bassorl_on = [
     SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 0.0),
     SendOSC(bassesport, '/strip/BassFX_ORL/Gain/Mute', 0.0)
     ]
@@ -314,7 +328,13 @@ acte0 = PortFilter('PBCtrlIn') >> [
         Program(11) >> alead,
         gtrorl_clean,
         ],
-    ProgramFilter(11) >> gtrorl_disto,
+    ProgramFilter(11) >> [ # Intro classique - Bouton 11
+        gtrorl_mute,
+        gtrdag_mute,
+        bassorl_mute,
+        bassdag_mute,
+        SceneSwitch(2)
+        ],
     
     
     ]
@@ -340,7 +360,9 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        gtrorl_mute,
         gtrdag_clean,
+        bassorl_on
         ],
     ProgramFilter(3) >> [ # Intro Up - Bouton 3
         Program(6) >> Channel(2) >> seqtrigger,
@@ -896,6 +918,7 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         Program(1) >> achords,
         Program(1) >> abass,
         actlead_mute,
+        flutesolo_on,
         
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 16),
@@ -915,6 +938,7 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         Program(1) >> abass,
         Program(1) >> achords,
         actlead_mute,
+
         
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 16),
@@ -930,6 +954,7 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         gtrorl_clean,
         Program(117) >> seq24once,
+        flutesolo_on,
         SceneSwitch(6)
 
         ],
@@ -951,7 +976,8 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         gtrorl_clean,
-        gtrdag_clean
+        gtrdag_clean,
+        flutesolo_off
         ],
     ProgramFilter(3) >> [ # Acte III - Couplet Alterno - Bouton 3
         [
