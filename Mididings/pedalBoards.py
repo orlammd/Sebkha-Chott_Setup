@@ -1377,19 +1377,66 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         gtrdag_clean
         ],
-    ProgramFilter(5) >> [ # Début bouclage Your Soul - Bouton 5
-        stop,
+    ProgramFilter(5) >> [ # Début basse Your Soul - Bouton 5
+        Program(68) >> cseqtrigger,
         abass_mute,
         actlead_mute,
         [
             SendOSC(slport, '/set', 'eight_per_cycle', 16),
             SendOSC(slport, '/set', 'tempo', 120),
+
             SendOSC(klickport, '/klick/simple/set_tempo', 120),
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
+
             ] >> Discard(),
-        gtrdag_clean
+        gtrdag_mute,
+        gtrorl_mute
+        ],
+    ProgramFilter(6) >> [ # Bouclage des basses - Bouton 6
+        [
+            SendOSC(slport, '/sl/0/hit', 'record'),
+            SendOSC(slport, '/sl/1/hit', 'record')
+            ] >> Discard()
+        ],
+    ProgramFilter(7) >> [ # Bouclage des voix - Bouton 7
+        [
+            SendOSC(slport, '/sl/4/hit', 'record'),
+            SendOSC(slport, '/sl/5/hit', 'record'),
+            SendOSC(slport, '/sl/6/hit', 'record'),
+            ] >> Discard()
+        ],
+    ProgramFilter(8) >> [ # Lancement guitares - Bouton 8
+        Program(69) >> cseqtrigger,
+        Program(1) >> abass,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eight_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+
+            SendOSC(slport, '/sl/0/hit', 'trigger'),
+            SendOSC(slport, '/sl/1/hit', 'trigger'),
+            SendOSC(slport, '/sl/4/hit', 'trigger'),
+            SendOSC(slport, '/sl/5/hit', 'trigger'),
+            SendOSC(slport, '/sl/6/hit', 'trigger'),
+
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+
+            ] >> Discard(),
+
+        gtrorl_disto,
+        gtrdag_disto
+        
+        ],
+    ProgramFilter(9) >> [ # Bouclage guitares - Bouton 9
+        [
+            SendOSC(slport, '/sl/2/hit', 'record'),
+            SendOSC(slport, '/sl/3/hit', 'record')
+            ] >> Discard()
         ],
     ]
 
