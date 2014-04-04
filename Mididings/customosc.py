@@ -9,9 +9,13 @@ import mididings.extra.panic as _panic
 
 import liblo as _liblo
 
+from time import time
+
 class OSCCustomInterface(object):
     def __init__(self, port=56418):
         self.port = port
+        self.timestamp = 0
+        self.timeout = 80
 
     def on_start(self):
         if self.port is not None:
@@ -26,6 +30,12 @@ class OSCCustomInterface(object):
 
     @_liblo.make_method('/pedalBoard/button', 'i')
     def button_cb(self, path, args):
+        # Anti-rebond
+        diff = time() * 1000 - self.timestamp
+        if diff < self.timeout:
+            return
+        self.timestamp = time() * 1000
+
         if _engine.current_subscene() == 9:
          _engine.switch_scene(args[0])
          _engine.switch_subscene(1)
@@ -39,7 +49,7 @@ class OSCCustomInterface(object):
    	    if args[0] < 12:
 	     _engine.output_event(_event.ProgramEvent('PBCtrlOut', _util.NoDataOffset(1), args[0]))
             if _engine.current_subscene() == 8:
-             _engine.switch_subscene(args[0]-12)
+             _engine.switch_subscene(args[0]-17)
 
 	    else:
                 if args[0] == 24:
