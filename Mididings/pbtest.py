@@ -9,7 +9,7 @@ import liblo
 
 
 config(
-	backend='jack',
+	backend='alsa',
 	client_name='PedalBoardsRoutes',
 	out_ports=['PBseq24', 'PBAMSBassSynth', 'PBAMSChordsSynth', 'PBAMSLeadSynth', 'PBAMSCtLeadSynth', 'PBAMSClassicalSynth', 'PBTapeutape', 'PBGuitarDag', 'PBGuitarORL', 'PBCtrlOut'],
 	in_ports=['PBCtrlIn']
@@ -178,8 +178,7 @@ stop = [
 
 
 #### FX Pedals #############################################
-# ORL
-orl_basspedal = PortFilter('PBCtrlIn') >> [
+orl_basspedal = [
     ProgramFilter(13) >> bassorl_on,
     ProgramFilter(14) >> SendOSC(slport, '/sl/0/hit', 'record') >> Discard(),
     ProgramFilter(15) >> SendOSC(slport, '/sl/0/hit', 'pause_on') >> Discard(),
@@ -192,30 +191,8 @@ orl_basspedal = PortFilter('PBCtrlIn') >> [
 #    ProgramFilter(21) >> bassfx_revgav,
 #    ProgramFilter(22) >> bassfx_mute,
     ]
-orl_gtrpedal = PortFilter('PBCtrlIn') >> [
+orl_gtrpedal = [
     ProgramFilter(13) >> gtrorl_on,
-    ProgramFilter(14) >> SendOSC(slport, '/sl/0/hit', 'record') >> Discard(),
-    ProgramFilter(15) >> SendOSC(slport, '/sl/0/hit', 'pause_on') >> Discard(),
-    ProgramFilter(16) >> SendOSC(slport, '/sl/0/hit', 'overdub') >> Discard(),
-    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
-    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
-
-    ProgramFilter(23) >> gtrorl_clean,
-    ProgramFilter(22) >> gtrorl_disto
-    ]
-orl_vxpedal = PortFilter('PBCtrlIn') >> [
-#    ProgramFilter(13) >> gtrorl_on,
-    ProgramFilter(14) >> SendOSC(slport, '/sl/0/hit', 'record') >> Discard(),
-    ProgramFilter(15) >> SendOSC(slport, '/sl/0/hit', 'pause_on') >> Discard(),
-    ProgramFilter(16) >> SendOSC(slport, '/sl/0/hit', 'overdub') >> Discard(),
-    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
-    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
-    ]
-
-
-# DAG
-dag_basspedal = PortFilter('PBCtrlIn') >> [
-    ProgramFilter(13) >> bassdag_on,
     ProgramFilter(14) >> SendOSC(slport, '/sl/0/hit', 'record') >> Discard(),
     ProgramFilter(15) >> SendOSC(slport, '/sl/0/hit', 'pause_on') >> Discard(),
     ProgramFilter(16) >> SendOSC(slport, '/sl/0/hit', 'overdub') >> Discard(),
@@ -227,35 +204,13 @@ dag_basspedal = PortFilter('PBCtrlIn') >> [
 #    ProgramFilter(21) >> bassfx_revgav,
 #    ProgramFilter(22) >> bassfx_mute,
     ]
-dag_gtrpedal = PortFilter('PBCtrlIn') >> [
-    ProgramFilter(13) >> gtrdag_on,
-    ProgramFilter(14) >> SendOSC(slport, '/sl/0/hit', 'record') >> Discard(),
-    ProgramFilter(15) >> SendOSC(slport, '/sl/0/hit', 'pause_on') >> Discard(),
-    ProgramFilter(16) >> SendOSC(slport, '/sl/0/hit', 'overdub') >> Discard(),
-    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
-    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
-
-    ProgramFilter(23) >> gtrdag_clean,
-    ProgramFilter(22) >> gtrdag_disto,
-    ProgramFilter(21) >> gtrdag_chromdelay_on,
-    ProgramFilter(20) >> gtrdag_chromdelay_off
-    ]
-dag_vxpedal = PortFilter('PBCtrlIn') >> [
-#    ProgramFilter(13) >> gtrorl_on,
-    ProgramFilter(14) >> SendOSC(slport, '/sl/0/hit', 'record') >> Discard(),
-    ProgramFilter(15) >> SendOSC(slport, '/sl/0/hit', 'pause_on') >> Discard(),
-    ProgramFilter(16) >> SendOSC(slport, '/sl/0/hit', 'overdub') >> Discard(),
-    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
-    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
-
-    ProgramFilter(21) >> flutesolo_on,
-    ProgramFilter(20) >> flutesolo_off
-    ]
+#orl_gtrpedal =
+#orl_vxpedal =
 
 #### Scenes ################################################
 
 #### ACTE 0 ####
-acte0 = PortFilter('PBCtrlIn') >> [
+acte0 = [
     ProgramFilter(1) >> stop, # !!!STOP!!! #
     ProgramFilter(2) >> [ # Intro - Bouton 2
         [
@@ -1401,40 +1356,30 @@ run(
     scenes = {
         1: SceneGroup("Acte 0", [
   		Scene("Bass ORL",
-                      [
+                      PortFilter('PBCtrlIn') >> [
+                        orl_basspedal,
                         acte0,
-                        orl_basspedal
                         ]
 		),
 		Scene("Guitar ORL",
-                      [
-                        acte0,
-                        orl_gtrpedal
-                        ]
+                      acte0,
+                      #orl_gtrpedal
 		),
 		Scene("Voix ORL",
-                      [
-                        acte0,
-                        orl_vxpedal
-                        ]
+                      acte0,
+                      #orl_vxpedal
 	        ),
 		Scene("Bass Dag",
-                      [
-                        acte0,
-                        dag_basspedal,
-                        ]
+                      acte0,
+                      #dag_basspedal,
 		),
 		Scene("Guitar Dag",
-                      [
-                        acte0,
-                        dag_gtrpedal
-                        ]
+                      acte0,
+                      #dag_gtrpedal
 		),
 		Scene("Voix Dag",
-                      [
-                        acte0,
-                        dag_vx_pedal
-                        ]
+                      acte0,
+                      #dag_vx_pedal
 		),
 		Scene("Boucles",
 		    acte0
@@ -1450,328 +1395,210 @@ run(
         ),
         2: SceneGroup("Acte I", [
   		Scene("Bass ORL",
-                      [
-                        acte1,
-                        orl_basspedal
-                        ]
+                      acte1,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
-                      [
-                        acte1,
-                        orl_gtrpedal
-                        ]
+                      acte1,
+                      #orl_gtrpedal
 		),
 		Scene("Voix ORL",
-                      [
-                        acte1,
-                        orl_vxpedal
-                        ]
+                      acte1,
 	        ),
 		Scene("Bass Dag",
-                      [
-                        acte1,
-                        dag_basspedal
-                        ]
+		    acte1
 		),
 		Scene("Guitar Dag",
-                      [
-                        acte1,
-                        dag_gtrpedal
-                        ]
+		    acte1
 		),
 		Scene("Voix Dag",
-                      [
-                        acte1,
-                        dag_vxpedal
-                        ]
+		    acte1
 		),
 		Scene("Boucles",
-                      acte1
+		    acte1
 		),
 		Scene("Bank Select",
-                      acte1
+		    acte1
 		),
 		Scene("Tune Select",
-                      acte1
+		    acte1
 		)
 	    ]
         ),
         3: SceneGroup("Acte II", [
   		Scene("Bass ORL",
-                      [
-                        acte2,
-                        orl_basspedal
-                        ]
+                      acte2,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
-                      [
-                        acte2,
-                        orl_gtrpedal
-                        ]
+		    acte2
 		),
 		Scene("Voix ORL",
-                      [
-                        acte2,
-                        orl_vxpedal
-                        ]
+		    acte2
 	        ),
 		Scene("Bass Dag",
-                      [
-                        acte2,
-                        dag_basspedal
-                        ]
+		    acte2
 		),
 		Scene("Guitar Dag",
-                      [
-                        acte2,
-                        dag_gtrpedal
-                        ]
+		    acte2
 		),
 		Scene("Voix Dag",
-                      [
-                        acte2,
-                        dag_vxpedal
-                        ]
+		    acte2
 		),
 		Scene("Boucles",
-                      acte2
+		    acte2
 		),
 		Scene("Bank Select",
-                      acte2
+		    acte2
 		),
 		Scene("Tune Select",
-                      acte2
+		    acte2
 		)
 	    ]
         ),
         4: SceneGroup("Forain Acte II", [
   		Scene("Bass ORL",
-                      [
-                        forainacte2,
-                        orl_basspedal
-                        ]
+                      forainacte2,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
-                      [
-                        forainacte2,
-                        orl_gtrpedal
-                        ]
+		    forainacte2
 		),
 		Scene("Voix ORL",
-                      [
-                        forainacte2,
-                        orl_vxpedal
-                        ]
+		    forainacte2
 	        ),
 		Scene("Bass Dag",
-                      [
-                        forainacte2,
-                        dag_basspedal
-                        ]
+		    forainacte2
 		),
 		Scene("Guitar Dag",
-                      [
-                        forainacte2,
-                        dag_gtrpedal
-                        ]
+		    forainacte2
 		),
 		Scene("Voix Dag",
-                      [
-                        forainacte2,
-                        dag_vxpedal
-                        ]
+		    forainacte2
 		),
 		Scene("Boucles",
-                      forainacte2
+		    forainacte2
 		),
 		Scene("Bank Select",
-                      forainacte2
+		    forainacte2
 		),
 		Scene("Tune Select",
-                      forainacte2
+		    forainacte2
 		)
 	    ]
         ),
         5: SceneGroup("Acte III", [
   		Scene("Bass ORL",
-                      [
-                        acte3,
-                        orl_basspedal
-                        ]
+                      acte3,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
-                      [
-                        acte3,
-                        orl_gtrpedal
-                        ]
+		    acte3
 		),
 		Scene("Voix ORL",
-                      [
-                        acte3,
-                        orl_vxpedal
-                        ]
+		    acte3
 	        ),
 		Scene("Bass Dag",
-                      [
-                        acte3,
-                        dag_basspedal
-                        ]
+		    acte3
 		),
 		Scene("Guitar Dag",
-                      [
-                        acte3,
-                        dag_gtrpedal
-                        ]
+		    acte3
 		),
 		Scene("Voix Dag",
-                      [
-                        acte3,
-                        dag_vxpedal
-                        ]
+		    acte3
 		),
 		Scene("Boucles",
-                      acte3
-                      ),
+		    acte3
+		),
 		Scene("Bank Select",
-                      acte3
-                      ),
+		    acte3
+		),
 		Scene("Tune Select",
-                      acte3
+		    acte3
 		)
 	    ]
         ),
         6: SceneGroup("Acte III Part II", [
   		Scene("Bass ORL",
-                      [
-                        acte3partII,
-                        orl_basspedal
-                        ]
+                      acte3partII,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
-                      [
-                        acte3partII,
-                        orl_gtrpedal
-                        ]
+		    acte3partII
 		),
 		Scene("Voix ORL",
-                      [
-                        acte3partII,
-                        orl_vxpedal
-                        ]
+		    acte3partII
 	        ),
 		Scene("Bass Dag",
-                      [
-                        acte3partII,
-                        dag_basspedal
-                        ]
+		    acte3partII
 		),
 		Scene("Guitar Dag",
-                      [
-                        acte3partII,
-                        dag_gtrpedal
-                        ]
+		    acte3partII
 		),
 		Scene("Voix Dag",
-                      [
-                        acte3partII,
-                        dag_vxpedal
-                        ]
+		    acte3partII
 		),
 		Scene("Boucles",
-                      acte3partII
+		    acte3partII
 		),
 		Scene("Bank Select",
-                      acte3partII
+		    acte3partII
 		),
 		Scene("Tune Select",
-                      acte3partII
+		    acte3partII
 		)
 	    ]
         ),
         7: SceneGroup("Acte III Part III", [
   		Scene("Bass ORL",
-                      [
-                        acte3partIII,
-                        orl_basspedal
-                        ]
+                      acte3partIII,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
-                      [
-                        acte3partIII,
-                        orl_gtrpedal
-                        ]
+		    acte3partIII
 		),
 		Scene("Voix ORL",
-                      [
-                        acte3partIII,
-                        orl_vxpedal
-                        ]
+		    acte3partIII
 	        ),
 		Scene("Bass Dag",
-                      [
-                        acte3partIII,
-                        dag_basspedal
-                        ]
+		    acte3partIII
 		),
 		Scene("Guitar Dag",
-                      [
-                        acte3partIII,
-                        dag_gtrpedal
-                        ]
+		    acte3partIII
 		),
 		Scene("Voix Dag",
-                      [
-                        acte3partIII,
-                        dag_vxpedal
-                        ]
+		    acte3partIII
 		),
 		Scene("Boucles",
-                      acte3partIII,
+		    acte3partIII
 		),
 		Scene("Bank Select",
-                      acte3partIII
+		    acte3partIII
 		),
 		Scene("Tune Select",
-                      acte3partIII
+		    acte3partIII
 		)
 	    ]
         ),
         8: SceneGroup("Acte IV", [
   		Scene("Bass ORL",
-                      [
-                        acte4,
-                        orl_basspedal
-                        ]
+                      acte4,
+                      orl_basspedal
 		),
 		Scene("Guitar ORL",
-                      [
-                        acte4,
-                        orl_gtrpedal
-                        ]
+		    acte4
 		),
 		Scene("Voix ORL",
-                      [
-                        acte4,
-                        orl_vxpedal
-                        ]
+		    acte4
 	        ),
 		Scene("Bass Dag",
-                      [
-                        acte4,
-                        dag_basspedal
-                        ]
+		    acte4
 		),
 		Scene("Guitar Dag",
-                      [
-                        acte4,
-                        dag_gtrpedal
-                        ]
+		    acte4
 		),
 		Scene("Voix Dag",
-                      [
-                        acte4,
-                        dag_vxpedal
-                        ]
+		    acte4
 		),
 		Scene("Boucles",
 		    acte4
