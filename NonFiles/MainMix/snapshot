@@ -1,4 +1,5 @@
 {
+	Spatialization_Console 0x6D create :range 3,000000 :projection 0 :shown 0
 	Group 0x25 create :name "MainMix"
 	Mixer_Strip 0x1 create :name "Drums" :width "narrow" :tab "fader" :color 1456783439 :gain_mode 0 :mute_mode 0 :group 0x25 :auto_input "" :manual_connection 0
 	Chain 0x2 create :strip 0x1 :tab "chain"
@@ -21,16 +22,20 @@
 	Mixer_Strip 0x13 create :name "MxSynths" :width "narrow" :tab "fader" :color 1791857641 :gain_mode 0 :mute_mode 0 :group 0x25 :auto_input "" :manual_connection 0
 	Chain 0x14 create :strip 0x13 :tab "chain"
 	JACK_Module 0x15 create :parameter_values "0,000000:2,000000" :is_default 1 :chain 0x14 :active 1
-	Gain_Module 0x16 create :parameter_values "-5,000000:0,000000" :is_default 1 :chain 0x14 :active 1
+	Gain_Module 0x16 create :parameter_values "-8,600000:0,000000" :is_default 1 :chain 0x14 :active 1
 	Meter_Module 0x17 create :is_default 1 :chain 0x14 :active 1
 	Plugin_Module 0x4B create :plugin_id 1795 :plugin_ins 2 :plugin_outs 2 :parameter_values "0,999000:0,390071:0,170628:0,255319" :is_default 0 :chain 0x14 :active 1
+	Plugin_Module 0x84 create :plugin_id 1974 :plugin_ins 2 :plugin_outs 4 :parameter_values "-61,724556:90,000000:-90,567253" :is_default 0 :chain 0x14 :active 1
+	Plugin_Module 0x86 create :plugin_id 1090 :plugin_ins 4 :plugin_outs 2 :is_default 0 :chain 0x14 :active 1
 	JACK_Module 0x18 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x14 :active 1
 	Mixer_Strip 0x19 create :name "MxDrums" :width "narrow" :tab "fader" :color 481544199 :gain_mode 0 :mute_mode 0 :group 0x25 :auto_input "" :manual_connection 0
 	Chain 0x1A create :strip 0x19 :tab "chain"
 	JACK_Module 0x1B create :parameter_values "0,000000:2,000000" :is_default 1 :chain 0x1A :active 1
-	Gain_Module 0x1C create :parameter_values "-4,500000:0,000000" :is_default 1 :chain 0x1A :active 1
+	Gain_Module 0x1C create :parameter_values "-7,600000:0,000000" :is_default 1 :chain 0x1A :active 1
 	Meter_Module 0x1D create :is_default 1 :chain 0x1A :active 1
 	Plugin_Module 0x4A create :plugin_id 1795 :plugin_ins 2 :plugin_outs 2 :parameter_values "0,999000:0,340426:0,206071:0,250000" :is_default 0 :chain 0x1A :active 1
+	Plugin_Module 0x82 create :plugin_id 1974 :plugin_ins 2 :plugin_outs 4 :parameter_values "-73,257629:90,000000:-89,028992" :is_default 0 :chain 0x1A :active 1
+	Plugin_Module 0x83 create :plugin_id 1090 :plugin_ins 4 :plugin_outs 2 :is_default 0 :chain 0x1A :active 1
 	JACK_Module 0x1E create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x1A :active 1
 	Mixer_Strip 0x1F create :name "Vocals" :width "narrow" :tab "fader" :color 1393756344 :gain_mode 0 :mute_mode 0 :group 0x25 :auto_input "" :manual_connection 0
 	Chain 0x20 create :strip 0x1F :tab "chain"
@@ -38,7 +43,7 @@
 	Gain_Module 0x22 create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0x20 :active 1
 	Meter_Module 0x23 create :is_default 1 :chain 0x20 :active 1
 	JACK_Module 0x24 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x20 :active 1
-	Mixer_Strip 0x5A create :name "Acoustics" :width "narrow" :tab "signal" :color 577433254 :gain_mode 0 :mute_mode 0 :group 0x25 :auto_input "" :manual_connection 0
+	Mixer_Strip 0x5A create :name "Acoustics" :width "narrow" :tab "fader" :color 577433254 :gain_mode 0 :mute_mode 0 :group 0x25 :auto_input "" :manual_connection 0
 	Chain 0x5B create :strip 0x5A :tab "chain"
 	JACK_Module 0x5C create :parameter_values "0,000000:2,000000" :is_default 1 :chain 0x5B :active 1
 	Gain_Module 0x5D create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0x5B :active 1
