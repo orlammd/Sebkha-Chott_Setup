@@ -132,18 +132,18 @@ gtrdag_chromdelay_off = [
 #### Bass ####
 
 # Dag
-bassdag_mute = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 1.0)
-bassdag_on = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 0.0)
+bassdag_mute = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 1.0) >> Discard()
+bassdag_on = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 0.0) >> Discard()
 
 # ORL
 bassorl_mute = [
     SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 1.0),
     SendOSC(bassesport, '/strip/BassFX_ORL/Gain/Mute', 1.0)
-    ]
+    ] >> Discard()
 bassorl_on = [
     SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 0.0),
     SendOSC(bassesport, '/strip/BassFX_ORL/Gain/Mute', 0.0)
-    ]
+    ] >> Discard()
 
 #### Vocals ####
 
