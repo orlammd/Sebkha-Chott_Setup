@@ -978,6 +978,7 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassorl_on
         ],
     ProgramFilter(8) >> [ # Forain Léger Après Baroque sans machine - Bouton 8
+        stop,
         abass_mute,
         actlead_mute,
         [
@@ -1031,7 +1032,10 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+
+        Program(116) >> seq24once,
+        SceneSwitch(5)        
         ],
     ]
 
@@ -1096,7 +1100,7 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_clean,
         gtrorl_mute,
-        bassorl_mute
+        bassorl_on
         ],
     ProgramFilter(5) >> [ # Pont glauque - Bouton 5
         [
@@ -1542,6 +1546,7 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         Program(65) >> cseqtrigger, 
         abass_mute,
         actlead_mute,
+        Program(9) >> alead,
         Program(9) >> achords,
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
@@ -1580,6 +1585,7 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         Program(67) >> cseqtrigger,
         Program(1) >> abass,
         Program(9) >> achords,
+        Program(8) >> alead,
         actlead_mute,
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
