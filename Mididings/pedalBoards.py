@@ -379,7 +379,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
         Program(1) >> aclass,
         Program(16) >> alead,
 
-        gtrdag_clean,
+        gtrdag_mute,
         gtrorl_disto,
         bassorl_mute,
         bassdag_on
@@ -435,8 +435,8 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/set', 'tempo', 110),
 
             SendOSC(klickport, '/klick/simple/set_tempo', 110),
-            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         Program(71) >> cseqtrigger,
@@ -453,15 +453,15 @@ acte0 = PortFilter('PBCtrlIn') >> [
         ],
     ProgramFilter(11) >> [ # Intro classique - Bouton 11
         stop,
-        [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
+#        [
+#            SendOSC(slport, '/set', 'eighth_per_cycle', 16),
+#            SendOSC(slport, '/set', 'tempo', 120),
 
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
+#            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+#            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+#            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+#            SendOSC(klickport, '/klick/metro/start'),
+#            ] >> Discard(),
         gtrorl_mute,
         gtrdag_mute,
         bassorl_mute,
@@ -496,6 +496,7 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         
         gtrorl_mute,
         gtrdag_clean,
+        bassdag_mute,
         bassorl_on
         ],
     ProgramFilter(3) >> [ # Intro Up - Bouton 3
@@ -518,8 +519,11 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        
-        gtrdag_clean
+
+        gtrorl_mute,
+        gtrdag_clean,
+        bassdag_mute,
+        bassorl_on
         ],
     ProgramFilter(5) >> [ # Post Bustas - Bouton 5
         Program(67) >> cseqtrigger,
@@ -541,7 +545,10 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_clean
+        gtrorl_mute,
+        gtrdag_clean,
+        bassdag_mute,
+        bassorl_on
         ],
     ProgramFilter(6) >> [ # Final Couplet - Bouton 6
         [
@@ -569,7 +576,9 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         
         gtrdag_clean,
-        gtrorl_clean
+        gtrorl_mute,
+        bassdag_mute,
+        bassorl_on
         
         ],
     ProgramFilter(8) >> [ # MathoMag - Bouton 8
@@ -591,8 +600,10 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        bassdag_mute,
         gtrdag_clean,
-        gtrorl_clean
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(9) >> [ # MathoMag II - Bouton 9
         Program(70) >> cseqtrigger,
@@ -615,8 +626,10 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        bassdag_mute,
         gtrdag_disto,
-        gtrorl_clean
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(10) >> [ # DeathoDeb - Bouton 10
         Program(71) >> cseqtrigger,
@@ -637,8 +650,10 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_clean,
-        gtrorl_disto
+        bassdag_on,
+        gtrdag_mute,
+        gtrorl_disto,
+        bassorl_mute
         ],
     ProgramFilter(11) >> [ # Forain I - Bouton 11
         Program(72) >> cseqtrigger,
@@ -658,9 +673,11 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        
+
+        bassdag_mute,
         gtrdag_disto,
-        gtrorl_mute
+        gtrorl_mute,
+        bassorl_on
         ],
     
     ]
@@ -681,8 +698,11 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrorl_clean,
-        gtrdag_clean
+
+        bassdag_mute,
+        gtrorl_mute,
+        gtrdag_mute,
+        bassorl_mute
         ],
 #    ProgramFilter(3) >> [ # Sample Had Gadya - Bouton 3
 #        Program(6) >> Channel(2) >> seqtrigger,
@@ -700,7 +720,11 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_disto
+        
+        bassdag_mute,
+        gtrdag_disto,
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(4) >> [ # Pont Had Gadya - Bouton 4
         Program(65) >> cseqtrigger,        
@@ -715,7 +739,11 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_disto
+
+        bassdag_mute,
+        gtrdag_disto,
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(5) >> [ # Filtre Pont Had Gadya & suite - Bouton 5
         Program(67) >> cseqtrigger,
@@ -735,7 +763,11 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_disto
+
+        bassdag_mute,
+        gtrdag_disto,
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(6) >> [ # Debut Couplet - Bouton 6
         Program(69) >> cseqtrigger,
@@ -751,8 +783,11 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+
+        bassdag_mute,
         gtrdag_clean,
-        gtrorl_clean
+        gtrorl_mute,
+        bassorl_on
         
         ],
     ProgramFilter(7) >> [ # Pont ternaire - Bouton 7
@@ -770,8 +805,10 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        bassdag_on,
         gtrdag_clean,
-        gtrorl_clean
+        gtrorl_clean,
+        bassorl_on
         ],
     ProgramFilter(8) >> [ # Break Couplet - Bouton 8
         Program(70) >> cseqtrigger,
@@ -789,8 +826,10 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        bassdag_mute,
         gtrdag_disto,
-        gtrorl_clean
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(9) >> [ # Couplet Part II - Bouton 9
         Program(71) >> cseqtrigger,
@@ -811,10 +850,13 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_disto,
-        gtrorl_clean
+        bassdag_on,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_on
         ],
-    ProgramFilter(10) >> [ # Switch to Forain Acte II - Bouton 10
+    ProgramFilter(10) >> [ # Solo Basse - Bouton 10
+        stop,
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 12),
             SendOSC(slport, '/set', 'tempo', 150),
@@ -826,8 +868,12 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
 
+        bassdag_on,
         gtrdag_mute,
         gtrorl_mute,
+        bassorl_on
+        ],
+    ProgramFilter(11) >> [ # Switch to Forain Acte II - Bouton 11
         Program(115) >> seq24once,
         SceneSwitch(4)
         ],
@@ -851,8 +897,11 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_clean,
-        gtrorl_clean
+        
+        bassdag_mute,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_mute
         ],
     ProgramFilter(3) >> [ # Forain Acte II Drums - Bouton 3
         Program(6) >> Channel(2) >> seqtrigger,
@@ -884,9 +933,12 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        
-        gtrdag_clean,
-        gtrorl_clean        
+
+
+        bassdag_on,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(6) >> [ # Forain Léger Avant Baroque - Bouton 6
         Program(67) >> cseqtrigger,
@@ -899,6 +951,11 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+
+        bassdag_on,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(7) >> [ # Barocko by MX - Bouton 7
         Program(71) >> cseqtrigger,
@@ -908,14 +965,36 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         Program(8) >> achords,
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 12),
+            SendOSC(slport, '/set', 'tempo', 100),
+            SendOSC(klickport, '/klick/simple/set_tempo', 100),
+            SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+
+        bassdag_mute,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_on
+        ],
+    ProgramFilter(8) >> [ # Forain Léger Après Baroque sans machine - Bouton 8
+        abass_mute,
+        actlead_mute,
+        [
+            SendOSC(slport, '/set', 'eighth_per_cycle', 12),
             SendOSC(slport, '/set', 'tempo', 150),
             SendOSC(klickport, '/klick/simple/set_tempo', 150),
             SendOSC(klickport, '/klick/simple/set_meter', 3, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+
+        bassdag_mute,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_on
         ],
-    ProgramFilter(8) >> [ # Forain Léger Après Baroque - Bouton 8
+    ProgramFilter(9) >> [ # Forain Léger Après Baroque avec machines - Bouton 9
         Program(68) >> cseqtrigger,
         Program(1) >> abass,
         Program(8) >> actlead,
@@ -928,8 +1007,13 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+
+        bassdag_mute,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_on
         ],
-    ProgramFilter(9) >> [ # Forain Solo flûte - Bouton 9
+    ProgramFilter(10) >> [ # Forain Solo flûte - Bouton 10
         Program(69) >> cseqtrigger,
         Program(1) >> abass,
         Program(8) >> actlead,
@@ -942,7 +1026,12 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+
         flutesolo_on,
+        bassdag_mute,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_on
         ],
     ]
 
@@ -964,8 +1053,11 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+
+        bassdag_on,
         gtrorl_clean,
-        gtrdag_clean
+        gtrdag_mute,
+        bassorl_mute
         ],
     ProgramFilter(3) >> [ # Hell Entry - Bouton 3
         Program(65) >> cseqtrigger,
@@ -981,8 +1073,12 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+
+        bassdag_on,
         gtrorl_clean,
-        gtrdag_clean
+        gtrdag_mute,
+        bassorl_mute
+        
         ],
     ProgramFilter(4) >> [ # Couplet - Bouton 4
         Program(66) >> cseqtrigger,
@@ -996,7 +1092,11 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_clean
+
+        bassdag_mute,
+        gtrdag_clean,
+        gtrorl_mute,
+        bassorl_mute
         ],
     ProgramFilter(5) >> [ # Pont glauque - Bouton 5
         [
@@ -1004,7 +1104,6 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             Program(15)
             ] >> Channel(2) >> seqtrigger,
         actlead_mute,
-        gtrdag_clean
         ],
     ProgramFilter(6) >> [ # 6/8 Magasin - Bouton 6
         Program(67) >> cseqtrigger,
@@ -1019,7 +1118,11 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_disto
+
+        bassdag_on,
+        gtrdag_disto,
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(7) >> [ # Couplet v2 - Bouton 7
         Program(68) >> cseqtrigger,
@@ -1035,8 +1138,11 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+
+        bassdag_mute,
         gtrdag_clean,
-        gtrorl_clean
+        gtrorl_mute,
+        bassorl_on
         
         ],
     ProgramFilter(8) >> [ # Hell Entry Tutti - Bouton 8
@@ -1054,8 +1160,10 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),        
         
+        bassdag_mute,
         gtrdag_disto,
-        gtrorl_clean
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(9) >> [ # Hip Hop ?? - Bouton 9
         Program(70) >> cseqtrigger,
@@ -1074,8 +1182,10 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        gtrdag_disto,
-        gtrorl_clean
+        bassdag_mute,
+        gtrdag_mute,
+        gtrorl_clean,
+        bassorl_on
         ],
     ProgramFilter(10) >> [ # Mises en place - Bouton 10
         Program(71) >> cseqtrigger,
@@ -1084,7 +1194,6 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         Program(1) >> achords,
         actlead_mute,
 
-        
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
             SendOSC(slport, '/set', 'tempo', 120),
@@ -1095,11 +1204,14 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        
-        gtrdag_disto,
-        gtrorl_clean,
-        Program(117) >> seq24once,
+
+        bassdag_mute,
+        gtrdag_clean,
+        gtrorl_mute,
+        bassorl_on,
         flutesolo_on,
+
+        Program(117) >> seq24once,
         SceneSwitch(6)
 
         ],
@@ -1107,7 +1219,7 @@ acte3 =	PortFilter('PBCtrlIn') >> [
 
 acte3partII =	PortFilter('PBCtrlIn') >> [ 
     ProgramFilter(1) >> stop, # !!!STOP!!! #
-    ProgramFilter(2) >> [ # Acte III - Couplet II - Bouton 2
+    ProgramFilter(2) >> [ # Acte III - Couplet II - Bouton 2 - Surf
         Program(65) >> cseqtrigger,
         Program(1) >> abass,
         Program(8) >> alead,
@@ -1120,8 +1232,11 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+        
+        bassdag_mute,
         gtrorl_clean,
         gtrdag_clean,
+        bassorl_on,
         flutesolo_off
         ],
     ProgramFilter(3) >> [ # Acte III - Couplet Alterno - Bouton 3
@@ -1144,7 +1259,11 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_clean
+
+        bassdag_mute,
+        gtrdag_clean,
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(5) >> [ # Acte III - Couplet II - Secondo - Bouton 5
         Program(67) >> cseqtrigger,
@@ -1159,8 +1278,11 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrorl_clean,
-        gtrdag_clean
+
+        bassdag_mute,
+        gtrorl_mute,
+        gtrdag_disto,
+        bassorl_on,
         ],
     ProgramFilter(6) >> [ # 6/8 Safety Bourre - Bouton 6
         Program(70) >> cseqtrigger,
@@ -1177,15 +1299,36 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),        
         
+        bassdag_on,
         gtrdag_disto,
-        gtrorl_mute
+        gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(7) >> [ # Solo guitare arpège - Bouton 7
         stop,
+
+        actlead_mute,
+        abass_mute,
+        [
+            SendOSC(slport, '/set', 'eighth_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),        
+
         flutesolo_on,
         gtrorl_clean,
         gtrdag_clean,
         gtrdag_chromdelay_on,
+        bassdag_mute,
+        bassorl_mute
+        
+        ],
+    ProgramFilter(8) >> [ # Folk - Bouton 8
+        stop,
+
         actlead_mute,
         abass_mute,
         [
@@ -1196,24 +1339,13 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),        
-        
-        ],
-    ProgramFilter(8) >> [ # Solo guitare arpège - Bouton 8
-        stop,
+
         flutesolo_off,
         gtrorl_clean,
         gtrdag_clean,
         gtrdag_chromdelay_off,
-        actlead_mute,
-        abass_mute,
-        [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),        
+        bassdag_mute,
+        bassorl_mute
         
         ],
     ProgramFilter(9) >> [ # Evil - Bouton 9
@@ -1230,7 +1362,11 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrorl_disto
+
+        bassdag_on,
+        gtrdag_mute,
+        gtrorl_disto,
+        bassorl_mute
         ],
     ProgramFilter(10) >> [ # Solo batterie - Bouton 10
         Program(69) >> cseqtrigger,
@@ -1244,8 +1380,11 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_clean,
-        gtrorl_clean
+
+        bassdag_on,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_on
         
         ],
 
@@ -1260,8 +1399,11 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        bassdag_mute,
         gtrdag_clean,
-        gtrorl_mute
+        gtrorl_mute,
+        bassorl_on
+
         ],
     ]
 acte3partIII =	PortFilter('PBCtrlIn') >> [ 
@@ -1283,9 +1425,11 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        
+
+        bassdag_mute,
         gtrdag_clean,
-        gtrorl_clean,
+        gtrorl_mute,
+        bassorl_on
 
         ],
     ProgramFilter(3) >> [ # 13/8 Prog bourrin - Bouton 3
@@ -1306,8 +1450,10 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        bassdag_mute,
         gtrdag_disto,
         gtrorl_mute,
+        bassorl_on
         ],
     ProgramFilter(4) >> [ # 13/8 Prog en G - Bouton 4
         Program(67) >> cseqtrigger,
@@ -1327,8 +1473,10 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        bassdag_mute,
         gtrdag_clean,
         gtrorl_mute,
+        bassorl_on
 
         ],
     ProgramFilter(5) >> [ # Metal - Bouton 5
@@ -1349,8 +1497,10 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        bassdag_on,
         gtrdag_mute,
         gtrorl_disto,
+        bassorl_mute
 
         ],
     ProgramFilter(6) >> [ # Metal Alterno - Bouton 6
@@ -1370,10 +1520,18 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
+        bassdag_mute,
         gtrdag_disto,
         gtrorl_disto,
+        bassorl_mute
 
         ],
+    ProgramFilter(7) >> [ # Vers Carmen - Bouton 7
+        gtrorl_clean,
+
+        Program(119) >> seq24once,
+        SceneSwitch(8)        
+        ]
     ]
 
 
@@ -1393,8 +1551,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrorl_clean,
-        gtrdag_clean
+
+        bassdag_mute,
+        gtrorl_mute,
+        gtrdag_mute,
+        bassorl_mute
         ],
     ProgramFilter(3) >> [ # Seconde occurrence machines Mises en place - Bouton 3
         Program(66) >> cseqtrigger,
@@ -1409,8 +1570,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrorl_clean,
-        gtrdag_clean
+
+        bassdag_on,
+        gtrorl_mute,
+        gtrdag_mute,
+        bassorl_on
         ],
     ProgramFilter(4) >> [ # Troisième occurrence machines Carmeno Saoule 2 - Bouton 4
         Program(67) >> cseqtrigger,
@@ -1425,7 +1589,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        gtrdag_clean
+
+        bassdag_mute,
+        gtrdag_disto,
+        gtrorl_disto,
+        bassorl_mute
         ],
     ProgramFilter(5) >> [ # Début basse Your Soul - Bouton 5
         Program(68) >> cseqtrigger,
@@ -1441,8 +1609,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
 
             ] >> Discard(),
-        gtrdag_mute,
-        gtrorl_mute
+
+        bassdag_on,
+        gtrdag_disto,
+        gtrorl_disto,
+        bassorl_on
         ],
     ProgramFilter(6) >> [ # Bouclage des basses - Bouton 6
         [
@@ -1468,9 +1639,6 @@ acte4 =	PortFilter('PBCtrlIn') >> [
 
             ] >> Discard(),
 
-        gtrorl_disto,
-        gtrdag_disto
-        
         ],
     ProgramFilter(9) >> [ # Bouclage guitares - Bouton 9
         [
@@ -1484,8 +1652,10 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/sl/3/hit', 'overdub')
             ] >> Discard()
         ],
-    ProgramFilter(11) >> [ # Reverse All - Buton 11
+    ProgramFilter(11) >> [ # Reverse All - Bouton 11
         [
+
+            SendOSC(slport, '/sl/-1/set', 'dry', 0),
             SendOSC(slport, '/sl/-1/hit', 'reverse'),
             SendOSC(slport, '/sl/-1/set', 'rate', 0.5),
 
