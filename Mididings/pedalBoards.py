@@ -121,12 +121,12 @@ gtrorl_disto = [
     gtrorl_on
     ]
 gtrdag_chromdelay_on = [
-    SendOSC(guitarsport, '/strip/Guitar_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 1.0),
-    SendOSC(guitarsport, '/strip/Guitar_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/dry', 0.73)
+    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 1.0),
+    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/dry', 0.73)
     ] >> Discard()
 gtrdag_chromdelay_off = [
-    SendOSC(guitarsport, '/strip/Guitar_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 0.0),
-    SendOSC(guitarsport, '/strip/Guitar_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/dry', 1.0)
+    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 0.0),
+    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/dry', 1.0)
     ] >> Discard()
 
 #### Bass ####
