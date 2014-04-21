@@ -121,12 +121,14 @@ gtrorl_disto = [
     gtrorl_on
     ]
 gtrdag_chromdelay_on = [
-    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 1.0),
-    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/dry', 0.73)
+    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/Gain/Mute', 0.0),
+    SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0)
     ] >> Discard()
 gtrdag_chromdelay_off = [
-    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 0.0),
-    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/dry', 1.0)
+    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/Gain/Mute', 1.0),
+    SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0)
+#    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 0.0),
+#    SendOSC(guitarsport, '/strip/Scape_Gtr_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/dry', 1.0)
     ] >> Discard()
 
 #### Bass ####
@@ -149,16 +151,20 @@ bassorl_on = [
 
 #Dag
 flutesolo_on = [
-    SendOSC(vocalsport, '/strip/Vx_Dag/Smooth%20Decimator/Resample%20rate', 4000.0),
-    SendOSC(vocalsport, '/strip/Vx_Dag/Ringmod%20with%20LFO/Modulation%20depth%20(0=none%2C%201=AM%2C%202=RM)', 1.0),
-    SendOSC(vocalsport, '/strip/Vx_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 1.0)
+#    SendOSC(vocalsport, '/strip/Vx_Dag/Smooth%20Decimator/Resample%20rate', 4000.0),
+#    SendOSC(vocalsport, '/strip/Vx_Dag/Ringmod%20with%20LFO/Modulation%20depth%20(0=none%2C%201=AM%2C%202=RM)', 1.0),
+#    SendOSC(vocalsport, '/strip/Vx_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 1.0)
+    SendOSC(vocalsport, '/strip/Scape_Vx_Dag/Gain/Mute', 0.0),
+    SendOSC(vocalsport, '/strip/Vx_Dag/Gain/Mute', 1.0),
     ] >> Discard()
 
 flutesolo_off =[
-    SendOSC(vocalsport, '/strip/Vx_Dag/Smooth%20Decimator/Resample%20rate', 48000.0),
-    SendOSC(vocalsport, '/strip/Vx_Dag/Ringmod%20with%20LFO/Modulation%20depth%20(0=none%2C%201=AM%2C%202=RM)', 0.0),
-    SendOSC(vocalsport, '/strip/Vx_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 0.0)
-        ] >> Discard()
+#    SendOSC(vocalsport, '/strip/Vx_Dag/Smooth%20Decimator/Resample%20rate', 48000.0),
+#    SendOSC(vocalsport, '/strip/Vx_Dag/Ringmod%20with%20LFO/Modulation%20depth%20(0=none%2C%201=AM%2C%202=RM)', 0.0),
+#    SendOSC(vocalsport, '/strip/Vx_Dag/C%2A%20Scape%20-%20Stereo%20delay%20with%20chromatic%20resonances/blend', 0.0)
+    SendOSC(vocalsport, '/strip/Scape_Vx_Dag/Gain/Mute', 1.0),
+    SendOSC(vocalsport, '/strip/Vx_Dag/Gain/Mute', 0.0),
+    ] >> Discard()
 
 
 #### Stop ####
