@@ -1186,7 +1186,10 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/scene/36orlOrange', 1),
+            ] >> Discard()
         ],
     ProgramFilter(9) >> [ # Forain Léger Après Baroque avec machines - Bouton 9
         Program(68) >> cseqtrigger,
@@ -1205,7 +1208,10 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/scene/36yulaOrange', 1),
+            ] >> Discard()
         ],
     ProgramFilter(10) >> [ # Forain Solo flûte - Bouton 10
         Program(69) >> cseqtrigger,
@@ -1226,6 +1232,11 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            SendOSC(qlcport, '/scene/36barresOrange', 1),
+            ] >> Discard(),
 
         Program(116) >> seq24once,
         SceneSwitch(5)        
