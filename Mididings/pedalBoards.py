@@ -1677,7 +1677,13 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            ] >> Discard()
+        
         
         ],
 
@@ -1722,7 +1728,11 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_clean,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlRouge', 1),
+            ] >> Discard()
 
         ],
     ProgramFilter(3) >> [ # 13/8 Prog bourrin - Bouton 3
@@ -1793,7 +1803,12 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_mute,
         gtrorl_disto,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1),
+            SendOSC(qlcport, '/scene/barresRouges', 1), 
+            ] >> Discard()
 
         ],
     ProgramFilter(6) >> [ # Metal Alterno - Bouton 6
@@ -1816,7 +1831,11 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_disto,
         gtrorl_disto,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/introD', 1),
+            ] >> Discard()
 
         ],
     ProgramFilter(7) >> [ # Vers Carmen - Bouton 7
@@ -1849,7 +1868,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrorl_mute,
         gtrdag_mute,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlBlanc', 1),
+            ] >> Discard()
         ],
     ProgramFilter(3) >> [ # Seconde occurrence machines Mises en place - Bouton 3
         Program(66) >> cseqtrigger,
@@ -1868,7 +1891,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrorl_mute,
         gtrdag_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36yulaRouge', 1),
+            ] >> Discard()
         ],
     ProgramFilter(4) >> [ # Troisième occurrence machines Carmeno Saoule 2 - Bouton 4
         Program(67) >> cseqtrigger,
@@ -1888,7 +1915,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_disto,
         gtrorl_disto,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlBlanc', 1),
+            ] >> Discard()
         ],
     ProgramFilter(5) >> [ # Début basse Your Soul - Bouton 5
         Program(68) >> cseqtrigger,
@@ -1908,12 +1939,19 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_disto,
         gtrorl_disto,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1),
+            ] >> Discard()
         ],
     ProgramFilter(6) >> [ # Bouclage des basses - Bouton 6
         [
             SendOSC(slport, '/sl/0/hit', 'record'),
             SendOSC(slport, '/sl/1/hit', 'record')
+            ] >> Discard(),
+        [
+            SendOSC(qlcport, '/scene/36orlRouge', 1),
             ] >> Discard()
         ],
     ProgramFilter(7) >> [ # Bouclage des voix - Bouton 7
@@ -1939,6 +1977,9 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         [
             SendOSC(slport, '/sl/2/hit', 'record'),
             SendOSC(slport, '/sl/3/hit', 'record')
+            ] >> Discard(),
+        [
+            SendOSC(qlcport, '/scene/barresRouges', 1),
             ] >> Discard()
         ],
     ProgramFilter(10) >> [ # Bouclage guitares - Bouton 10
