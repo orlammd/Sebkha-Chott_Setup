@@ -923,7 +923,12 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_clean,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlBleu', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            ] >> Discard()
         
         ],
     ProgramFilter(7) >> [ # Pont ternaire - Bouton 7
@@ -944,7 +949,14 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_clean,
         gtrorl_clean,
-        bassorl_on
+        bassorl_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36yulaBleu', 1),
+            SendOSC(qlcport, '/scene/36barresViolet', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            ] >> Discard()
         ],
     ProgramFilter(8) >> [ # Break Couplet - Bouton 8
         Program(70) >> cseqtrigger,
@@ -965,7 +977,13 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_disto,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+#            SendOSC(qlcport, '/scene/36yulaBleu', 1),
+            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            SendOSC(qlcport, '/scene/introD', 1)
+            ] >> Discard()
         ],
     ProgramFilter(9) >> [ # Couplet Part II - Bouton 9
         Program(71) >> cseqtrigger,
@@ -989,7 +1007,12 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlBleu', 1),
+            SendOSC(qlcport, '/scene/36barresBleu', 1),
+            ] >> Discard()
         ],
     ProgramFilter(10) >> [ # Solo Basse - Bouton 10
         stop,
