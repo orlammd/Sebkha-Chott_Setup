@@ -1,6 +1,6 @@
 {
 	Group 0x7 create :name "Guitars"
-	Mixer_Strip 0x1 create :name "Guitar_ORL" :width "narrow" :tab "signal" :color 122114496 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
+	Mixer_Strip 0x1 create :name "Guitar_ORL" :width "narrow" :tab "fader" :color 122114496 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x2 create :strip 0x1 :tab "chain"
 	JACK_Module 0x3 create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x2 :active 1
 	Plugin_Module 0x6E create :plugin_id 1916 :plugin_ins 1 :plugin_outs 1 :parameter_values "0,000000:25,000000:80,000000:-23,000000:12,400000:3,250000:4,400000" :is_default 0 :chain 0x2 :active 1
@@ -29,11 +29,11 @@
 	Gain_Module 0x29 create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0x27 :active 1
 	Meter_Module 0x2A create :is_default 1 :chain 0x27 :active 1
 	JACK_Module 0x2B create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x27 :active 1
-	Mixer_Strip 0x8 create :name "Guitar_Dag" :width "narrow" :tab "signal" :color 1116303688 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
+	Mixer_Strip 0x8 create :name "Guitar_Dag" :width "narrow" :tab "fader" :color 1116303688 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x9 create :strip 0x8 :tab "chain"
 	JACK_Module 0xA create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x9 :active 1
 	Plugin_Module 0x6D create :plugin_id 1916 :plugin_ins 1 :plugin_outs 1 :parameter_values "0,000000:25,000000:80,000000:-23,000000:12,400000:3,250000:4,400000" :is_default 0 :chain 0x9 :active 1
-	Gain_Module 0xB create :parameter_values "3,000000:0,000000" :is_default 1 :chain 0x9 :active 1
+	Gain_Module 0xB create :parameter_values "-0,200000:0,000000" :is_default 1 :chain 0x9 :active 1
 	Meter_Module 0xC create :is_default 1 :chain 0x9 :active 1
 	JACK_Module 0xD create :parameter_values "1,000000:0,000000" :is_default 1 :chain 0x9 :active 1
 	Mixer_Strip 0x41 create :name "FX_Gtr_Dag_1" :width "narrow" :tab "signal" :color 243261380 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0

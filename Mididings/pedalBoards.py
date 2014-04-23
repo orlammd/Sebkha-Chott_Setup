@@ -27,6 +27,7 @@ hook(
 klickport = 1234
 slport = 9951
 testport = 1111
+qlcport = ("CtrlRegie", 7770)
 
 # Non Mixers
 mainmixport = 6666
@@ -178,7 +179,9 @@ stop = [
 	abass_mute,
 	actlead_mute,
 
-        flutesolo_off
+        flutesolo_off,
+
+        SendOSC(qlcport, '/stop', 1),
 ]
 
 
@@ -283,7 +286,9 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         gtrdag_mute,
         bassdag_mute,
-        bassorl_mute
+        bassorl_mute,
+
+        SendOSC(qlcport, '/test/chase2', 1) >> Discard()
         
         ],
     ProgramFilter(3) >> [ # Stop - Bouton 3
@@ -304,7 +309,9 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         gtrdag_mute,
         bassdag_mute,
-        bassorl_mute
+        bassorl_mute,
+
+        SendOSC(qlcport, '/discours', 1) >> Discard()
         
         ],
     ProgramFilter(4) >> [ # Every Machines - Bouton 4
@@ -327,19 +334,28 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         gtrdag_clean,
         bassdag_mute,
-        bassorl_mute
+        bassorl_mute,
+
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/discours', 0),
+            #            SendOSC(qlcport, '/test/chase2', 1),
+            SendOSC(qlcport, '/scene/introC', 1)
+            ]>> Discard(),
+        
         
         ],
     ProgramFilter(5) >> [ # Every Machines Full - Bouton 5
-        [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 7),
-            SendOSC(slport, '/set', 'tempo', 110),
+#        [
+#            SendOSC(slport, '/set', 'eighth_per_cycle', 7),
+#            SendOSC(slport, '/set', 'tempo', 110),
 
-            SendOSC(klickport, '/klick/simple/set_tempo', 110),
-            SendOSC(klickport, '/klick/simple/set_meter', 14, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxxxXxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
+#            SendOSC(klickport, '/klick/simple/set_tempo', 110),
+#            SendOSC(klickport, '/klick/simple/set_meter', 14, 8),
+#            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxxxXxx'),
+#            SendOSC(klickport, '/klick/metro/start'),
+#            ] >> Discard(),
         Program(6) >> cseqtrigger,
         Program(3) >> actlead,
         Program(6) >> abass,
@@ -349,7 +365,13 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         gtrorl_mute,
         bassdag_mute,
-        bassorl_on
+        bassorl_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/introD', 1),
+#            SendOSC(qlcport, '/scene/introC', 0)
+            ] >> Discard()
         ],
     ProgramFilter(6) >> [ # Lancement - Bouton 6
         stop,
@@ -388,7 +410,13 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         gtrorl_disto,
         bassorl_mute,
-        bassdag_on
+        bassdag_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/refrainActe0', 1),
+            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            ] >> Discard()
         ],
     ProgramFilter(8) >> [ # Couplet - Bouton 8
         [
@@ -411,7 +439,12 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         gtrdag_mute,
         bassdag_on,
-        bassorl_mute
+        bassorl_mute,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36yulaViolet', 1),
+            ] >> Discard() 
         ],
     ProgramFilter(9) >> [ # Couplet - Bouton 9
         [
@@ -433,7 +466,14 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         gtrdag_mute,
         bassorl_mute,
-        bassdag_on
+        bassdag_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+#            SendOSC(qlcport, '/test/chase2', 1),
+            SendOSC(qlcport, '/scene/36orlViolet', 1),
+            SendOSC(qlcport, '/scene/36yulaViolet', 1)
+            ]>> Discard(),
         ],
     ProgramFilter(10) >> [ # Couplet - Bouton 10
         [
@@ -455,7 +495,13 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         gtrdag_mute,
         bassorl_mute,
-        bassdag_on
+        bassdag_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlRouge', 1),
+            SendOSC(qlcport, '/scene/barresRouges', 1)
+            ] >> Discard()
         ],
     ProgramFilter(11) >> [ # Intro classique - Bouton 11
         stop,
@@ -475,6 +521,11 @@ acte0 = PortFilter('PBCtrlIn') >> [
         Program(113) >> seq24once,
         SceneSwitch(2),
         ],
+
+    [
+        SendOSC(qlcport, '/stop', 1),
+        SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+        ] >> Discard()
     
     
     ]
@@ -503,10 +554,19 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         gtrdag_clean,
         bassdag_mute,
-        bassorl_on
+        bassorl_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            SendOSC(qlcport, '/scene/36orlRouge', 1)
+            ] >> Discard()
         ],
     ProgramFilter(3) >> [ # Intro Up - Bouton 3
         Program(6) >> Channel(2) >> seqtrigger,
+        [
+            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1)
+            ] >> Discard()
         ],
     ProgramFilter(4) >> [ # Bustas - Bouton 4
         Program(66) >> cseqtrigger,
@@ -529,7 +589,15 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         gtrdag_clean,
         bassdag_mute,
-        bassorl_on
+        bassorl_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlRouge', 1),
+            SendOSC(qlcport, '/scene/flip36yulaOrange', 1),
+            
+            ] >> Discard()
+
         ],
     ProgramFilter(5) >> [ # Post Bustas - Bouton 5
         Program(67) >> cseqtrigger,
@@ -554,7 +622,15 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         gtrdag_clean,
         bassdag_mute,
-        bassorl_on
+        bassorl_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlRouge', 1),
+            SendOSC(qlcport, '/scene/barresRouges', 1),
+            SendOSC(qlcport, '/scene/flip36yulaOrange', 1),
+            
+            ] >> Discard()
         ],
     ProgramFilter(6) >> [ # Final Couplet - Bouton 6
         [
