@@ -1265,7 +1265,11 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrorl_clean,
         gtrdag_mute,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            ] >> Discard(),
         ],
     ProgramFilter(3) >> [ # Hell Entry - Bouton 3
         Program(65) >> cseqtrigger,
@@ -1285,7 +1289,11 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrorl_clean,
         gtrdag_mute,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1)
+            ] >> Discard(),
         
         ],
     ProgramFilter(4) >> [ # Couplet - Bouton 4
@@ -1304,7 +1312,12 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_clean,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlBleu', 1),
+            ] >> Discard()
+        
         ],
     ProgramFilter(5) >> [ # Pont glauque - Bouton 5
         [
@@ -1312,6 +1325,10 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             Program(15)
             ] >> Channel(2) >> seqtrigger,
         actlead_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36barresBleu', 1),
+            ] >> Discard()
         ],
     ProgramFilter(6) >> [ # 6/8 Magasin - Bouton 6
         Program(67) >> cseqtrigger,
@@ -1330,7 +1347,12 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_disto,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36barresBleu', 1),
+            SendOSC(qlcport, '/scene/flip36Blanc', 1)
+            ] >> Discard()
         ],
     ProgramFilter(7) >> [ # Couplet v2 - Bouton 7
         Program(68) >> cseqtrigger,
