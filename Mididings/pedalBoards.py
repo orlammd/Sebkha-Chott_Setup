@@ -1549,6 +1549,13 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         gtrdag_disto,
         bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+
+
+
+            ] >> Discard()
         ],
     ProgramFilter(6) >> [ # 6/8 Safety Bourre - Bouton 6
         Program(70) >> cseqtrigger,
@@ -1568,7 +1575,12 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_disto,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36barresBleu', 1),
+            SendOSC(qlcport, '/scene/flip36Blanc', 1)
+            ] >> Discard()
         ],
     ProgramFilter(7) >> [ # Solo guitare arpège - Bouton 7
         stop,
@@ -1589,7 +1601,12 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         gtrdag_chromdelay_on,
         bassdag_mute,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlBleu', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            ] >> Discard()
         
         ],
     ProgramFilter(8) >> [ # Folk - Bouton 8
@@ -1611,7 +1628,12 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         gtrdag_chromdelay_off,
         bassdag_mute,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/scene/36orlBleu', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            SendOSC(qlcport, '/discours', 1),
+            ] >> Discard()
         
         ],
     ProgramFilter(9) >> [ # Evil - Bouton 9
@@ -1632,7 +1654,12 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_mute,
         gtrorl_disto,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/introD', 1),
+            SendOSC(qlcport, '/discours', 0),
+            ] >> Discard()
         ],
     ProgramFilter(10) >> [ # Solo batterie - Bouton 10
         Program(69) >> cseqtrigger,
