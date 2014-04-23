@@ -660,7 +660,12 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         gtrorl_mute,
         bassdag_mute,
-        bassorl_on
+        bassorl_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            ] >> Discard()
         
         ],
     ProgramFilter(8) >> [ # MathoMag - Bouton 8
@@ -685,7 +690,12 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_clean,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/barresRouges', 1),
+            ] >> Discard()
         ],
     ProgramFilter(9) >> [ # MathoMag II - Bouton 9
         Program(70) >> cseqtrigger,
@@ -711,7 +721,12 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_disto,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36yulaBlanc', 1),
+            ] >> Discard()
         ],
     ProgramFilter(10) >> [ # DeathoDeb - Bouton 10
         Program(71) >> cseqtrigger,
@@ -735,7 +750,12 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_mute,
         gtrorl_disto,
-        bassorl_mute
+        bassorl_mute,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            ] >> Discard()
         ],
     ProgramFilter(11) >> [ # Forain I - Bouton 11
         Program(72) >> cseqtrigger,
@@ -759,7 +779,13 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_disto,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            SendOSC(qlcport, '/scene/introD', 1),
+            SendOSC(qlcport, '/scene/36orlOrange', 1)
+            ] >> Discard()
         ],
     
     ]
@@ -784,7 +810,13 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrorl_mute,
         gtrdag_mute,
-        bassorl_mute
+        bassorl_mute,
+
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/test/chase2', 1),
+            SendOSC(qlcport, '/discours', 1)
+            ] >> Discard()
         ],
 #    ProgramFilter(3) >> [ # Sample Had Gadya - Bouton 3
 #        Program(6) >> Channel(2) >> seqtrigger,
@@ -806,28 +838,37 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_disto,
         gtrorl_mute,
-        bassorl_on
-        ],
-    ProgramFilter(4) >> [ # Pont Had Gadya - Bouton 4
-        Program(65) >> cseqtrigger,        
-        Program(6) >> Channel(2) >> seqtrigger,
-        abass_mute,
-        actlead_mute,
-        [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 150),
-            SendOSC(klickport, '/klick/simple/set_tempo', 150),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
+        bassorl_on,
 
-        bassdag_mute,
-        gtrdag_disto,
-        gtrorl_mute,
-        bassorl_on
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1),
+            SendOSC(qlcport, '/scene/barresRouges', 1),
+            SendOSC(qlcport, '/discours', 0)
+            ] >> Discard()
         ],
-    ProgramFilter(5) >> [ # Filtre Pont Had Gadya & suite - Bouton 5
+    # ProgramFilter(4) >> [ # Pont Had Gadya - Bouton 4
+    #     Program(65) >> cseqtrigger,        
+    #     Program(6) >> Channel(2) >> seqtrigger,
+    #     abass_mute,
+    #     actlead_mute,
+    #     [
+    #         SendOSC(slport, '/set', 'eighth_per_cycle', 16),
+    #         SendOSC(slport, '/set', 'tempo', 150),
+    #         SendOSC(klickport, '/klick/simple/set_tempo', 150),
+    #         SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+    #         SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+    #         SendOSC(klickport, '/klick/metro/start'),
+    #         ] >> Discard(),
+
+    #     bassdag_mute,
+    #     gtrdag_disto,
+    #     gtrorl_mute,
+    #     bassorl_on,
+
+
+    #     ],
+    ProgramFilter(4) >> [ # Filtre Pont Had Gadya & suite - Bouton 4
         Program(67) >> cseqtrigger,
         [
             Program(1),
@@ -849,7 +890,20 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_disto,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlBleu', 1),
+            SendOSC(qlcport, '/discours', 1),
+            ] >> Discard()
+        ],
+    ProgramFilter(5) >> [ # Lumières - bouton 5
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            SendOSC(qlcport, '/scene/introD', 1),
+            SendOSC(qlcport, '/discours', 0)
+            ] >> Discard()
         ],
     ProgramFilter(6) >> [ # Debut Couplet - Bouton 6
         Program(69) >> cseqtrigger,
