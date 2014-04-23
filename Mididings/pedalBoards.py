@@ -1115,10 +1115,16 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            SendOSC(qlcport, '/scene/36barresVert', 1), 
+            ] >> Discard(),
         ],
     ProgramFilter(6) >> [ # Forain Léger Avant Baroque - Bouton 6
         Program(67) >> cseqtrigger,
+        Program(1) >> actlead,
         abass_mute,
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 12),
@@ -1132,7 +1138,13 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlVert', 1), 
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            ] >> Discard(),
+
         ],
     ProgramFilter(7) >> [ # Barocko by MX - Bouton 7
         Program(71) >> cseqtrigger,
@@ -1152,7 +1164,11 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+
+        [
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            ] >> Discard()
         ],
     ProgramFilter(8) >> [ # Forain Léger Après Baroque sans machine - Bouton 8
         stop,
