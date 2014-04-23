@@ -1457,6 +1457,11 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         flutesolo_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36yulaBleu', 1),
+            SendOSC(qlcport, '/discours', 0),
+            ] >> Discard(),
 
         Program(117) >> seq24once,
         SceneSwitch(6)
@@ -1484,13 +1489,21 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         gtrdag_clean,
         bassorl_on,
-        flutesolo_off
+        flutesolo_off,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36barresViolet', 1)
+
+            ] >> Discard()
+
         ],
     ProgramFilter(3) >> [ # Acte III - Couplet Alterno - Bouton 3
         [
             Program(6),
             Program(7)
             ] >> Channel(2) >> seqtrigger,
+
+
         ],
     ProgramFilter(4) >> [ # Acte III - Couplet Ternaire - Bouton 4
         Program(66) >> cseqtrigger,
@@ -1510,7 +1523,13 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_clean,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1)
+
+
+            ] >> Discard()
         ],
     ProgramFilter(5) >> [ # Acte III - Couplet II - Secondo - Bouton 5
         Program(67) >> cseqtrigger,
