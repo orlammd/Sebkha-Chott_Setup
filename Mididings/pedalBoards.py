@@ -1372,7 +1372,12 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_clean,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36orlBleu', 1),
+            SendOSC(qlcport, '/scene/36yulaBleu', 1)
+            ] >> Discard()
         
         ],
     ProgramFilter(8) >> [ # Hell Entry Tutti - Bouton 8
@@ -1393,7 +1398,12 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_disto,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/36barresBleu', 1),
+            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1)
+            ] >> Discard()
         ],
     ProgramFilter(9) >> [ # Hip Hop ?? - Bouton 9
         Program(70) >> cseqtrigger,
@@ -1415,7 +1425,14 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_mute,
         gtrorl_clean,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/scene/36barresBleu', 1),
+            SendOSC(qlcport, '/scene/36orlBleu', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            SendOSC(qlcport, '/discours', 1),
+            ] >> Discard()
+        
         ],
     ProgramFilter(10) >> [ # Mises en place - Bouton 10
         Program(71) >> cseqtrigger,
