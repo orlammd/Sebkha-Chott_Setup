@@ -955,7 +955,8 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/stop', 1),
             SendOSC(qlcport, '/scene/36yulaBleu', 1),
             SendOSC(qlcport, '/scene/36barresViolet', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            SendOSC(qlcport, '/discours', 0),
             ] >> Discard()
         ],
     ProgramFilter(8) >> [ # Break Couplet - Bouton 8
@@ -1030,7 +1031,12 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            SendOSC(qlcport, '/discours', 1),
+            ] >> Discard(),
         ],
     ProgramFilter(11) >> [ # Switch to Forain Acte II - Bouton 11
         Program(115) >> seq24once,
@@ -1060,7 +1066,12 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_mute
+        bassorl_mute,
+        [
+            SendOSC(qlcport, '/stop', 1),
+            SendOSC(qlcport, '/discours', 0),
+            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1)
+            ] >> Discard()
         ],
     ProgramFilter(3) >> [ # Forain Acte II Drums - Bouton 3
         Program(6) >> Channel(2) >> seqtrigger,
@@ -1073,9 +1084,16 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
+
+        [
+            SendOSC(qlcport, '/scene/36barresVert', 1), 
+            ] >> Discard()
         ],
     ProgramFilter(4) >> [ # Forain Acte II Classical - Bouton 4
-        Program(13) >> Channel(2) >> seqtrigger
+        Program(13) >> Channel(2) >> seqtrigger,
+        [
+            SendOSC(qlcport, '/scene/36orlRouge', 1), 
+            ] >> Discard()
         ],
     ProgramFilter(5) >> [ # Forain Acte II Bîîîîm - Bouton 5
         Program(66) >> cseqtrigger,
