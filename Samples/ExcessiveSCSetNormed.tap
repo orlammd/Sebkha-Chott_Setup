@@ -44,7 +44,7 @@
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap1/Qclap1_101-127.flac" sampleRelative="Snares/QClap1/Qclap1_101-127.flac"/>
         </instrument>
         <instrument name="QClap2" minnote="62" maxnote="62" rootnote="62" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Snares" volume="1.050000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
-          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap2/QClap2_101-127.wav" sampleRelative="Snares/QClap2/QClap2_101-127.wav"/>
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Snares/QClap2/QClap2_101-127.flac" sampleRelative="Snares/QClap2/QClap2_101-127.flac"/>
         </instrument>
         <instrument name="TriggyKick" minnote="56" maxnote="56" rootnote="56" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="0.463333" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Kicks/FX_Kick1/FX_Kick1_101-127.wav" sampleRelative="Kicks/FX_Kick1/FX_Kick1_101-127.wav"/>

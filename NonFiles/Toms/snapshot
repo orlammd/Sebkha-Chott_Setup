@@ -1,15 +1,15 @@
 {
 	Group 0x7 create :name "Toms"
-	Mixer_Strip 0x1 create :name "Tom1" :width "narrow" :tab "signal" :color 661049370 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
+	Mixer_Strip 0x1 create :name "Tom1" :width "narrow" :tab "fader" :color 661049370 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x2 create :strip 0x1 :tab "chain"
 	JACK_Module 0x3 create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x2 :active 1
 	Plugin_Module 0x24 create :plugin_id 1042 :plugin_ins 1 :plugin_outs 1 :parameter_values "440,000000" :is_default 0 :chain 0x2 :active 1
 	Plugin_Module 0x26 create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:0,000000:200,000000:1,000000:0,000000:0,000000:400,000000:1,000000:0,000000:0,000000:1000,000000:1,000000:0,000000:1,000000:2000,000000:0,300000:8,000000" :is_default 0 :chain 0x2 :active 1
-	Gain_Module 0x4 create :parameter_values "-4,750000:0,000000" :is_default 1 :chain 0x2 :active 1
+	Gain_Module 0x4 create :parameter_values "-1,500000:0,000000" :is_default 1 :chain 0x2 :active 1
 	Meter_Module 0x5 create :is_default 1 :chain 0x2 :active 1
 	Mono_Pan_Module 0x14 create :parameter_values "0,300000" :is_default 0 :chain 0x2 :active 1
 	JACK_Module 0x6 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x2 :active 1
-	Mixer_Strip 0x8 create :name "Tom2" :width "narrow" :tab "signal" :color 1108364909 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
+	Mixer_Strip 0x8 create :name "Tom2" :width "narrow" :tab "fader" :color 1108364909 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x9 create :strip 0x8 :tab "chain"
 	JACK_Module 0xA create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x9 :active 1
 	Plugin_Module 0x25 create :plugin_id 1042 :plugin_ins 1 :plugin_outs 1 :parameter_values "180,000000" :is_default 0 :chain 0x9 :active 1
@@ -18,12 +18,12 @@
 	Meter_Module 0xC create :is_default 1 :chain 0x9 :active 1
 	Mono_Pan_Module 0x15 create :parameter_values "-0,400000" :is_default 0 :chain 0x9 :active 1
 	JACK_Module 0xD create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x9 :active 1
-	Mixer_Strip 0xE create :name "Tom3" :width "narrow" :tab "signal" :color 440037602 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
+	Mixer_Strip 0xE create :name "Tom3" :width "narrow" :tab "fader" :color 440037602 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0xF create :strip 0xE :tab "chain"
 	JACK_Module 0x10 create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0xF :active 1
 	Plugin_Module 0x29 create :plugin_id 1041 :plugin_ins 1 :plugin_outs 1 :parameter_values "2000,000000" :is_default 0 :chain 0xF :active 0
-	Plugin_Module 0x2A create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:1,000000:100,000000:0,700000:6,500000:1,000000:400,000000:0,300000:-10,000000:1,000000:580,000000:0,900000:-7,000000:1,000000:4200,000000:0,500000:8,000000" :is_default 0 :chain 0xF :active 1
-	Gain_Module 0x11 create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0xF :active 1
+	Plugin_Module 0x2A create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:1,000000:38,000000:0,900000:8,500000:1,000000:95,000000:0,200000:-14,500000:1,000000:580,000000:0,900000:-7,000000:1,000000:4200,000000:0,500000:8,000000" :is_default 0 :chain 0xF :active 1
+	Gain_Module 0x11 create :parameter_values "-0,500000:0,000000" :is_default 1 :chain 0xF :active 1
 	Meter_Module 0x12 create :is_default 1 :chain 0xF :active 1
 	Mono_Pan_Module 0x16 create :parameter_values "-0,520000" :is_default 0 :chain 0xF :active 1
 	JACK_Module 0x13 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0xF :active 1

@@ -3,7 +3,7 @@
 	Mixer_Strip 0x8 create :name "Drums" :width "narrow" :tab "fader" :color 329020416 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x9 create :strip 0x8 :tab "chain"
 	JACK_Module 0xA create :parameter_values "0,000000:2,000000" :is_default 1 :chain 0x9 :active 1
-	Gain_Module 0xB create :parameter_values "-70,000000:0,000000" :is_default 1 :chain 0x9 :active 1
+	Gain_Module 0xB create :parameter_values "3,000000:0,000000" :is_default 1 :chain 0x9 :active 1
 	Meter_Module 0xC create :is_default 1 :chain 0x9 :active 1
 	JACK_Module 0xD create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x9 :active 1
 	Mixer_Strip 0x1 create :name "Basses" :width "narrow" :tab "fader" :color 220181792 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
@@ -15,7 +15,7 @@
 	Mixer_Strip 0x2C create :name "Guitars" :width "narrow" :tab "fader" :color 489408325 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x2D create :strip 0x2C :tab "chain"
 	JACK_Module 0x2E create :parameter_values "0,000000:2,000000" :is_default 1 :chain 0x2D :active 1
-	Gain_Module 0x2F create :parameter_values "-3,880000:0,000000" :is_default 1 :chain 0x2D :active 1
+	Gain_Module 0x2F create :parameter_values "-7,000000:0,000000" :is_default 1 :chain 0x2D :active 1
 	Meter_Module 0x30 create :is_default 1 :chain 0x2D :active 1
 	JACK_Module 0x31 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x2D :active 1
 	Mixer_Strip 0x38 create :name "MxDrums" :width "narrow" :tab "fader" :color 1688695065 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
@@ -33,7 +33,7 @@
 	Mixer_Strip 0x3E create :name "Vocals" :width "narrow" :tab "fader" :color 14193278 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x3F create :strip 0x3E :tab "chain"
 	JACK_Module 0x40 create :parameter_values "0,000000:2,000000" :is_default 1 :chain 0x3F :active 1
-	Gain_Module 0x41 create :parameter_values "-13,380000:0,000000" :is_default 1 :chain 0x3F :active 1
+	Gain_Module 0x41 create :parameter_values "-9,000000:0,000000" :is_default 1 :chain 0x3F :active 1
 	Meter_Module 0x42 create :is_default 1 :chain 0x3F :active 1
 	JACK_Module 0x43 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x3F :active 1
 	Mixer_Strip 0xE create :name "BassORL" :width "narrow" :tab "fader" :color 1155617532 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
