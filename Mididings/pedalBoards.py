@@ -367,7 +367,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         bassorl_mute,
 
-        SendOSC(qlcport, '/discours', 1) >> Discard()
+        SendOSC(qlcport, '/Decoupes/Tyran/Dimmer', 255) >> Discard()
         
         ],
     ProgramFilter(5) >> [ # Every Machines Full - Bouton 5
