@@ -139,6 +139,9 @@
         <instrument name="HadGadya" minnote="24" maxnote="35" rootnote="28" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/HadGadia.flac" sampleRelative="Samples/HadGadia.flac"/>
         </instrument>
+        <instrument name="Intro" minnote="0" maxnote="0" rootnote="0" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
+          <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/intro.flac" sampleRelative="Samples/intro.flac"/>
+        </instrument>
       </kit>
     </setup>
   </creation>

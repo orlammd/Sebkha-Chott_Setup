@@ -28,6 +28,10 @@ klickport = 1234
 slport = 9951
 testport = 1111
 qlcport = ("CtrlRegie", 7770)
+#videoport
+qlcseqport = ("CtrlRegie", 12345)
+videoseqport = ("CtrlRegie", 12346)
+mainseqport = ("CtrlRegie", 12343)
 
 # Non Mixers
 mainmixport = 6666
@@ -288,8 +292,6 @@ acte0 = PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         bassorl_mute,
 
-        SendOSC(qlcport, '/test/chase2', 1) >> Discard()
-        
         ],
     ProgramFilter(3) >> [ # Every Machines - Bouton 3
         [
@@ -315,10 +317,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
 
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/discours', 0),
-            #            SendOSC(qlcport, '/test/chase2', 1),
-            SendOSC(qlcport, '/scene/introC', 1)
+            SendOSC(qlcseqport, '/Sequencer/Scene/Play', 'Entree Geminos'),
             ]>> Discard(),
         
         
