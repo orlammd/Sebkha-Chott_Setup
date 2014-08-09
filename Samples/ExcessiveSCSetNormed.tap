@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tapeutape version="0.1.0">
-  <options globalvolume="1.000000" max_polyphony="100">
+  <options globalvolume="0.750000" max_polyphony="100">
     <jack-output name="Snares"/>
     <jack-output name="Cymbales"/>
     <jack-output name="Continua"/>

@@ -291,30 +291,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
         SendOSC(qlcport, '/test/chase2', 1) >> Discard()
         
         ],
-    ProgramFilter(3) >> [ # Stop - Bouton 3
-        [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 7),
-            SendOSC(slport, '/set', 'tempo', 110),
-
-            SendOSC(klickport, '/klick/simple/set_tempo', 110),
-            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
-        Program(66) >> cseqtrigger,
-        abass_mute,
-        actlead_mute,
-        NoteOff('c#2', 0) >> actlead,
-
-        gtrorl_mute,
-        gtrdag_mute,
-        bassdag_mute,
-        bassorl_mute,
-
-        SendOSC(qlcport, '/discours', 1) >> Discard()
-        
-        ],
-    ProgramFilter(4) >> [ # Every Machines - Bouton 4
+    ProgramFilter(3) >> [ # Every Machines - Bouton 3
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 7),
             SendOSC(slport, '/set', 'tempo', 110),
@@ -346,6 +323,29 @@ acte0 = PortFilter('PBCtrlIn') >> [
         
         
         ],
+    ProgramFilter(4) >> [ # Stop - Bouton 4
+        [
+            SendOSC(slport, '/set', 'eighth_per_cycle', 7),
+            SendOSC(slport, '/set', 'tempo', 110),
+
+            SendOSC(klickport, '/klick/simple/set_tempo', 110),
+            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        Program(66) >> cseqtrigger,
+        abass_mute,
+        actlead_mute,
+        NoteOff('c#2', 0) >> actlead,
+
+        gtrorl_mute,
+        gtrdag_mute,
+        bassdag_mute,
+        bassorl_mute,
+
+        SendOSC(qlcport, '/discours', 1) >> Discard()
+        
+        ],
     ProgramFilter(5) >> [ # Every Machines Full - Bouton 5
 #        [
 #            SendOSC(slport, '/set', 'eighth_per_cycle', 7),
@@ -356,11 +356,22 @@ acte0 = PortFilter('PBCtrlIn') >> [
 #            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxxxXxx'),
 #            SendOSC(klickport, '/klick/metro/start'),
 #            ] >> Discard(),
-        Program(6) >> cseqtrigger,
+        [
+		Program(67),
+		Program(6)
+	] >> cseqtrigger,
         Program(3) >> actlead,
         Program(6) >> abass,
         Program(1) >> achords,
         Program(1) >> aclass,
+
+	[
+            SendOSC(klickport, '/klick/simple/set_tempo', 110),
+            SendOSC(klickport, '/klick/simple/set_meter', 14, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxxxXxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+	] >> Discard(),
+
 
         gtrdag_disto,
         gtrorl_mute,
