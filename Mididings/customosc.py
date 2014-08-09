@@ -28,6 +28,11 @@ class OSCCustomInterface(object):
             self.server.stop()
             del self.server
 
+    @_liblo.make_method('/Sequencer/Intro', 'i')
+    def intro_cb(self, path, args):
+        _engine.output_event(_event.NoteOnEvent('PBTapeutape', _util.NoDataOffset(9), 0, int(args[0])))
+        _engine.output_event(_event.ProgramEvent('PBCtrlOut', _util.NoDataOffset(1), 127))     
+
     @_liblo.make_method('/pedalBoard/button', 'i')
     def button_cb(self, path, args):
         # Anti-rebond

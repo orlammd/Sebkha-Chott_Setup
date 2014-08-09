@@ -270,6 +270,29 @@ dag_vxpedal = PortFilter('PBCtrlIn') >> [
 #### ACTE 0 ####
 acte0 = PortFilter('PBCtrlIn') >> [
     ProgramFilter(1) >> stop, # !!!STOP!!! #
+    ProgramFilter(127) >> [ # Intro - EXCEPTION
+        [
+            SendOSC(slport, '/set', 'eighth_per_cycle', 7),
+            SendOSC(slport, '/set', 'tempo', 110),
+
+            SendOSC(klickport, '/klick/simple/set_tempo', 110),
+            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        Program(66) >> cseqtrigger,
+        Program(2) >> achords,
+        Program(2) >> alead,
+        abass_mute,
+        actlead_mute,
+        NoteOff('c#2', 0) >> actlead,
+
+        gtrorl_mute,
+        gtrdag_mute,
+        bassdag_mute,
+        bassorl_mute,
+
+        ],
     ProgramFilter(2) >> [ # Intro - Bouton 2
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 7),
@@ -333,6 +356,8 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         Program(66) >> cseqtrigger,
+        Program(2) >> achords,
+        Program(2) >> alead,
         abass_mute,
         actlead_mute,
         NoteOff('c#2', 0) >> actlead,
