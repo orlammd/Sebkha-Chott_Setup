@@ -185,7 +185,8 @@ stop = [
 
         flutesolo_off,
 
-        SendOSC(qlcport, '/stop', 1),
+        SendOSC(qlcport, '/AllStop', 1),
+        SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
 ]
 
 
@@ -403,8 +404,9 @@ acte0 = PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/introD', 1),
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 440),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'FSF Bourrin', 1),
 #            SendOSC(qlcport, '/scene/introC', 0)
             ] >> Discard()
         ],
@@ -483,7 +485,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
         ],
     ProgramFilter(9) >> [ # Couplet - Bouton 9
         [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 7),
+            SendOSC(slport, '/set', 'eighth_per_cycle', 8),
             SendOSC(slport, '/set', 'tempo', 110),
 
             SendOSC(klickport, '/klick/simple/set_tempo', 110),
