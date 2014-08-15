@@ -7,8 +7,8 @@
 	JACK_Module 0x3 create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x2 :active 1
 	Plugin_Module 0x52 create :plugin_id 1041 :plugin_ins 1 :plugin_outs 1 :parameter_values "5400,000000" :is_default 0 :chain 0x2 :active 0
 	Plugin_Module 0x56 create :plugin_id 1916 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:35,000000:100,000000:-23,000000:10,000000:3,000000:4,600000" :is_default 0 :chain 0x2 :active 1
-	Plugin_Module 0x50 create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:1,000000:65,000000:0,700000:7,000000:0,000000:400,000000:1,000000:0,000000:1,000000:560,000000:1,300000:-9,000000:1,000000:4200,000000:0,200000:4,000000" :is_default 0 :chain 0x2 :active 1
-	Gain_Module 0x4 create :parameter_values "3,000000:0,000000" :is_default 1 :chain 0x2 :active 1
+	Plugin_Module 0x50 create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:0,000000:65,000000:0,700000:7,000000:0,000000:400,000000:1,000000:0,000000:1,000000:560,000000:1,300000:-9,000000:1,000000:4200,000000:0,200000:4,000000" :is_default 0 :chain 0x2 :active 1
+	Gain_Module 0x4 create :parameter_values "0,832001:0,000000" :is_default 1 :chain 0x2 :active 1
 	Meter_Module 0x5 create :is_default 1 :chain 0x2 :active 1
 	JACK_Module 0x6 create :parameter_values "1,000000:0,000000" :is_default 1 :chain 0x2 :active 1
 	Mixer_Strip 0x9 create :name "Snare" :width "narrow" :tab "fader" :color 1111174710 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
@@ -17,7 +17,7 @@
 	Plugin_Module 0x59 create :plugin_id 1042 :plugin_ins 1 :plugin_outs 1 :parameter_values "150,000000" :is_default 0 :chain 0xA :active 1
 	Plugin_Module 0x58 create :plugin_id 1916 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:35,000000:100,000000:-21,500000:8,000000:3,400000:6,000000" :is_default 0 :chain 0xA :active 1
 	Plugin_Module 0x5A create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:0,000000:200,000000:1,000000:0,000000:1,000000:650,000000:0,200000:-9,000000:1,000000:1350,000000:0,125000:-6,000000:1,000000:10000,000000:1,500000:-3,500000" :is_default 0 :chain 0xA :active 1
-	Gain_Module 0xC create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0xA :active 1
+	Gain_Module 0xC create :parameter_values "-70,000000:0,000000" :is_default 1 :chain 0xA :active 1
 	Meter_Module 0xD create :is_default 1 :chain 0xA :active 1
 	Mono_Pan_Module 0x57 create :parameter_values "0,420000" :is_default 0 :chain 0xA :active 1
 	JACK_Module 0xE create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0xA :active 1
@@ -25,21 +25,21 @@
 	Chain 0x17 create :strip 0x16 :tab "chain"
 	JACK_Module 0x18 create :parameter_values "0,000000:2,000000" :is_default 1 :chain 0x17 :active 1
 	Plugin_Module 0x5E create :plugin_id 1882 :plugin_ins 2 :plugin_outs 2 :parameter_values "0,000000:20,000000:140,000000:-20,500000:13,600000:3,250000:1,800000" :is_default 0 :chain 0x17 :active 1
-	Gain_Module 0x19 create :parameter_values "3,000000:0,000000" :is_default 1 :chain 0x17 :active 1
+	Gain_Module 0x19 create :parameter_values "-68,860001:0,000000" :is_default 1 :chain 0x17 :active 1
 	Meter_Module 0x1A create :is_default 1 :chain 0x17 :active 1
 	JACK_Module 0x1B create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x17 :active 1
 	Mixer_Strip 0x1C create :name "OH-L" :width "narrow" :tab "fader" :color 198182084 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x1D create :strip 0x1C :tab "chain"
 	JACK_Module 0x1E create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x1D :active 1
 	Plugin_Module 0x5B create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:0,000000:24,000000:1,700000:-20,000000:0,000000:400,000000:1,000000:0,000000:0,000000:1000,000000:1,000000:0,000000:1,000000:4400,000000:0,500000:4,000000" :is_default 0 :chain 0x1D :active 1
-	Gain_Module 0x1F create :parameter_values "-8,250000:0,000000" :is_default 1 :chain 0x1D :active 1
+	Gain_Module 0x1F create :parameter_values "-21,436001:0,000000" :is_default 1 :chain 0x1D :active 1
 	Meter_Module 0x20 create :is_default 1 :chain 0x1D :active 1
 	JACK_Module 0x21 create :parameter_values "1,000000:0,000000" :is_default 1 :chain 0x1D :active 1
 	Mixer_Strip 0x22 create :name "OH-R" :width "narrow" :tab "fader" :color 1571891143 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x23 create :strip 0x22 :tab "chain"
 	JACK_Module 0x24 create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x23 :active 1
 	Plugin_Module 0x5C create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:1,000000:100,000000:0,200000:-8,000000:1,000000:400,000000:0,600000:5,000000:0,000000:1000,000000:1,000000:0,000000:1,000000:3400,000000:0,500000:13,500000" :is_default 0 :chain 0x23 :active 1
-	Gain_Module 0x25 create :parameter_values "-8,250000:0,000000" :is_default 1 :chain 0x23 :active 1
+	Gain_Module 0x25 create :parameter_values "-21,284000:0,000000" :is_default 1 :chain 0x23 :active 1
 	Meter_Module 0x26 create :is_default 1 :chain 0x23 :active 1
 	JACK_Module 0x27 create :parameter_values "1,000000:0,000000" :is_default 1 :chain 0x23 :active 1
 }

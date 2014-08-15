@@ -28,8 +28,9 @@ klickport = 1234
 slport = 9951
 testport = 1111
 qlcport = ("CtrlRegie", 7770)
+#qlcport = 7777
 #videoport
-qlcseqport = ("CtrlRegie", 12345)
+qlcseqport = 12345 #("CtrlRegie", 12345)
 videoseqport = ("CtrlRegie", 12346)
 mainseqport = ("CtrlRegie", 12343)
 
@@ -102,8 +103,14 @@ actlead_mute = Program(6) >> actlead
 #### Guitars ####
 
 # Dag
+gtrdag_octaverdown = SendOSC(guitarsport, '/strip/FX_Gtr_Dag_2/AM%20pitchshifter/Pitch%20shift', 0.0655) >> Discard()
+gtrdag_octavernull = SendOSC(guitarsport, '/strip/FX_Gtr_Dag_2/AM%20pitchshifter/Pitch%20shift', 0.2) >> Discard()
+
 gtrdag_mute = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 1.0) >> Discard()
-gtrdag_on = SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0) >> Discard()
+gtrdag_on = [
+    SendOSC(guitarsport, '/strip/Guitar_Dag/Gain/Mute', 0.0),
+    gtrdag_octavernull
+    ] >> Discard()
 gtrdag_clean = [
     Program(3) >> guitardag,
     gtrdag_on
@@ -148,8 +155,15 @@ bassorl_mute = [
     SendOSC(bassesport, '/strip/BassFX_ORL/Gain/Mute', 1.0)
     ] >> Discard()
 bassorl_on = [
+    SendOSC(bassesport, '/strip/Oct_Bass_ORL/Gain/Mute', 1.0),
     SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 0.0),
     SendOSC(bassesport, '/strip/BassFX_ORL/Gain/Mute', 0.0)
+    ] >> Discard()
+bassorl_octaver_on = [
+    SendOSC(bassesport, '/strip/Oct_Bass_ORL/Gain/Mute', 0.0),
+    ] >> Discard()
+bassorl_octaver_off = [
+    SendOSC(bassesport, '/strip/Oct_Bass_ORL/Gain/Mute', 1.0),
     ] >> Discard()
 
 #### Vocals ####
@@ -185,8 +199,10 @@ stop = [
 
         flutesolo_off,
 
-        SendOSC(qlcport, '/AllStop', 1),
-        SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+        [
+            SendOSC(qlcport, '/AllStop', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            ] >> Discard()
 ]
 
 
@@ -404,9 +420,9 @@ acte0 = PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'FSF Bourrin', 1),
             SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
             SendOSC(qlcseqport, '/Sequencer/Set_bpm', 440),
-            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'FSF Bourrin', 1),
 #            SendOSC(qlcport, '/scene/introC', 0)
             ] >> Discard()
         ],
@@ -420,6 +436,16 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
+
+            SendOSC(qlcport, '/AllStop', 1),
+            SendOSC(qlcport, '/CC/Red/Segment/4', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/4', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/5', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/5', 255),
             ] >> Discard(),
 
         gtrdag_disto,
@@ -450,9 +476,17 @@ acte0 = PortFilter('PBCtrlIn') >> [
         bassdag_on,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/refrainActe0', 1),
-            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
+            SendOSC(qlcport, '/CC/Blue/Segment/All', 0),
+            SendOSC(qlcport, '/CJ/Blue/Segment/All', 0),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'Theme', 1),
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 440),
             ] >> Discard()
         ],
     ProgramFilter(8) >> [ # Couplet - Bouton 8
@@ -464,6 +498,18 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'Theme', 0),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'Couplet', 1),
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 440),
+            SendOSC(qlcport, '/BC/White/Segment/All', 0),
+            SendOSC(qlcport, '/BJ/White/Segment/All', 0),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 0),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 0),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 180),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 180),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 180),
             ] >> Discard(),
         Program(70) >> cseqtrigger,
         actlead_mute,
@@ -492,7 +538,12 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
+
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 180),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 180),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 180),
             ] >> Discard(),
+        SubSceneSwitch(2),
         Program(70) >> cseqtrigger,
         actlead_mute,
         Program(6) >> abass,
@@ -521,6 +572,9 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
+
+            SendOSC(qlcport, '/BC/Red/Segment/All', 70),
+            SendOSC(qlcport, '/BJ/Red/Segment/All', 70),
             ] >> Discard(),
         Program(71) >> cseqtrigger,
         actlead_mute,
@@ -534,11 +588,6 @@ acte0 = PortFilter('PBCtrlIn') >> [
         bassorl_mute,
         bassdag_on,
 
-        [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlRouge', 1),
-            SendOSC(qlcport, '/scene/barresRouges', 1)
-            ] >> Discard()
         ],
     ProgramFilter(11) >> [ # Intro classique - Bouton 11
         stop,
@@ -551,6 +600,16 @@ acte0 = PortFilter('PBCtrlIn') >> [
 #            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
 #            SendOSC(klickport, '/klick/metro/start'),
 #            ] >> Discard(),
+        [
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 20),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 20),
+            ] >> Discard(),
+    
+    
+
         gtrorl_mute,
         gtrdag_mute,
         bassorl_mute,
@@ -559,12 +618,6 @@ acte0 = PortFilter('PBCtrlIn') >> [
         SceneSwitch(2),
         ],
 
-    [
-        SendOSC(qlcport, '/stop', 1),
-        SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
-        ] >> Discard()
-    
-    
     ]
 
 #### ACTE 1 ####
@@ -594,9 +647,26 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
-            SendOSC(qlcport, '/scene/36orlRouge', 1)
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 150),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 150),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 150),
+
+            SendOSC(qlcport, '/CC/Red/Segment/1', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/1', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/3', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/3', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/3', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/3', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/5', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/5', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/7', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/7', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/7', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/7', 80),
             ] >> Discard()
         ],
     ProgramFilter(3) >> [ # Intro Up - Bouton 3
@@ -629,10 +699,31 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlRouge', 1),
-            SendOSC(qlcport, '/scene/flip36yulaOrange', 1),
-            
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 150),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 150),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 150),
+
+            SendOSC(qlcport, '/CC/Red/Segment/1', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/1', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/3', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/3', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/3', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/3', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/5', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/5', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/7', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/7', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/7', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/7', 80),
+
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AI Couplet', 1),
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
             ] >> Discard()
 
         ],
@@ -662,10 +753,31 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlRouge', 1),
-            SendOSC(qlcport, '/scene/barresRouges', 1),
-            SendOSC(qlcport, '/scene/flip36yulaOrange', 1),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
+
+            SendOSC(qlcport, '/CC/Red/Segment/1', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/1', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/3', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/3', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/3', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/3', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/5', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/5', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/7', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/7', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/7', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/7', 80),
+
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AI Couplet', 1),
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
             
             ] >> Discard()
         ],
@@ -674,6 +786,44 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             Program(19),
             Program(22)
             ] >> Channel(2) >> seqtrigger,
+
+        [
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
+
+            SendOSC(qlcport, '/CC/Red/Segment/1', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/1', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/3', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/3', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/3', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/3', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/5', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/5', 80),
+            SendOSC(qlcport, '/CC/Red/Segment/7', 150),
+            SendOSC(qlcport, '/CJ/Red/Segment/7', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/7', 80),
+            SendOSC(qlcport, '/CJ/Green/Segment/7', 80),
+
+            SendOSC(qlcport, '/BC/Red/Segment/1', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/3', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/5', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/7', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
+
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AI Couplet', 1),
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
+            
+            ] >> Discard()
         ],
     ProgramFilter(7) >> [ # Debut Riff MathoMagma - Bouton 7
         Program(68) >> cseqtrigger,
@@ -700,8 +850,36 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AI Pont Guitare', 1),
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
+
+            SendOSC(qlcport, '/CC/Red/Segment/1', 0),
+            SendOSC(qlcport, '/CJ/Red/Segment/1', 0),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 0),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 0),
+            SendOSC(qlcport, '/CC/Red/Segment/3', 0),
+            SendOSC(qlcport, '/CJ/Red/Segment/3', 0),
+            SendOSC(qlcport, '/CC/Green/Segment/3', 0),
+            SendOSC(qlcport, '/CJ/Green/Segment/3', 0),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 0),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 0),
+            SendOSC(qlcport, '/CC/Green/Segment/5', 0),
+            SendOSC(qlcport, '/CJ/Green/Segment/5', 0),
+            SendOSC(qlcport, '/CC/Red/Segment/7', 0),
+            SendOSC(qlcport, '/CJ/Red/Segment/7', 0),
+            SendOSC(qlcport, '/CC/Green/Segment/7', 0),
+            SendOSC(qlcport, '/CJ/Green/Segment/7', 0),
+
+            SendOSC(qlcport, '/BC/Red/Segment/1', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/3', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/5', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/7', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
             ] >> Discard()
         
         ],
@@ -730,8 +908,26 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/barresRouges', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+
+
+            SendOSC(qlcport, '/CC/Green/Segment/1', 120),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 120),
+            SendOSC(qlcport, '/CC/Green/Segment/3', 120),
+            SendOSC(qlcport, '/CJ/Green/Segment/3', 120),
+            SendOSC(qlcport, '/CC/Green/Segment/5', 120),
+            SendOSC(qlcport, '/CJ/Green/Segment/5', 120),
+            SendOSC(qlcport, '/CC/Green/Segment/7', 120),
+            SendOSC(qlcport, '/CJ/Green/Segment/7', 120),
+
+            SendOSC(qlcport, '/BC/Red/Segment/1', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/3', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/5', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/7', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
             ] >> Discard()
         ],
     ProgramFilter(9) >> [ # MathoMag II - Bouton 9
@@ -761,8 +957,26 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36yulaBlanc', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(qlcseqport, '/Sequencer/Scene/Play', 'AI MathoMag II'), 
+            
+            SendOSC(qlcport, '/CC/Green/Segment/1', 120),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 120),
+            SendOSC(qlcport, '/CC/Green/Segment/3', 120),
+            SendOSC(qlcport, '/CJ/Green/Segment/3', 120),
+            SendOSC(qlcport, '/CC/Green/Segment/5', 120),
+            SendOSC(qlcport, '/CJ/Green/Segment/5', 120),
+            SendOSC(qlcport, '/CC/Green/Segment/7', 120),
+            SendOSC(qlcport, '/CJ/Green/Segment/7', 120),
+
+            SendOSC(qlcport, '/BC/Red/Segment/1', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/3', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/5', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
+            SendOSC(qlcport, '/BC/Red/Segment/7', 120),
+            SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
             ] >> Discard()
         ],
     ProgramFilter(10) >> [ # DeathoDeb - Bouton 10
@@ -790,11 +1004,21 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassorl_mute,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AI Metal',1),
+            
+            SendOSC(qlcport, '/CC/Blue/Segment/All', 200),
+            SendOSC(qlcport, '/CJ/Blue/Segment/All', 200),
+            SendOSC(qlcport, '/CC/Green/Segment/All', 200),
+            SendOSC(qlcport, '/CJ/Green/Segment/All', 200),
+            
             ] >> Discard()
         ],
-    ProgramFilter(11) >> [ # Forain I - Bouton 11
+    ProgramFilter(11) >> [ # Forain I / Strange World - Bouton 11
         Program(72) >> cseqtrigger,
         
         Program(7) >> achords,
@@ -818,10 +1042,21 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
-            SendOSC(qlcport, '/scene/introD', 1),
-            SendOSC(qlcport, '/scene/36orlOrange', 1)
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AI Forain',1),
+            
+            SendOSC(qlcport, '/BC/Red/Segment/All', 80),
+            SendOSC(qlcport, '/BC/Green/Segment/All', 80),
+            SendOSC(qlcport, '/BJ/Red/Segment/All', 80),
+            SendOSC(qlcport, '/BJ/Green/Segment/All', 80),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+            
             ] >> Discard()
         ],
     
@@ -850,9 +1085,21 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassorl_mute,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/test/chase2', 1),
-            SendOSC(qlcport, '/discours', 1)
+
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+                        
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 200),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 200),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 200),
+            SendOSC(qlcport, '/CC/Blue/Segment/1', 200),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 200),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 200),
+            SendOSC(qlcport, '/CJ/Blue/Segment/8', 200),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 200),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+     
             ] >> Discard()
         ],
 #    ProgramFilter(3) >> [ # Sample Had Gadya - Bouton 3
@@ -876,12 +1123,21 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         gtrorl_mute,
         bassorl_on,
+        bassorl_octaver_on,
+        gtrdag_octaverdown,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1),
-            SendOSC(qlcport, '/scene/barresRouges', 1),
-            SendOSC(qlcport, '/discours', 0)
+     
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+                        
+            SendOSC(qlcport, '/BC/Blue/Segment/All', 210),
+            SendOSC(qlcport, '/BJ/Blue/Segment/All', 210),
+            SendOSC(qlcport, '/CJ/Blue/Segment/All', 210),
+            SendOSC(qlcport, '/CC/Blue/Segment/All', 210),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+     
             ] >> Discard()
         ],
     # ProgramFilter(4) >> [ # Pont Had Gadya - Bouton 4
@@ -929,17 +1185,28 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlBleu', 1),
-            SendOSC(qlcport, '/discours', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(qlcseqport, '/Sequencer/Scene/Play', 'AII HG2'), 
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 200),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 200),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 200),
+            SendOSC(qlcport, '/CC/Blue/Segment/1', 200),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 200),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 200),
+            SendOSC(qlcport, '/CJ/Blue/Segment/8', 200),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 200),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255)
+
             ] >> Discard()
         ],
     ProgramFilter(5) >> [ # Lumières - bouton 5
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36Blanc', 1),
-            SendOSC(qlcport, '/scene/introD', 1),
-            SendOSC(qlcport, '/discours', 0)
+            # SendOSC(qlcport, '/stop', 1),
+            # SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            # SendOSC(qlcport, '/scene/introD', 1),
+            # SendOSC(qlcport, '/discours', 0)
             ] >> Discard()
         ],
     ProgramFilter(6) >> [ # Debut Couplet - Bouton 6
@@ -962,9 +1229,17 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlBleu', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 150),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 150),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255)
             ] >> Discard()
         
         ],
@@ -989,11 +1264,17 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36yulaBleu', 1),
-            SendOSC(qlcport, '/scene/36barresViolet', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
-            SendOSC(qlcport, '/discours', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 150),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 150),
+            SendOSC(qlcport, '/BC/Blue/Segment/4', 150),
+            SendOSC(qlcport, '/BJ/Blue/Segment/4', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 150),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 150),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0)
             ] >> Discard()
         ],
     ProgramFilter(8) >> [ # Break Couplet - Bouton 8
@@ -1017,10 +1298,8 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-#            SendOSC(qlcport, '/scene/36yulaBleu', 1),
-            SendOSC(qlcport, '/scene/flip36Blanc', 1),
-            SendOSC(qlcport, '/scene/introD', 1)
+            SendOSC(qlcport, '/AllStop', 1),
+            SendOSC(qlcseqport, 'Sequencer/Scene/Play', 'AII MEP')
             ] >> Discard()
         ],
     ProgramFilter(9) >> [ # Couplet Part II - Bouton 9
@@ -1047,9 +1326,17 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlBleu', 1),
-            SendOSC(qlcport, '/scene/36barresBleu', 1),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 150),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 150),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255)
             ] >> Discard()
         ],
     ProgramFilter(10) >> [ # Solo Basse - Bouton 10
@@ -1070,9 +1357,17 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
-            SendOSC(qlcport, '/discours', 1),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 150),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 150),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255)
             ] >> Discard(),
         ],
     ProgramFilter(11) >> [ # Switch to Forain Acte II - Bouton 11
@@ -1105,9 +1400,14 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_mute,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/discours', 0),
-            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1)
+            SendOSC(qlcport, '/AllStop', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 150),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase1',1),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase2',1),
             ] >> Discard()
         ],
     ProgramFilter(3) >> [ # Forain Acte II Drums - Bouton 3
@@ -1122,15 +1422,12 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
 
-        [
-            SendOSC(qlcport, '/scene/36barresVert', 1), 
-            ] >> Discard()
         ],
     ProgramFilter(4) >> [ # Forain Acte II Classical - Bouton 4
         Program(13) >> Channel(2) >> seqtrigger,
-        [
-            SendOSC(qlcport, '/scene/36orlRouge', 1), 
-            ] >> Discard()
+        # [
+        #     SendOSC(qlcport, '/scene/36orlRouge', 1), 
+        #     ] >> Discard()
         ],
     ProgramFilter(5) >> [ # Forain Acte II Bîîîîm - Bouton 5
         Program(66) >> cseqtrigger,
@@ -1154,10 +1451,15 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36Blanc', 1),
-            SendOSC(qlcport, '/scene/36barresVert', 1), 
-            ] >> Discard(),
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 600),
+            ] >> Discard()
+
+        # [
+        #     SendOSC(qlcport, '/stop', 1),
+        #     SendOSC(qlcport, '/scene/flip36Blanc', 1),
+        #     SendOSC(qlcport, '/scene/36barresVert', 1), 
+        #     ] >> Discard(),
         ],
     ProgramFilter(6) >> [ # Forain Léger Avant Baroque - Bouton 6
         Program(67) >> cseqtrigger,
@@ -1177,15 +1479,23 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlVert', 1), 
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 150),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 150),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 150),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255)
             ] >> Discard(),
 
         ],
     ProgramFilter(7) >> [ # Barocko by MX - Bouton 7
         Program(71) >> cseqtrigger,
-        abass_mute,
+        Program(1) >> abass,
         actlead_mute,
         Program(9) >> alead,
         Program(8) >> achords,
@@ -1204,7 +1514,17 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
 
         [
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 0),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 0),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 150),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 150),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 150)
             ] >> Discard()
         ],
     ProgramFilter(8) >> [ # Forain Léger Après Baroque sans machine - Bouton 8
@@ -1225,7 +1545,12 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/scene/36orlOrange', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 150),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase3',1),            
             ] >> Discard()
         ],
     ProgramFilter(9) >> [ # Forain Léger Après Baroque avec machines - Bouton 9
@@ -1247,7 +1572,10 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/scene/36yulaOrange', 1),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 255),
             ] >> Discard()
         ],
     ProgramFilter(10) >> [ # Forain Solo flûte - Bouton 10
@@ -1270,9 +1598,14 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36Blanc', 1),
-            SendOSC(qlcport, '/scene/36barresOrange', 1),
+            SendOSC(qlcport, '/AllStop', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 600),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase1',1),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase2',1),
             ] >> Discard(),
 
         Program(116) >> seq24once,
@@ -1304,8 +1637,11 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         bassorl_mute,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            SendOSC(qlcport, '/AllStop', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 150),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 150),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 150)
             ] >> Discard(),
         ],
     ProgramFilter(3) >> [ # Hell Entry - Bouton 3
@@ -1328,8 +1664,10 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         bassorl_mute,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1)
+            SendOSC(qlcport, '/CC/Green/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 255),
             ] >> Discard(),
         
         ],
@@ -1351,8 +1689,11 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlBleu', 1),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 255),
             ] >> Discard()
         
         ],
@@ -1386,9 +1727,19 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36barresBleu', 1),
-            SendOSC(qlcport, '/scene/flip36Blanc', 1)
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 180),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase4',1),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase5',1),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 0),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 0),
+            SendOSC(qlcport, '/BC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/All', 255),
             ] >> Discard()
         ],
     ProgramFilter(7) >> [ # Couplet v2 - Bouton 7
@@ -1411,9 +1762,14 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlBleu', 1),
-            SendOSC(qlcport, '/scene/36yulaBleu', 1)
+            SendOSC(qlcport, '/BC/Red/Segment/All', 0),
+            SendOSC(qlcport, '/BJ/Red/Segment/All', 0),
+            SendOSC(qlcport, '/CC/Green/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 255),
             ] >> Discard()
         
         ],
@@ -1437,9 +1793,19 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36barresBleu', 1),
-            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1)
+            SendOSC(qlcport, '/CC/Green/Segment/1', 0),
+            SendOSC(qlcport, '/CJ/Green/Segment/1', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 0),
+            SendOSC(qlcport, '/CC/Blue/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/All', 255),
+
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 120),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase3',1),
             ] >> Discard()
         ],
     ProgramFilter(9) >> [ # Hip Hop ?? - Bouton 9
@@ -1464,10 +1830,18 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         bassorl_on,
         [
-            SendOSC(qlcport, '/scene/36barresBleu', 1),
-            SendOSC(qlcport, '/scene/36orlBleu', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
-            SendOSC(qlcport, '/discours', 1),
+            SendOSC(qlcport, '/CC/Blue/Segment/All', 0),
+            SendOSC(qlcport, '/CJ/Blue/Segment/All', 0),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
+
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 120),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase6',1),
             ] >> Discard()
         
         ],
@@ -1495,9 +1869,19 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
         flutesolo_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36yulaBleu', 1),
-            SendOSC(qlcport, '/discours', 0),
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+
+            SendOSC(qlcport, '/CC/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/5', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/5', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/4', 200),
+            SendOSC(qlcport, '/CJ/Red/Segment/4', 200),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 200),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 200),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
             ] >> Discard(),
 
         Program(117) >> seq24once,
@@ -1528,8 +1912,23 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
         flutesolo_off,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36barresViolet', 1)
+            SendOSC(qlcport, '/CC/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/5', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/5', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/4', 200),
+            SendOSC(qlcport, '/CJ/Red/Segment/4', 200),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 200),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 200),
+
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/1', 200),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 200),
+            SendOSC(qlcport, '/BC/Red/Segment/8', 200),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 200),
 
             ] >> Discard()
 
@@ -1562,10 +1961,12 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1)
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 120),
 
-
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase5',1),
             ] >> Discard()
         ],
     ProgramFilter(5) >> [ # Acte III - Couplet II - Secondo - Bouton 5
@@ -1587,11 +1988,30 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36Blanc', 1),
+            SendOSC(qlcport, '/CC/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/5', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/5', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/4', 200),
+            SendOSC(qlcport, '/CJ/Red/Segment/4', 200),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 200),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 200),
 
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/1', 200),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 200),
+            SendOSC(qlcport, '/BC/Red/Segment/8', 200),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 200),
 
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 240),
 
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase6',1),
             ] >> Discard()
         ],
     ProgramFilter(6) >> [ # 6/8 Safety Bourre - Bouton 6
@@ -1614,9 +2034,26 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36barresBleu', 1),
-            SendOSC(qlcport, '/scene/flip36Blanc', 1)
+            SendOSC(qlcport, '/CC/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/CJ/Blue/Segment/4', 0),
+            SendOSC(qlcport, '/CC/Blue/Segment/5', 0),
+            SendOSC(qlcport, '/CJ/Blue/Segment/5', 0),
+            SendOSC(qlcport, '/CC/Red/Segment/4', 0),
+            SendOSC(qlcport, '/CJ/Red/Segment/4', 0),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 0),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 0),
+
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/1', 0),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BJ/Blue/Segment/8', 0),
+            SendOSC(qlcport, '/BC/Red/Segment/1', 0),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 0),
+            SendOSC(qlcport, '/BC/Red/Segment/8', 0),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 0),
+
+            SendOSC(qlcport, '/BC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/All', 255),
             ] >> Discard()
         ],
     ProgramFilter(7) >> [ # Solo guitare arpège - Bouton 7
@@ -1640,9 +2077,10 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         bassorl_mute,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlBleu', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1)
+            SendOSC(qlcport, '/BC/Red/Segment/All', 0),
+            SendOSC(qlcport, '/BJ/Red/Segment/All', 0),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
             ] >> Discard()
         
         ],
@@ -1667,9 +2105,11 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         bassorl_mute,
         [
-            SendOSC(qlcport, '/scene/36orlBleu', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
-            SendOSC(qlcport, '/discours', 1),
+            SendOSC(qlcport, '/BC/Red/Segment/All', 50),
+            SendOSC(qlcport, '/BJ/Red/Segment/All', 50),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
             ] >> Discard()
         
         ],
@@ -1693,9 +2133,13 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_disto,
         bassorl_mute,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/introD', 1),
-            SendOSC(qlcport, '/discours', 0),
+            SendOSC(qlcport, '/BC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
             ] >> Discard()
         ],
     ProgramFilter(10) >> [ # Solo batterie - Bouton 10
@@ -1716,9 +2160,11 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1),
-            SendOSC(qlcport, '/scene/decoupeJeannotFull', 1),
+            SendOSC(qlcport, '/BC/Red/Segment/All', 100),
+            SendOSC(qlcport, '/BJ/Red/Segment/All', 100),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 100),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 100),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
             ] >> Discard()
         
         
@@ -1744,7 +2190,15 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
     ]
 acte3partIII =	PortFilter('PBCtrlIn') >> [ 
     ProgramFilter(1) >> stop, # !!!STOP!!! #
-    ProgramFilter(2) >> [ # 13/8 Prog - Bouton 2
+    ProgramFilter(2) >> [ # 13/8 Prog Guitar - Bouton 2
+        gtrdag_clean,
+        gtrdag_octaverdown,
+        [
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            ] >> Discard()
+        ],
+    ProgramFilter(3) >> [ # 13/8 Prog - Bouton 3
         Program(65) >> cseqtrigger,
         
         Program(1) >> abass,
@@ -1764,61 +2218,76 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
 
         bassdag_mute,
         gtrdag_clean,
+        gtrdag_octaverdown,
         gtrorl_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlRouge', 1),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
             ] >> Discard()
 
         ],
-    ProgramFilter(3) >> [ # 13/8 Prog bourrin - Bouton 3
-        Program(66) >> cseqtrigger,
+    # ProgramFilter(3) >> [ # 13/8 Prog bourrin - Bouton 3
+    #     Program(66) >> cseqtrigger,
         
-        Program(1) >> abass,
-        Program(1) >> achords,
-        actlead_mute,
+    #     Program(1) >> abass,
+    #     Program(1) >> achords,
+    #     actlead_mute,
         
-        [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 26),
-            SendOSC(slport, '/set', 'tempo', 180),
+    #     [
+    #         SendOSC(slport, '/set', 'eighth_per_cycle', 26),
+    #         SendOSC(slport, '/set', 'tempo', 180),
             
-            SendOSC(slport, '/sl/2/hit', 'pause_on'),
-            SendOSC(klickport, '/klick/simple/set_tempo', 180),
-            SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
+    #         SendOSC(slport, '/sl/2/hit', 'pause_on'),
+    #         SendOSC(klickport, '/klick/simple/set_tempo', 180),
+    #         SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
+    #         SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+    #         SendOSC(klickport, '/klick/metro/start'),
+    #         ] >> Discard(),
         
-        bassdag_mute,
-        gtrdag_disto,
-        gtrorl_mute,
-        bassorl_on
-        ],
-    ProgramFilter(4) >> [ # 13/8 Prog en G - Bouton 4
-        Program(67) >> cseqtrigger,
+    #     bassdag_mute,
+    #     gtrdag_disto,
+    #     gtrorl_mute,
+    #     bassorl_on
+    #     ],
+    # ProgramFilter(4) >> [ # 13/8 Prog en G - Bouton 4
+    #     Program(67) >> cseqtrigger,
         
-        Program(1) >> abass,
-        Program(10) >> achords,
-        actlead_mute,
+    #     Program(1) >> abass,
+    #     Program(10) >> achords,
+    #     actlead_mute,
         
-        [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 26),
-            SendOSC(slport, '/set', 'tempo', 180),
+    #     [
+    #         SendOSC(slport, '/set', 'eighth_per_cycle', 26),
+    #         SendOSC(slport, '/set', 'tempo', 180),
             
-            SendOSC(slport, '/sl/2/hit', 'pause_on'),
-            SendOSC(klickport, '/klick/simple/set_tempo', 180),
-            SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
+    #         SendOSC(slport, '/sl/2/hit', 'pause_on'),
+    #         SendOSC(klickport, '/klick/simple/set_tempo', 180),
+    #         SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
+    #         SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+    #         SendOSC(klickport, '/klick/metro/start'),
+    #         ] >> Discard(),
         
-        bassdag_mute,
-        gtrdag_clean,
-        gtrorl_mute,
-        bassorl_on
+    #     bassdag_mute,
+    #     gtrdag_clean,
+    #     gtrorl_mute,
+    #     bassorl_on
 
-        ],
+    #     ],
     ProgramFilter(5) >> [ # Metal - Bouton 5
         Program(68) >> cseqtrigger,
         
@@ -1842,9 +2311,28 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         gtrorl_disto,
         bassorl_mute,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1),
-            SendOSC(qlcport, '/scene/barresRouges', 1), 
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/6', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/6', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/6', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/6', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/8', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
             ] >> Discard()
 
         ],
@@ -1855,14 +2343,35 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         Program(10) >> achords,
         Program(10) >> actlead,
         [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 14),
-            SendOSC(slport, '/set', 'tempo', 180),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/6', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/6', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/6', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/6', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/8', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
+
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
             
-            SendOSC(slport, '/sl/2/hit', 'pause_on'),
-            SendOSC(klickport, '/klick/simple/set_tempo', 180),
-            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxXxXxx'),
-            SendOSC(klickport, '/klick/metro/start'),
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 720),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase6',1),
             ] >> Discard(),
         
         bassdag_mute,
@@ -1907,8 +2416,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         bassorl_mute,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlBlanc', 1),
+            SendOSC(qlcport, '/AllStop', 1),
+            SendOSC(qlcseqport, '/DisableAll', 1),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
             ] >> Discard()
         ],
     ProgramFilter(3) >> [ # Seconde occurrence machines Mises en place - Bouton 3
@@ -1930,8 +2442,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36yulaRouge', 1),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
             ] >> Discard()
         ],
     ProgramFilter(4) >> [ # Troisième occurrence machines Carmeno Saoule 2 - Bouton 4
@@ -1954,8 +2469,11 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         gtrorl_disto,
         bassorl_mute,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/36orlBlanc', 1),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
             ] >> Discard()
         ],
     ProgramFilter(5) >> [ # Début basse Your Soul - Bouton 5
@@ -1978,8 +2496,14 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         gtrorl_disto,
         bassorl_on,
         [
-            SendOSC(qlcport, '/stop', 1),
-            SendOSC(qlcport, '/scene/flip36yulaBlanc', 1),
+            SendOSC(qlcport, '/AllStop', 1),            
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 120),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase6',1),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase3',1),
             ] >> Discard()
         ],
     ProgramFilter(6) >> [ # Bouclage des basses - Bouton 6
@@ -1988,7 +2512,10 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/sl/1/hit', 'record')
             ] >> Discard(),
         [
-            SendOSC(qlcport, '/scene/36orlRouge', 1),
+            SendOSC(qlcport, '/BC/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
             ] >> Discard()
         ],
     ProgramFilter(7) >> [ # Bouclage des voix - Bouton 7
@@ -2016,7 +2543,14 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/sl/3/hit', 'record')
             ] >> Discard(),
         [
-            SendOSC(qlcport, '/scene/barresRouges', 1),
+            SendOSC(qlcport, '/BC/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/3', 255),
+            SendOSC(qlcport, '/BC/Red/Segment/5', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/5', 255),
             ] >> Discard()
         ],
     ProgramFilter(10) >> [ # Bouclage guitares - Bouton 10
@@ -2029,6 +2563,7 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         [
 
             SendOSC(slport, '/sl/-1/set', 'dry', 0),
+            SendOSC(slport, '/sl/4/set', 'dry', 1),
             SendOSC(slport, '/sl/-1/hit', 'reverse'),
             SendOSC(slport, '/sl/-1/set', 'rate', 0.5),
 
