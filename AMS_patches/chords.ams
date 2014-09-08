@@ -1,6 +1,5 @@
-Module 7 1 1178 0 0 0
-ColorP 0 0 1 44 250 200 50 180 180 180
-ColorP 1 1 1 44 250 200 50 180 180 180
+Module 7 1 1101 77 0 0
+ColorP 0 0 1 4 250 200 50 180 180 180
 FSlider 1 0 1419 0 0 16384 1
 FSlider 1 1 16384 0 0 16384 1
 FSlider 1 2 16384 0 0 16384 1
@@ -11,9 +10,9 @@ ColorP 0 0 4 41 250 200 50 180 180 180
 ColorP 2 0 4 20 250 200 50 180 180 180
 FSlider 4 0 0 0 0 163840 1
 FSlider 4 1 0 0 0 163840 1
-FSlider 4 2 16292 0 0 32768 1
+FSlider 4 2 18181 0 0 32768 1
 FSlider 4 3 18672 0 0 32768 1
-FSlider 4 4 24347 0 0 32768 1
+FSlider 4 4 32768 0 0 32768 1
 Module 10 12 14 35 0 0
 FSlider 12 0 129 0 -16384 129 1
 ISlider 12 0 24 1
@@ -34,9 +33,9 @@ ColorP 0 0 20 16 250 200 50 180 180 180
 ColorP 1 3 20 28 250 200 50 180 180 180
 ColorP 2 0 20 42 250 200 50 180 180 180
 FSlider 20 0 163840 0 -983040 163840 1
-FSlider 20 1 -81920 0 -81920 81920 1
-FSlider 20 2 0 0 0 163840 1
-FSlider 20 3 7482 0 0 16384 1
+FSlider 20 1 4515 0 -81920 81920 1
+FSlider 20 2 59343 0 0 163840 1
+FSlider 20 3 10965 0 0 16384 1
 FSlider 20 4 0 0 0 16384 1
 FSlider 20 5 -9350 0 -245760 245760 1
 FSMIDI 20 0 10 0 85
@@ -154,38 +153,6 @@ FSlider 42 12 4886 0 0 16384 1
 FSlider 42 13 3258 0 0 16384 1
 FSlider 42 14 1916 0 0 16384 1
 FSMIDI 42 0 10 3 65
-Module 32 44 1057 0 4 0
-ColorP 0 0 44 4 250 200 50 180 180 180
-FSlider 44 0 6152 0 0 163840 1
-FSlider 44 1 11356 1 -150902 11356 1
-FSlider 44 2 0 0 -16384 16384 1
-FSlider 44 3 11356 1 -150902 11356 1
-FSlider 44 4 0 0 -16384 16384 1
-FSlider 44 5 0 1 -150902 11356 1
-FSlider 44 6 -16384 0 -16384 16384 1
-FSlider 44 7 0 1 -150902 11356 1
-FSlider 44 8 16384 0 -16384 16384 1
-CheckBox 44 0 0 1
-CheckBox 44 1 0 1
-CheckBox 44 2 0 1
-CheckBox 44 3 0 1
-CheckBox 44 4 0 1
-CheckBox 44 5 0 1
-CheckBox 44 6 0 1
-CheckBox 44 7 0 1
-FSMIDI 44 0 10 15 0
-TMIDI 44 0 10 3 63
-TMIDI 44 0 10 2 62
-TMIDI 44 0 10 2 60
-TMIDI 44 2 10 3 63
-TMIDI 44 2 10 2 62
-TMIDI 44 2 10 2 60
-TMIDI 44 4 10 3 63
-TMIDI 44 4 10 2 62
-TMIDI 44 4 10 2 60
-TMIDI 44 6 10 3 63
-TMIDI 44 6 10 2 62
-TMIDI 44 6 10 2 60
 Tab "Main"
 Tab "VCOs"
 Tab "Enveloppes"
@@ -569,7 +536,7 @@ Program 3 121267
 Program 3 12642
 Program 3 14964
 Program 3 -9350
-Program 4 5031
+Program 4 2469
 Program 4 24
 Program 4 129
 Program 4 12265
@@ -637,7 +604,7 @@ Program 4 4886
 Program 4 3258
 Program 4 1916
 Program 4 163840
-Program 4 -34183
+Program 4 -19997
 Program 4 53014
 Program 4 7482
 Program 4 0
@@ -715,7 +682,7 @@ Program 5 34832
 Program 5 10965
 Program 5 0
 Program 5 -9350
-Program 6 1419
+Program 6 834
 Program 6 24
 Program 6 129
 Program 6 12265
@@ -1226,7 +1193,7 @@ Program 12 41282
 Program 12 2580
 Program 12 0
 Program 12 -29027
-Program 13 5237
+Program 13 3103
 Program 13 24
 Program 13 129
 Program 13 12265
@@ -1299,7 +1266,7 @@ Program 13 144488
 Program 13 16384
 Program 13 16384
 Program 13 -9350
-Program 14 903
+Program 14 601
 Program 14 24
 Program 14 129
 Program 14 12265
@@ -1372,7 +1339,7 @@ Program 14 51603
 Program 14 16384
 Program 14 2967
 Program 14 203187
-Program 15 3999
+Program 15 1835
 Program 15 24
 Program 15 129
 Program 15 12265
