@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tapeutape version="0.1.0">
-  <options globalvolume="0.750000" max_polyphony="100">
+  <options globalvolume="0.510000" max_polyphony="100">
     <jack-output name="Snares"/>
     <jack-output name="Cymbales"/>
     <jack-output name="Continua"/>
@@ -127,19 +127,19 @@
         <instrument name="CajonGhost" minnote="69" maxnote="69" rootnote="69" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Snares" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cajon/cajonGhost.wav" sampleRelative="Cajon/cajonGhost.wav"/>
         </instrument>
-        <instrument name="NatKick1" minnote="66" maxnote="66" rootnote="66" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="2.090000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
+        <instrument name="NatKick1" minnote="66" maxnote="66" rootnote="66" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="0.950000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/NatKick/NatKick_1.flac" sampleRelative="Cymbales/NatKick/NatKick_1.flac"/>
         </instrument>
-        <instrument name="NatKick2" minnote="68" maxnote="68" rootnote="68" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="2.070000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
+        <instrument name="NatKick2" minnote="68" maxnote="68" rootnote="68" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="0.930000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/NatKick/NatKick_2.flac" sampleRelative="Cymbales/NatKick/NatKick_2.flac"/>
         </instrument>
-        <instrument name="NatKick3" minnote="67" maxnote="67" rootnote="67" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="2.060000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
+        <instrument name="NatKick3" minnote="67" maxnote="67" rootnote="67" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="0.970000" pan="0.000000" pitch_over_range="true" play_mode="normal" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Cymbales/NatKick/NatKick_3.flac" sampleRelative="Cymbales/NatKick/NatKick_3.flac"/>
         </instrument>
         <instrument name="HadGadya" minnote="24" maxnote="35" rootnote="28" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="1.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/HadGadia.flac" sampleRelative="Samples/HadGadia.flac"/>
         </instrument>
-        <instrument name="Intro" minnote="0" maxnote="0" rootnote="0" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Kicks" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
+        <instrument name="Intro" minnote="0" maxnote="0" rootnote="0" rootnotefine="0.000000" channel="10" cut="-1" polyphony="0" output="Samples" volume="3.000000" pan="0.000000" pitch_over_range="true" play_mode="trigger" play_loop="no" play_reverse="no">
           <variation minveloc="0" maxveloc="127" sample="/home/woii/Sebkha-Chott/Stage/MAO/Samples/Samples/intro.flac" sampleRelative="Samples/intro.flac"/>
         </instrument>
       </kit>
