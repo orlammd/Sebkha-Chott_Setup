@@ -1,0 +1,22 @@
+{
+	Group 0xD create :name "Acoustics"
+	Mixer_Strip 0x1 create :name "Cymbalum" :width "narrow" :tab "fader" :color 1299428207 :gain_mode 0 :mute_mode 0 :group 0xD :auto_input "" :manual_connection 0
+	Chain 0x2 create :strip 0x1 :tab "chain"
+	JACK_Module 0x3 create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x2 :active 1
+	Gain_Module 0x4 create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0x2 :active 1
+	Meter_Module 0x5 create :is_default 1 :chain 0x2 :active 1
+	JACK_Module 0x6 create :parameter_values "1,000000:0,000000" :is_default 1 :chain 0x2 :active 1
+	Mixer_Strip 0x7 create :name "PianoToy" :width "narrow" :tab "fader" :color 796184228 :gain_mode 0 :mute_mode 0 :group 0xD :auto_input "" :manual_connection 0
+	Chain 0x8 create :strip 0x7 :tab "chain"
+	JACK_Module 0x9 create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x8 :active 1
+	Gain_Module 0xA create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0x8 :active 1
+	Meter_Module 0xB create :is_default 1 :chain 0x8 :active 1
+	JACK_Module 0xC create :parameter_values "1,000000:0,000000" :is_default 1 :chain 0x8 :active 1
+	Mixer_Strip 0x1A create :name "GuitarAc" :width "narrow" :tab "fader" :color 115761492 :gain_mode 0 :mute_mode 0 :group 0xD :auto_input "" :manual_connection 0
+	Chain 0x1B create :strip 0x1A :tab "chain"
+	JACK_Module 0x1C create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x1B :active 1
+	Gain_Module 0x1D create :parameter_values "0,000000:0,000000" :is_default 1 :chain 0x1B :active 1
+	Plugin_Module 0x20 create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:1,000000:200,000000:0,300000:4,500000:0,000000:400,000000:1,000000:0,000000:0,000000:1000,000000:1,000000:0,000000:1,000000:2000,000000:0,300000:-15,500000" :is_default 0 :chain 0x1B :active 1
+	Meter_Module 0x1E create :is_default 1 :chain 0x1B :active 1
+	JACK_Module 0x1F create :parameter_values "1,000000:0,000000" :is_default 1 :chain 0x1B :active 1
+}
