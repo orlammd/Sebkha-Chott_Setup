@@ -886,9 +886,10 @@ acte1 =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(8) >> [ # MathoMag - Bouton 8
         Program(69) >> cseqtrigger,
         
-        Program(10) >> achords,
+        Program(1) >> achords,
         Program(1) >> abass,
-        actlead_mute,
+	Program(2) >> actlead,
+#        actlead_mute,
         
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
