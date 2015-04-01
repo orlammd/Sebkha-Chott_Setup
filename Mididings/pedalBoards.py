@@ -1975,6 +1975,7 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         Program(67) >> cseqtrigger,
         Program(1) >> abass,
         Program(8) >> alead,
+	Program(11) >> achords,
 	Program(7) >> actlead,
 #        actlead_mute,
         [
