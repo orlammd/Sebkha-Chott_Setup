@@ -730,9 +730,9 @@ acte1 =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(5) >> [ # Post Bustas - Bouton 5
         Program(67) >> cseqtrigger,
         
-        Program(10) >> achords,
+        Program(1) >> achords,
         Program(1) >> abass,
-        Program(9) >> alead,
+        Program(1) >> alead,
         actlead_mute,
         
         [
