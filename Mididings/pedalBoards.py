@@ -1975,7 +1975,8 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         Program(67) >> cseqtrigger,
         Program(1) >> abass,
         Program(8) >> alead,
-        actlead_mute,
+	Program(7) >> actlead,
+#        actlead_mute,
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 10),
             SendOSC(slport, '/set', 'tempo', 120),
