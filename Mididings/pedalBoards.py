@@ -1895,7 +1895,8 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(1) >> stop, # !!!STOP!!! #
     ProgramFilter(2) >> [ # Acte III - Couplet II - Bouton 2 - Surf
         Program(65) >> cseqtrigger,
-        Program(1) >> abass,
+     #   Program(1) >> abass,
+	abass_mute,
         Program(8) >> alead,
         actlead_mute,
         [
