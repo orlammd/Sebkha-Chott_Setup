@@ -2393,8 +2393,30 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
 
         Program(119) >> seq24once,
         SceneSwitch(8)        
-        ]
+        ],
+    ProgramFilter(8) >> [ # Metal Alterno - Bouton 8 #TEMPORAIRE
+        Program(70) >> cseqtrigger,
+
+        Program(1) >> abass,
+        Program(1) >> achords,
+	Program(1) >> alead,
+        Program(10) >> actlead,
+        [
+            SendOSC(slport, '/set', 'eighth_per_cycle', 26),
+            SendOSC(slport, '/set', 'tempo', 180),
+            
+            SendOSC(slport, '/sl/2/hit', 'pause_on'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 180),
+            SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+
+
+	]
+ 
     ]
+
 
 
 #### ACTE 4 ####
