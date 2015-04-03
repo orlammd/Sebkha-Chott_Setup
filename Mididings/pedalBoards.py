@@ -744,7 +744,32 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/CJ/Green/Segment/7', 80),
             ] >> Discard()
         ],
-    ProgramFilter(5) >> [ # Bustas - Bouton 5
+    ProgramFilter(5) >> [ # Couplet Ternaire - Bouton 6 #TODO
+        Program(69) >> cseqtrigger,
+        
+        Program(1) >> achords,
+        Program(1) >> abass,
+	actlead_mute,
+        
+        [
+            SendOSC(slport, '/set', 'eighth_per_cycle', 16),
+            SendOSC(slport, '/set', 'tempo', 120),
+            
+            #			    SendOSC(slport, '/sl/2/hit', 'record'),
+            
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+        
+        bassdag_on,
+        bassdag_fx_off,
+        gtrdag_mute,
+        gtrorl_mute,
+        bassorl_on,        
+        ],
+    ProgramFilter(6) >> [ # Bustas - Bouton 6
         Program(66) >> cseqtrigger,
         Program(15) >> achords,
         Program(1) >> abass,
@@ -796,7 +821,7 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard()
 
         ],
-    ProgramFilter(5) >> [ # Post Bustas - Bouton 5
+    ProgramFilter(7) >> [ # Post Bustas - Bouton 7
         Program(67) >> cseqtrigger,
         
         Program(1) >> achords,
@@ -850,51 +875,51 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             
             ] >> Discard()
         ],
-    ProgramFilter(6) >> [ # Final Couplet - Bouton 6
-        [
-            Program(19),
-            Program(22)
-            ] >> Channel(2) >> seqtrigger,
+    # ProgramFilter(6) >> [ # Final Couplet - Bouton 6
+    #     [
+    #         Program(19),
+    #         Program(22)
+    #         ] >> Channel(2) >> seqtrigger,
 
-        [
-            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
-            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
-            SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
+    #     [
+    #         SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+    #         SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+    #         SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
 
-            SendOSC(qlcport, '/CC/Red/Segment/1', 150),
-            SendOSC(qlcport, '/CJ/Red/Segment/1', 150),
-            SendOSC(qlcport, '/CC/Green/Segment/1', 80),
-            SendOSC(qlcport, '/CJ/Green/Segment/1', 80),
-            SendOSC(qlcport, '/CC/Red/Segment/3', 150),
-            SendOSC(qlcport, '/CJ/Red/Segment/3', 150),
-            SendOSC(qlcport, '/CC/Green/Segment/3', 80),
-            SendOSC(qlcport, '/CJ/Green/Segment/3', 80),
-            SendOSC(qlcport, '/CC/Red/Segment/5', 150),
-            SendOSC(qlcport, '/CJ/Red/Segment/5', 150),
-            SendOSC(qlcport, '/CC/Green/Segment/5', 80),
-            SendOSC(qlcport, '/CJ/Green/Segment/5', 80),
-            SendOSC(qlcport, '/CC/Red/Segment/7', 150),
-            SendOSC(qlcport, '/CJ/Red/Segment/7', 150),
-            SendOSC(qlcport, '/CC/Green/Segment/7', 80),
-            SendOSC(qlcport, '/CJ/Green/Segment/7', 80),
+    #         SendOSC(qlcport, '/CC/Red/Segment/1', 150),
+    #         SendOSC(qlcport, '/CJ/Red/Segment/1', 150),
+    #         SendOSC(qlcport, '/CC/Green/Segment/1', 80),
+    #         SendOSC(qlcport, '/CJ/Green/Segment/1', 80),
+    #         SendOSC(qlcport, '/CC/Red/Segment/3', 150),
+    #         SendOSC(qlcport, '/CJ/Red/Segment/3', 150),
+    #         SendOSC(qlcport, '/CC/Green/Segment/3', 80),
+    #         SendOSC(qlcport, '/CJ/Green/Segment/3', 80),
+    #         SendOSC(qlcport, '/CC/Red/Segment/5', 150),
+    #         SendOSC(qlcport, '/CJ/Red/Segment/5', 150),
+    #         SendOSC(qlcport, '/CC/Green/Segment/5', 80),
+    #         SendOSC(qlcport, '/CJ/Green/Segment/5', 80),
+    #         SendOSC(qlcport, '/CC/Red/Segment/7', 150),
+    #         SendOSC(qlcport, '/CJ/Red/Segment/7', 150),
+    #         SendOSC(qlcport, '/CC/Green/Segment/7', 80),
+    #         SendOSC(qlcport, '/CJ/Green/Segment/7', 80),
 
-            SendOSC(qlcport, '/BC/Red/Segment/1', 120),
-            SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
-            SendOSC(qlcport, '/BC/Red/Segment/3', 120),
-            SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
-            SendOSC(qlcport, '/BC/Red/Segment/5', 120),
-            SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
-            SendOSC(qlcport, '/BC/Red/Segment/7', 120),
-            SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
+    #         SendOSC(qlcport, '/BC/Red/Segment/1', 120),
+    #         SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
+    #         SendOSC(qlcport, '/BC/Red/Segment/3', 120),
+    #         SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
+    #         SendOSC(qlcport, '/BC/Red/Segment/5', 120),
+    #         SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
+    #         SendOSC(qlcport, '/BC/Red/Segment/7', 120),
+    #         SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
 
-            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
-            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AI Couplet', 1),
-            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
-            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
+    #         SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+    #         SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AI Couplet', 1),
+    #         SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+    #         SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
             
-            ] >> Discard()
-        ],
-    ProgramFilter(7) >> [ # Debut Riff MathoMagma - Bouton 7
+    #         ] >> Discard()
+    #     ],
+    ProgramFilter(8) >> [ # MathoMag I - Bouton 8
         Program(68) >> cseqtrigger,
         
         Program(10) >> achords,
@@ -953,55 +978,55 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard()
         
         ],
-    ProgramFilter(8) >> [ # MathoMag - Bouton 8
-        Program(69) >> cseqtrigger,
+#     ProgramFilter(8) >> [ # MathoMag - Bouton 8
+#         Program(69) >> cseqtrigger,
         
-        Program(1) >> achords,
-        Program(1) >> abass,
-	Program(2) >> actlead,
-#        actlead_mute,
+#         Program(1) >> achords,
+#         Program(1) >> abass,
+# 	Program(2) >> actlead,
+# #        actlead_mute,
         
-        [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 120),
+#         [
+#             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
+#             SendOSC(slport, '/set', 'tempo', 120),
             
-            #			    SendOSC(slport, '/sl/2/hit', 'record'),
+#             #			    SendOSC(slport, '/sl/2/hit', 'record'),
             
-            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-            SendOSC(klickport, '/klick/metro/start'),
-            ] >> Discard(),
+#             SendOSC(klickport, '/klick/simple/set_tempo', 120),
+#             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+#             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
+#             SendOSC(klickport, '/klick/metro/start'),
+#             ] >> Discard(),
         
-        bassdag_on,
-        bassdag_fx_off,
-        gtrdag_mute,
-        gtrorl_mute,
-        bassorl_on,
+#         bassdag_on,
+#         bassdag_fx_off,
+#         gtrdag_mute,
+#         gtrorl_mute,
+#         bassorl_on,
 
-        [
-            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+#         [
+#             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
 
 
-            SendOSC(qlcport, '/CC/Green/Segment/1', 120),
-            SendOSC(qlcport, '/CJ/Green/Segment/1', 120),
-            SendOSC(qlcport, '/CC/Green/Segment/3', 120),
-            SendOSC(qlcport, '/CJ/Green/Segment/3', 120),
-            SendOSC(qlcport, '/CC/Green/Segment/5', 120),
-            SendOSC(qlcport, '/CJ/Green/Segment/5', 120),
-            SendOSC(qlcport, '/CC/Green/Segment/7', 120),
-            SendOSC(qlcport, '/CJ/Green/Segment/7', 120),
+#             SendOSC(qlcport, '/CC/Green/Segment/1', 120),
+#             SendOSC(qlcport, '/CJ/Green/Segment/1', 120),
+#             SendOSC(qlcport, '/CC/Green/Segment/3', 120),
+#             SendOSC(qlcport, '/CJ/Green/Segment/3', 120),
+#             SendOSC(qlcport, '/CC/Green/Segment/5', 120),
+#             SendOSC(qlcport, '/CJ/Green/Segment/5', 120),
+#             SendOSC(qlcport, '/CC/Green/Segment/7', 120),
+#             SendOSC(qlcport, '/CJ/Green/Segment/7', 120),
 
-            SendOSC(qlcport, '/BC/Red/Segment/1', 120),
-            SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
-            SendOSC(qlcport, '/BC/Red/Segment/3', 120),
-            SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
-            SendOSC(qlcport, '/BC/Red/Segment/5', 120),
-            SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
-            SendOSC(qlcport, '/BC/Red/Segment/7', 120),
-            SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
-            ] >> Discard()
-        ],
+#             SendOSC(qlcport, '/BC/Red/Segment/1', 120),
+#             SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
+#             SendOSC(qlcport, '/BC/Red/Segment/3', 120),
+#             SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
+#             SendOSC(qlcport, '/BC/Red/Segment/5', 120),
+#             SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
+#             SendOSC(qlcport, '/BC/Red/Segment/7', 120),
+#             SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
+#             ] >> Discard()
+#         ],
     ProgramFilter(9) >> [ # MathoMag II - Bouton 9
         Program(70) >> cseqtrigger,
         
