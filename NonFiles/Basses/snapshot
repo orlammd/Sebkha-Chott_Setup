@@ -14,11 +14,12 @@
 	Plugin_Module 0x1B create :plugin_id 1433 :plugin_ins 1 :plugin_outs 1 :parameter_values "0,500000:5,000000" :is_default 0 :chain 0x16 :active 1
 	Plugin_Module 0x23 create :plugin_id 1041 :plugin_ins 1 :plugin_outs 1 :parameter_values "440,000000" :is_default 0 :chain 0x16 :active 1
 	JACK_Module 0x1A create :parameter_values "1,000000:0,000000" :is_default 1 :chain 0x16 :active 1
-	Mixer_Strip 0x3C create :name "FX_Bass_ORL" :width "narrow" :tab "signal" :color 1539218957 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
+	Mixer_Strip 0x3C create :name "FX_Bass_ORL" :width "narrow" :tab "fader" :color 1539218957 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x3D create :strip 0x3C :tab "chain"
 	JACK_Module 0x3E create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x3D :active 1
+	Plugin_Module 0x5D create :plugin_id 4069 :plugin_ins 1 :plugin_outs 1 :parameter_values "0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000" :is_default 0 :chain 0x3D :active 1
 	Plugin_Module 0x42 create :plugin_id 1779 :plugin_ins 1 :plugin_outs 2 :parameter_values "1,000000:0,460993:0,099291:0,276596" :is_default 0 :chain 0x3D :active 1
-	Gain_Module 0x3F create :parameter_values "0,984001:1,000000" :is_default 1 :chain 0x3D :active 1
+	Gain_Module 0x3F create :parameter_values "-13,000000:1,000000" :is_default 1 :chain 0x3D :active 1
 	Meter_Module 0x40 create :is_default 1 :chain 0x3D :active 1
 	JACK_Module 0x41 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x3D :active 1
 	Mixer_Strip 0x8 create :name "Bass_Dag" :width "narrow" :tab "signal" :color 797161935 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
@@ -26,7 +27,7 @@
 	JACK_Module 0xA create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x9 :active 1
 	Plugin_Module 0x25 create :plugin_id 1916 :plugin_ins 1 :plugin_outs 1 :parameter_values "0,000000:15,000000:50,000000:-20,500000:5,000000:3,250000:0,800000" :is_default 0 :chain 0x9 :active 1
 	Plugin_Module 0x26 create :plugin_id 1970 :plugin_ins 1 :plugin_outs 1 :parameter_values "1,000000:0,000000:0,000000:70,000000:0,600000:5,500000:1,000000:440,000000:1,600000:-4,000000:0,000000:1450,000000:0,500000:-3,000000:1,000000:5000,000000:0,700000:4,000000" :is_default 0 :chain 0x9 :active 1
-	Gain_Module 0xB create :parameter_values "3,950000:1,000000" :is_default 1 :chain 0x9 :active 1
+	Gain_Module 0xB create :parameter_values "3,950000:0,000000" :is_default 1 :chain 0x9 :active 1
 	Meter_Module 0xC create :is_default 1 :chain 0x9 :active 1
 	JACK_Module 0xD create :parameter_values "1,000000:0,000000" :is_default 1 :chain 0x9 :active 1
 	Mixer_Strip 0x32 create :name "Oct_Bass_Dag" :width "narrow" :tab "signal" :color 703389965 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
@@ -40,8 +41,9 @@
 	Mixer_Strip 0x43 create :name "FX_Bass_Dag" :width "narrow" :tab "fader" :color 1819593171 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0x44 create :strip 0x43 :tab "chain"
 	JACK_Module 0x45 create :parameter_values "0,000000:1,000000" :is_default 1 :chain 0x44 :active 1
+	Plugin_Module 0x79 create :plugin_id 4069 :plugin_ins 1 :plugin_outs 1 :parameter_values "0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000:0,000000" :is_default 0 :chain 0x44 :active 1
 	Plugin_Module 0x4C create :plugin_id 1779 :plugin_ins 1 :plugin_outs 2 :parameter_values "1,000000:0,460993:0,099291:0,276596" :is_default 0 :chain 0x44 :active 1
-	Gain_Module 0x46 create :parameter_values "-4,032005:1,000000" :is_default 1 :chain 0x44 :active 1
+	Gain_Module 0x46 create :parameter_values "-14,000000:1,000000" :is_default 1 :chain 0x44 :active 1
 	Meter_Module 0x47 create :is_default 1 :chain 0x44 :active 1
 	JACK_Module 0x48 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0x44 :active 1
 }
