@@ -2471,6 +2471,50 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         gtrdag_mute
         ],
+    ProgramFilter(6) >> [ # 13/8 Prog Thème - Bouton 6
+        Program(70) >> cseqtrigger,
+
+        Program(1) >> abass,
+        Program(1) >> achords,
+        Program(1) >> alead,
+        Program(10) >> actlead,        
+        
+        [
+            SendOSC(slport, '/set', 'eighth_per_cycle', 26),
+            SendOSC(slport, '/set', 'tempo', 180),
+            
+            SendOSC(slport, '/sl/2/hit', 'pause_on'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 180),
+            SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+
+        bassdag_mute,
+        gtrdag_clean,
+        gtrdag_octaverdown,
+        gtrorl_mute,
+        bassorl_on,
+        [
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Red/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
+            ] >> Discard()
+
+        ],
     # ProgramFilter(3) >> [ # 13/8 Prog bourrin - Bouton 3
     #     Program(66) >> cseqtrigger,
         
@@ -2518,7 +2562,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
     #     bassorl_on
 
     #     ],
-    ProgramFilter(6) >> [ # 13/8 Prog bourrin - Bouton 6
+    ProgramFilter(7) >> [ # 13/8 Prog bourrin - Bouton 7
         Program(66) >> cseqtrigger,
         
         Program(1) >> abass,
@@ -2543,7 +2587,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassorl_fx_on,
         bassdag_fx_on
         ],
-    ProgramFilter(7) >> [ # 13/8 Prog en G - Bouton 7
+    ProgramFilter(8) >> [ # 13/8 Prog en G - Bouton 8
         Program(67) >> cseqtrigger,
         
         Program(1) >> abass,
@@ -2569,7 +2613,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassdag_fx_off
 
         ],
-    ProgramFilter(8) >> [ # Metal - Bouton 8
+    ProgramFilter(9) >> [ # Metal - Bouton 9
         Program(68) >> cseqtrigger,
         
         Program(1) >> abass,
@@ -2620,7 +2664,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
 
         ],
 
-    ProgramFilter(9) >> [ # Metal Alterno - Bouton 9
+    ProgramFilter(10) >> [ # Metal Alterno - Bouton 10
         Program(69) >> cseqtrigger,
 
         Program(1) >> abass,
