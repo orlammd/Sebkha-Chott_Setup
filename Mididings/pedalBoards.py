@@ -747,8 +747,10 @@ acte1 =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(5) >> [ # Couplet Ternaire - Bouton 6 #TODO
         Program(69) >> cseqtrigger,
         
-        Program(1) >> achords,
-        Program(1) >> abass,
+        Program(10) >> achords,
+        Program(3) >> alead,
+
+        abass_mute,
 	actlead_mute,
         
         [
