@@ -1769,9 +1769,8 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         bassdag_fx_on,
         bassorl_on,
         bassorl_fx_on,
-        gtrorl_clean,
+        gtrorl_mute,
         gtrdag_mute,
-        bassorl_mute,
         [
             SendOSC(qlcport, '/CC/Green/Segment/1', 255),
             SendOSC(qlcport, '/CJ/Green/Segment/1', 255),
@@ -1798,6 +1797,13 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         [
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/C%2A%20PlateX2%20-%20Versatile%20plate%20reverb%2C%20stereo%20inputs/tail",0.85),
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/C%2A%20PlateX2%20-%20Versatile%20plate%20reverb%2C%20stereo%20inputs/damping",0.4),
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/C%2A%20PlateX2%20-%20Versatile%20plate%20reverb%2C%20stereo%20inputs/blend",0.4),
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/Gain/Gain%20(dB)",0.945),
+            SendOSC(vocalsport, "/strip/Vx_ORL/Gain/Gain%20(dB)",0.92),
+            ] >> Discard(),
+        [
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
             SendOSC(qlcport, '/CC/Green/Segment/1', 255),
             SendOSC(qlcport, '/CJ/Green/Segment/1', 255),
@@ -1811,6 +1817,13 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             Program(14),
             Program(15)
             ] >> Channel(2) >> seqtrigger,
+        [
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/C%2A%20PlateX2%20-%20Versatile%20plate%20reverb%2C%20stereo%20inputs/tail",0.3),
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/C%2A%20PlateX2%20-%20Versatile%20plate%20reverb%2C%20stereo%20inputs/damping",0.62),
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/C%2A%20PlateX2%20-%20Versatile%20plate%20reverb%2C%20stereo%20inputs/blend",0.16),
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/Gain/Gain%20(dB)",0.92),
+            SendOSC(vocalsport, "/strip/Vx_ORL/Gain/Gain%20(dB)",0.945),
+            ] >> Discard(),
         actlead_mute,
         [
             SendOSC(qlcport, '/stop', 1),
@@ -1830,7 +1843,13 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-
+        [
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/C%2A%20PlateX2%20-%20Versatile%20plate%20reverb%2C%20stereo%20inputs/tail",0.3),
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/C%2A%20PlateX2%20-%20Versatile%20plate%20reverb%2C%20stereo%20inputs/damping",0.62),
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/C%2A%20PlateX2%20-%20Versatile%20plate%20reverb%2C%20stereo%20inputs/blend",0.16),
+            SendOSC(vocalsport, "/strip/FX_Vx_ORL/Gain/Gain%20(dB)",0.92),
+            SendOSC(vocalsport, "/strip/Vx_ORL/Gain/Gain%20(dB)",0.945),
+            ] >> Discard(),
         bassdag_on,
         gtrdag_disto,
         gtrorl_mute,
