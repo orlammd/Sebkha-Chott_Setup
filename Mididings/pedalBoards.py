@@ -2376,7 +2376,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
             SendOSC(klickport, '/klick/simple/set_tempo', 90),
             SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+            SendOSC(klickport, '/klick/simple/set_pattern', '---------Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         [
@@ -2398,13 +2398,12 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
             SendOSC(klickport, '/klick/simple/set_tempo', 180),
             SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'X-x-x-x-x-x-x'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
 
-        bassdag_mute,
-        gtrdag_clean,
-        gtrdag_octaverdown,
+        bassdag_on,
+        gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
         [
@@ -2441,7 +2440,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
             SendOSC(klickport, '/klick/simple/set_tempo', 180),
             SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxxxxxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
@@ -2460,7 +2459,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
             SendOSC(klickport, '/klick/simple/set_tempo', 180),
             SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'X-x-x-x-x-x-x'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),        
 
@@ -2486,15 +2485,16 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
             SendOSC(klickport, '/klick/simple/set_tempo', 180),
             SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'X-x-x-x-x-x-x'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
 
-        bassdag_mute,
-        gtrdag_clean,
-        gtrdag_octaverdown,
+        bassdag_on,
+        gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        bassorl_fx_on,
+        bassdag_fx_on,
         [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
             SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
@@ -2576,7 +2576,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
             SendOSC(klickport, '/klick/simple/set_tempo', 180),
             SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'X-x-x-x-x-xxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
