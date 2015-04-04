@@ -557,8 +557,8 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/set', 'tempo', 120),
 
             SendOSC(klickport, '/klick/simple/set_tempo', 120),
-            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
+            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
 
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 180),
@@ -1859,8 +1859,8 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         actlead_mute,
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
-            SendOSC(slport, '/set', 'tempo', 105),
-            SendOSC(klickport, '/klick/simple/set_tempo', 105),
+            SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
@@ -2069,8 +2069,8 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
 
-        bassdag_mute,
-        gtrdag_clean,
+        bassdag_on,
+        gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
         [
@@ -2097,8 +2097,8 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
 
-        bassdag_mute,
-        gtrdag_clean,
+        bassdag_on,
+        gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
         [
@@ -2714,8 +2714,8 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard()
 
         ],
-    ProgramFilter(10) >> [ # Vers Carmen - Bouton 10
-        gtrorl_clean,
+    ProgramFilter(11) >> [ # Vers Carmen - Bouton 11
+#        gtrorl_clean,
 
         Program(119) >> seq24once,
         SceneSwitch(8)        
