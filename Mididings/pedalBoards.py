@@ -1399,19 +1399,19 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
 
 
         bassdag_on,
+        bassdag_disto_on,
+        bassdag_fx_off,
+        bassdag_octaver_off,
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        bassorl_disto_off,
+        bassorl_octaver_on,
+        bassorl_reverb_off,
         [
             SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
             SendOSC(qlcseqport, '/Sequencer/Set_bpm', 600),
             ] >> Discard()
-
-        # [
-        #     SendOSC(qlcport, '/stop', 1),
-        #     SendOSC(qlcport, '/scene/flip36Blanc', 1),
-        #     SendOSC(qlcport, '/scene/36barresVert', 1), 
-        #     ] >> Discard(),
         ],
     ProgramFilter(6) >> [ # Forain Léger Avant Baroque - Bouton 6
         Program(67) >> cseqtrigger,
