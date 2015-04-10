@@ -2181,6 +2181,9 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
 
         bassdag_on,
+        bassdag_disto_on,
+        bassdag_octaver_off,
+        bassdag_fx_off,
         gtrdag_mute,
         gtrorl_disto,
         bassorl_mute,
@@ -2208,9 +2211,15 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
 
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_fx_off,
+        bassdag_octaver_off,
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        bassorl_disto_off,
+        bassorl_octaver_off,
+        bassorl_reverb_off,
         [
             SendOSC(qlcport, '/BC/Red/Segment/All', 100),
             SendOSC(qlcport, '/BJ/Red/Segment/All', 100),
@@ -2221,24 +2230,6 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         
         
         ],
-
-    # ProgramFilter(11) >> [ # 12/8 Prog - Bouton 11
-    #     stop,
-    #     [
-    #         SendOSC(slport, '/set', 'eighth_per_cycle', 16),
-    #         SendOSC(slport, '/set', 'tempo', 120),
-    #         SendOSC(klickport, '/klick/simple/set_tempo', 120),
-    #         SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-    #         SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-    #         SendOSC(klickport, '/klick/metro/start'),
-    #         ] >> Discard(),
-        
-    #     bassdag_mute,
-    #     gtrdag_clean,
-    #     gtrorl_mute,
-    #     bassorl_on
-
-    #     ],
     ]
 acte3partIII =	PortFilter('PBCtrlIn') >> [ 
     ProgramFilter(1) >> stop, # !!!STOP!!! #
@@ -2282,9 +2273,15 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
 
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_octaver_off,
+        bassdag_fx_off,
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        bassorl_disto_off,
+        bassorl_octaver_off,
+        bassorl_reverb_off,
         [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
             SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
@@ -2324,10 +2321,15 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_fx_off,
+        bassdag_octaver_off,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on
-
+        bassorl_on,
+        bassorl_disto_off,
+        bassorl_reverb_off,
+        bassorl_octaver_off,
         ],
     ProgramFilter(5) >> [ # 13/8 Organic Only - Bouton 5
         stop,
@@ -2345,7 +2347,11 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         bassorl_on,
         bassdag_fx_off,
-        bassorl_fx_off,
+        bassdag_disto_off,
+        bassdag_octaver_off,
+        bassorl_disto_off,
+        bassorl_reverb_off,
+        bassorl_octaver_off,
         gtrorl_mute,
         gtrdag_mute
         ],
@@ -2369,11 +2375,14 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
 
         bassdag_on,
+        bassdag_disto_on,
+        bassdag_octaver_off,
+        bassdag_fx_off,
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
-        bassorl_fx_on,
-        bassdag_fx_on,
+        bassorl_disto_on,
+        bassorl_octaver_off,
         [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
             SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
@@ -2394,53 +2403,6 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard()
 
         ],
-    # ProgramFilter(3) >> [ # 13/8 Prog bourrin - Bouton 3
-    #     Program(66) >> cseqtrigger,
-        
-    #     Program(1) >> abass,
-    #     Program(1) >> achords,
-    #     actlead_mute,
-        
-    #     [
-    #         SendOSC(slport, '/set', 'eighth_per_cycle', 26),
-    #         SendOSC(slport, '/set', 'tempo', 180),
-            
-    #         SendOSC(slport, '/sl/2/hit', 'pause_on'),
-    #         SendOSC(klickport, '/klick/simple/set_tempo', 180),
-    #         SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-    #         SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
-    #         SendOSC(klickport, '/klick/metro/start'),
-    #         ] >> Discard(),
-        
-    #     bassdag_mute,
-    #     gtrdag_disto,
-    #     gtrorl_mute,
-    #     bassorl_on
-    #     ],
-    # ProgramFilter(4) >> [ # 13/8 Prog en G - Bouton 4
-    #     Program(67) >> cseqtrigger,
-        
-    #     Program(1) >> abass,
-    #     Program(10) >> achords,
-    #     actlead_mute,
-        
-    #     [
-    #         SendOSC(slport, '/set', 'eighth_per_cycle', 26),
-    #         SendOSC(slport, '/set', 'tempo', 180),
-            
-    #         SendOSC(slport, '/sl/2/hit', 'pause_on'),
-    #         SendOSC(klickport, '/klick/simple/set_tempo', 180),
-    #         SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-    #         SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
-    #         SendOSC(klickport, '/klick/metro/start'),
-    #         ] >> Discard(),
-        
-    #     bassdag_mute,
-    #     gtrdag_clean,
-    #     gtrorl_mute,
-    #     bassorl_on
-
-    #     ],
     ProgramFilter(7) >> [ # 13/8 Prog bourrin - Bouton 7
         Program(66) >> cseqtrigger,
         
