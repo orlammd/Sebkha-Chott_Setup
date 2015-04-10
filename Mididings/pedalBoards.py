@@ -1060,9 +1060,6 @@ acte2 =	PortFilter('PBCtrlIn') >> [
      
             ] >> Discard()
         ],
-#    ProgramFilter(3) >> [ # Sample Had Gadya - Bouton 3
-#        Program(6) >> Channel(2) >> seqtrigger,
-#        ],
     ProgramFilter(3) >> [ # Tutti Had Gadya - Bouton 3
         Program(66) >> cseqtrigger,
         abass_mute,
