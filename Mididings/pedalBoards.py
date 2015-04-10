@@ -160,6 +160,13 @@ bassdag_fx_on = [
 bassdag_fx_off = [
     SendOSC(bassesport, '/strip/FX_Bass_Dag/Gain/Mute', 1.0),
     ] >> Discard()
+bassdag_disto_on = [
+    SendOSC(bassesport, '/strip/Disto_Bass_Dag/Gain/Mute', 0.0),
+    ] >> Discard()
+bassdag_disto_off = [
+    SendOSC(bassesport, '/strip/Disto_Bass_Dag/Gain/Mute', 1.0),
+    ] >> Discard()
+
 # ORL
 bassorl_mute = [
     SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 1.0),
@@ -176,12 +183,40 @@ bassorl_octaver_on = [
 bassorl_octaver_off = [
     SendOSC(bassesport, '/strip/Oct_Bass_ORL/Gain/Mute', 1.0),
     ] >> Discard()
-bassorl_fx_on = [
+bassorl_reverb_on = [
     SendOSC(bassesport, '/strip/FX_Bass_ORL/Gain/Mute', 0.0),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Delay/unscaled', 0.021),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Xover/unscaled', 350),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/RT-low/unscaled', 3.40),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/RT-mid/unscaled', 3.35),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Damping/unscaled', 4100),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/F1-freq/unscaled', 160),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/F1-gain/unscaled', 2.00),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/F2-freq/unscaled', 950),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/F2-gain/unscaled', 2.00),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Output%20mix/unscaled', 1.00),
     ] >> Discard()
-bassorl_fx_off = [
+bassorl_reverb_off = [
     SendOSC(bassesport, '/strip/FX_Bass_ORL/Gain/Mute', 1.0),
     ] >> Discard()
+bassorl_disto_on = [
+    SendOSC(bassesport, '/strip/Disto_Bass_ORL/Gain/Mute', 0.0),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Delay/unscaled', 0.020),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Xover/unscaled', 500),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/RT-low/unscaled', 1.95),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/RT-mid/unscaled', 3.60),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Damping/unscaled', 1950),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/F1-freq/unscaled', 160),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/F1-gain/unscaled', 2.00),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/F2-freq/unscaled', 800),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/F2-gain/unscaled', 3.50),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Output%20mix/unscaled', 1.00),
+    ] >> Discard()
+bassorl_disto_off = [
+    SendOSC(bassesport, '/strip/Disto_Bass_ORL/Gain/Mute', 1.0),
+    ] >> Discard()
+
+
 
 #### Vocals ####
 
