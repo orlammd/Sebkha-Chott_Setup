@@ -395,7 +395,9 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrorl_clean,
         bassorl_mute,
         bassdag_on,
-        bassdag_fx_on
+        bassdag_disto_off,
+        bassdag_fx_off,
+        bassdag_octaver_off
         ],
     ProgramFilter(7) >> [ # Refrain - Bouton 7
         [
@@ -417,10 +419,12 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
-        bassorl_fx_on,
+        bassorl_disto_on,
+        bassorl_octaver_off,
         bassdag_on,
-        bassdag_fx_on,
-
+        bassdag_disto_on,
+        bassdag_fx_off,
+        bassdag_octaver_off,
 
         [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
@@ -470,6 +474,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         bassdag_on,
         bassdag_fx_off,
+        bassdag_disto_off,
         bassorl_mute,
 
         [
@@ -503,10 +508,11 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         bassorl_mute,
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_fx_off,
 
         [
             SendOSC(qlcport, '/stop', 1),
-#            SendOSC(qlcport, '/test/chase2', 1),
             SendOSC(qlcport, '/scene/36orlViolet', 1),
             SendOSC(qlcport, '/scene/36yulaViolet', 1)
             ]>> Discard(),
