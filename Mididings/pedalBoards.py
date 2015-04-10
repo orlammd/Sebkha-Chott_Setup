@@ -176,7 +176,7 @@ bassdag_disto_off = [
 bassorl_mute = [
     SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 1.0),
     SendOSC(bassesport, '/strip/FX_Bass_ORL/Gain/Mute', 1.0),
-    SendOSC(bassesport, '/strip/Octaver_Bass_ORL/Gain/Mute', 1.0),
+    SendOSC(bassesport, '/strip/Oct_Bass_ORL/Gain/Mute', 1.0),
     SendOSC(bassesport, '/strip/Disto_Bass_ORL/Gain/Mute', 1.0)
     ] >> Discard()
 bassorl_on = [
@@ -1965,6 +1965,12 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             bassorl_reverb_on,
             bassorl_disto_off,
             bassorl_octaver_off,
+        [
+            SendOSC(klickport, '/klick/simple/set_tempo', 120),
+            SendOSC(klickport, '/klick/simple/set_meter', 5, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
             ]
         ],
     ProgramFilter(4) >> [ # Acte III - Klezmer Klub
@@ -1991,6 +1997,7 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
         bassorl_disto_off,
         bassorl_octaver_off,
+        bassorl_reverb_off,
         bassorl_fx_off,
         [
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
@@ -2262,7 +2269,8 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
     ProgramFilter(3) >> [ # 13/8 Prog - Bouton 3
         Program(65) >> cseqtrigger,
         
-        Program(1) >> abass,
+#        Program(1) >> abass,
+        abass_mute,
         Program(10) >> achords,
         actlead_mute,
         
@@ -2354,8 +2362,8 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassdag_fx_off,
         bassdag_disto_off,
         bassdag_octaver_off,
-        bassorl_disto_off,
-        bassorl_reverb_off,
+        bassorl_disto_on,
+        bassorl_reverb_on,
         bassorl_octaver_off,
         gtrorl_mute,
         gtrdag_mute
@@ -2432,7 +2440,6 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassorl_on,
         bassorl_disto_on,
         bassorl_octaver_off,
-        bassorl_reverb_off,
         bassdag_disto_on,
         bassdag_fx_off,
         bassdag_octaver_off,
@@ -2616,6 +2623,7 @@ acte4 =	PortFilter('PBCtrlIn') >> [
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
             SendOSC(slport, '/set', 'tempo', 120),
+            SendOSC(slport, '/sl/-1/hit', 'pause_on'),
             SendOSC(klickport, '/klick/simple/set_tempo', 120),
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
