@@ -482,7 +482,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/scene/36yulaViolet', 1),
             ] >> Discard() 
         ],
-    ProgramFilter(9) >> [ # Couplet - Bouton 9
+    ProgramFilter(9) >> [ # Say Hello - Bouton 9
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 8),
             SendOSC(slport, '/set', 'tempo', 120),
@@ -504,9 +504,11 @@ acte0 = PortFilter('PBCtrlIn') >> [
         Program(1) >> aclass,
         Program(9) >> alead,
 
-        gtrorl_clean,
+        gtrorl_mute,
         gtrdag_mute,
-        bassorl_mute,
+        bassorl_on,
+        bassorl_disto_off,
+        bassorl_reverb_on,
         bassdag_on,
         bassdag_disto_off,
         bassdag_fx_off,
@@ -517,7 +519,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/scene/36yulaViolet', 1)
             ]>> Discard(),
         ],
-    ProgramFilter(10) >> [ # Couplet - Bouton 10
+    ProgramFilter(10) >> [ # Tears Are Dropping - Bouton 10
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 8),
             SendOSC(slport, '/set', 'tempo', 120),
@@ -541,19 +543,12 @@ acte0 = PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         bassorl_mute,
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_fx_off,
 
         ],
     ProgramFilter(11) >> [ # Intro classique - Bouton 11
         stop,
-#        [
-#            SendOSC(slport, '/set', 'eighth_per_cycle', 16),
-#            SendOSC(slport, '/set', 'tempo', 120),
-
-#            SendOSC(klickport, '/klick/simple/set_tempo', 120),
-#            SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-#            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-#            SendOSC(klickport, '/klick/metro/start'),
-#            ] >> Discard(),
         [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
             SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
@@ -566,7 +561,10 @@ acte0 = PortFilter('PBCtrlIn') >> [
 
         gtrorl_mute,
         gtrdag_mute,
-        bassorl_mute,
+        bassorl_on,
+        bassorl_disto_off,
+        bassorl_reverb_on,
+        bassorl_octaver_on,
         bassdag_mute,
         Program(113) >> seq24once,
         SceneSwitch(2),
