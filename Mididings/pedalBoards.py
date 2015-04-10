@@ -314,8 +314,8 @@ dag_basspedal = PortFilter('PBCtrlIn') >> [
     ProgramFilter(21) >> SendOSC(slport, '/sl/1/hit', 'record') >> Discard(),
     ProgramFilter(22) >> SendOSC(slport, '/sl/1/hit', 'pause_on') >> Discard(),
     ProgramFilter(23) >> SendOSC(slport, '/sl/1/hit', 'overdub') >> Discard(),
-    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
-    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
+    ProgramFilter(17) >> SendOSC(slport, '/sl/1/hit', 'multiply') >> Discard(),
+    ProgramFilter(18) >> SendOSC(slport, '/sl/1/hit', 'trigger') >> Discard(),
 
     ProgramFilter(20) >> bassdag_disto_on,
     ProgramFilter(21) >> bassdag_octaver_on,
@@ -331,8 +331,8 @@ dag_gtrpedal = PortFilter('PBCtrlIn') >> [
     ProgramFilter(21) >> SendOSC(slport, '/sl/3/hit', 'record') >> Discard(),
     ProgramFilter(22) >> SendOSC(slport, '/sl/3/hit', 'pause_on') >> Discard(),
     ProgramFilter(23) >> SendOSC(slport, '/sl/3/hit', 'overdub') >> Discard(),
-    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
-    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
+    ProgramFilter(17) >> SendOSC(slport, '/sl/3/hit', 'multiply') >> Discard(),
+    ProgramFilter(18) >> SendOSC(slport, '/sl/3/hit', 'trigger') >> Discard(),
 
     ProgramFilter(23) >> gtrdag_clean,
     ProgramFilter(22) >> gtrdag_disto,
@@ -2425,8 +2425,12 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
-        bassorl_fx_on,
-        bassdag_fx_on
+        bassorl_disto_on,
+        bassorl_octaver_off,
+        bassorl_reverb_off,
+        bassdag_disto_on,
+        bassdag_fx_off,
+        bassdag_octaver_off,
         ],
     ProgramFilter(8) >> [ # 13/8 Prog en G - Bouton 8
         Program(67) >> cseqtrigger,
@@ -2445,14 +2449,17 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-        
+
         bassdag_on,
+        bassorl_on,
+        bassdag_fx_off,
+        bassdag_disto_off,
+        bassdag_octaver_off,
+        bassorl_disto_off,
+        bassorl_reverb_off,
+        bassorl_octaver_off,        
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on,
-        bassorl_fx_off,
-        bassdag_fx_off
-
         ],
     ProgramFilter(9) >> [ # Metal - Bouton 9
         Program(68) >> cseqtrigger,
@@ -2476,8 +2483,11 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
-        bassorl_fx_on,
-        bassdag_fx_on,
+        bassorl_disto_on,
+        bassdag_disto_on,
+        bassorl_octaver_off,
+        bassdag_octaver_off,
+        bassdag_fx_off,
         [
             SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
             SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
@@ -2504,13 +2514,32 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             ] >> Discard()
 
         ],
+    ProgramFilter(10) >> [ # Metal Bouclage basses - Bouton 10
+            SendOSC(slport, '/sl/0/hit', 'record'),
+            SendOSC(slport, '/sl/1/hit', 'record'),        
+        ] >> Discard()
 
-    ProgramFilter(10) >> [ # Metal Alterno - Bouton 10
+    ProgramFilter(11) >> [ # Metal Alterno - Bouton 11
         Program(69) >> cseqtrigger,
 
         Program(1) >> abass,
         Program(10) >> achords,
         Program(10) >> actlead,
+
+        [
+            SendOSC(slport, '/set', 'eighth_per_cycle', 14),
+            SendOSC(slport, '/set', 'tempo', 180),
+
+            SendOSC(slport, '/sl/0/hit', 'trigger'),
+            SendOSC(slport, '/sl/1/hit', 'trigger'),
+            
+            SendOSC(slport, '/sl/2/hit', 'pause_on'),
+            SendOSC(klickport, '/klick/simple/set_tempo', 180),
+            SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'XxXxXxx'),
+            SendOSC(klickport, '/klick/metro/start'),
+            ] >> Discard(),
+
         [
             SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
             SendOSC(qlcport, '/BJ/Red/Segment/1', 255),
@@ -2547,40 +2576,22 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         gtrorl_disto,
         bassorl_on,
-        bassorl_fx_on,
-        bassdag_fx_on,
+        bassorl_disto_on,
+        bassorl_octaver_off,
+        bassdag_disto_on,
+        bassdag_octaver_off,
+        bassdag_fx_off,
         [
             SendOSC(qlcport, '/stop', 1),
             SendOSC(qlcport, '/scene/introD', 1),
             ] >> Discard()
 
         ],
-    ProgramFilter(11) >> [ # Vers Carmen - Bouton 11
-#        gtrorl_clean,
+    ProgramFilter(11) >> [ # Vers Carmen - Bouton 11 -- !!! A VÉRIFIER EN RÉPÈTITION !!!
 
         Program(119) >> seq24once,
         SceneSwitch(8)        
         ],
-    # ProgramFilter(8) >> [ # Metal Alterno - Bouton 8 #TEMPORAIRE
-    #     Program(70) >> cseqtrigger,
-
-    #     Program(1) >> abass,
-    #     Program(1) >> achords,
-    #     Program(1) >> alead,
-    #     Program(10) >> actlead,
-    #     [
-    #         SendOSC(slport, '/set', 'eighth_per_cycle', 26),
-    #         SendOSC(slport, '/set', 'tempo', 180),
-            
-    #         SendOSC(slport, '/sl/2/hit', 'pause_on'),
-    #         SendOSC(klickport, '/klick/simple/set_tempo', 180),
-    #         SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
-    #         SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxXxxx'),
-    #         SendOSC(klickport, '/klick/metro/start'),
-    #         ] >> Discard(),
-
-
-    #     ]
  
     ]
 
