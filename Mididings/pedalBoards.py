@@ -1079,7 +1079,8 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrorl_mute,
         bassorl_on,
         bassorl_octaver_on,
-        bassorl_fx_on,
+        bassorl_disto_off,
+        bassorl_reverb_off,
         gtrdag_octaverdown,
 
         [
@@ -1096,27 +1097,6 @@ acte2 =	PortFilter('PBCtrlIn') >> [
      
             ] >> Discard()
         ],
-    # ProgramFilter(4) >> [ # Pont Had Gadya - Bouton 4
-    #     Program(65) >> cseqtrigger,        
-    #     Program(6) >> Channel(2) >> seqtrigger,
-    #     abass_mute,
-    #     actlead_mute,
-    #     [
-    #         SendOSC(slport, '/set', 'eighth_per_cycle', 16),
-    #         SendOSC(slport, '/set', 'tempo', 150),
-    #         SendOSC(klickport, '/klick/simple/set_tempo', 150),
-    #         SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-    #         SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-    #         SendOSC(klickport, '/klick/metro/start'),
-    #         ] >> Discard(),
-
-    #     bassdag_mute,
-    #     gtrdag_disto,
-    #     gtrorl_mute,
-    #     bassorl_on,
-
-
-    #     ],
     ProgramFilter(4) >> [ # Filtre Pont Had Gadya & suite - Bouton 4
         Program(67) >> cseqtrigger,
         [
@@ -1140,6 +1120,8 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         gtrorl_mute,
         bassorl_on,
+        bassorl_disto_on,
+        bassorl_octaver_on,
         [
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
             SendOSC(qlcseqport, '/Sequencer/Scene/Play', 'AII HG2'), 
@@ -1159,10 +1141,6 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         ],
     ProgramFilter(5) >> [ # Lumières - bouton 5
         [
-            # SendOSC(qlcport, '/stop', 1),
-            # SendOSC(qlcport, '/scene/flip36Blanc', 1),
-            # SendOSC(qlcport, '/scene/introD', 1),
-            # SendOSC(qlcport, '/discours', 0)
             ] >> Discard()
         ],
     ProgramFilter(6) >> [ # Debut Couplet - Bouton 6
@@ -1184,7 +1162,8 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         gtrorl_mute,
         bassorl_on,
-        bassorl_fx_off,
+        bassorl_disto_off,
+        bassorl_reverb_off,
         [
             SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
             SendOSC(qlcport, '/BJ/Blue/Segment/1', 150),
@@ -1217,8 +1196,11 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         
         bassdag_on,
         gtrdag_clean,
-        gtrorl_clean,
+        gtrorl_mute,
         bassorl_on,
+        bassorl_reverb_off,
+        bassorl_disto_off,
+        bassorl_octaver_off,
 
         [
             SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
@@ -1254,6 +1236,9 @@ acte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_disto,
         gtrorl_mute,
         bassorl_on,
+        bassorl_disto_off,
+        bassorl_reverb_off,
+        bassorl_octaver_off,
         [
             SendOSC(qlcport, '/AllStop', 1),
             SendOSC(qlcseqport, 'Sequencer/Scene/Play', 'AII MEP')
@@ -1279,9 +1264,16 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_fx_off,
+        bassdag_octaver_off,
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        bassorl_octaver_off,
+        bassorl_disto_off,
+        bassorl_reverb_off,
+        
         [
             SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
             SendOSC(qlcport, '/BJ/Blue/Segment/1', 150),
@@ -1310,9 +1302,15 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
 
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_fx_off,
+        bassdag_octaver_off,
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        bassorl_reverb_on,
+        bassorl_disto_off,
+        bassorl_octaver_off,
         [
             SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
             SendOSC(qlcport, '/BJ/Blue/Segment/1', 150),
@@ -1382,9 +1380,6 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         ],
     ProgramFilter(4) >> [ # Forain Acte II Classical - Bouton 4
         Program(13) >> Channel(2) >> seqtrigger,
-        # [
-        #     SendOSC(qlcport, '/scene/36orlRouge', 1), 
-        #     ] >> Discard()
         ],
     ProgramFilter(5) >> [ # Forain Acte II Bîîîîm - Bouton 5
         Program(66) >> cseqtrigger,
