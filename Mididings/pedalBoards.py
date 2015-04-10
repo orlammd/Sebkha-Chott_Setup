@@ -2642,9 +2642,15 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
 
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_octaver_off,
+        bassdag_fx_off,
         gtrorl_mute,
         gtrdag_mute,
         bassorl_on,
+        bassorl_disto_off,
+        bassorl_octaver_off,
+        bassorl_reverb_on,
         [
             SendOSC(qlcport, '/CC/Red/Segment/All', 255),
             SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
@@ -2696,9 +2702,14 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
 
         bassdag_on,
+        bassdag_disto_on,
+        bassdag_octaver_off,
+        bassdag_fx_off,
         gtrdag_disto,
         gtrorl_disto,
         bassorl_on,
+        bassorl_disto_on,
+        bassorl_octaver_off,
         [
             SendOSC(qlcport, '/AllStop', 1),            
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
@@ -2757,7 +2768,7 @@ acte4 =	PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/BJ/Red/Segment/5', 255),
             ] >> Discard()
         ],
-    ProgramFilter(10) >> [ # Bouclage guitares - Bouton 10
+    ProgramFilter(10) >> [ # Overdub guitares - Bouton 10
         [
             SendOSC(slport, '/sl/2/hit', 'overdub'),
             SendOSC(slport, '/sl/3/hit', 'overdub')
