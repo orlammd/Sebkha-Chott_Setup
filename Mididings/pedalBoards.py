@@ -215,7 +215,10 @@ bassorl_disto_on = [
 bassorl_disto_off = [
     SendOSC(bassesport, '/strip/Disto_Bass_ORL/Gain/Mute', 1.0),
     ] >> Discard()
-
+# TEMPORAIRE - TRANSITION PACKAGE
+bassorl_fx_on = Discard()
+bassorl_fx_off = Discard()
+# TEMPORAIRE - TRANSITION PACKAGE
 
 
 #### Vocals ####
@@ -268,6 +271,14 @@ orl_basspedal = PortFilter('PBCtrlIn') >> [
     ProgramFilter(16) >> SendOSC(slport, '/sl/0/hit', 'overdub') >> Discard(),
     ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
     ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
+    ProgramFilter(20) >> bassorl_disto_on,
+    ProgramFilter(21) >> bassorl_octaver_on,
+    ProgramFilter(22) >> bassorl_reverb_on,
+    ProgramFilter(23) >> [
+        bassorl_disto_off,
+        bassorl_octaver_off,
+        bassorl_reverb_off
+        ]
 #    ProgramFilter(18) >> bassfx_suboctaves,
 #    ProgramFilter(19) >> bassfx_jazzdeluxe,
 #    ProgramFilter(20) >> bassfx_sabra,
@@ -286,7 +297,6 @@ orl_gtrpedal = PortFilter('PBCtrlIn') >> [
     ProgramFilter(19) >> gtrorl_disto
     ]
 orl_vxpedal = PortFilter('PBCtrlIn') >> [
-#    ProgramFilter(13) >> gtrorl_on,
     ProgramFilter(14) >> SendOSC(slport, '/sl/4/hit', 'record') >> Discard(),
     ProgramFilter(15) >> SendOSC(slport, '/sl/4/hit', 'pause_on') >> Discard(),
     ProgramFilter(16) >> SendOSC(slport, '/sl/4/hit', 'overdub') >> Discard(),
@@ -301,37 +311,35 @@ dag_basspedal = PortFilter('PBCtrlIn') >> [
     ProgramFilter(21) >> SendOSC(slport, '/sl/1/hit', 'record') >> Discard(),
     ProgramFilter(22) >> SendOSC(slport, '/sl/1/hit', 'pause_on') >> Discard(),
     ProgramFilter(23) >> SendOSC(slport, '/sl/1/hit', 'overdub') >> Discard(),
-#    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
-#    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
-#    ProgramFilter(18) >> bassfx_suboctaves,
-#    ProgramFilter(19) >> bassfx_jazzdeluxe,
-#    ProgramFilter(20) >> bassfx_sabra,
-#    ProgramFilter(21) >> bassfx_revgav,
-#    ProgramFilter(22) >> bassfx_mute,
+    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
+    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
+
+    ProgramFilter(20) >> bassdag_disto_on,
+    ProgramFilter(21) >> bassdag_octaver_on,
+    ProgramFilter(22) >> bassdag_fx_on,
+    ProgramFilter(23) >> [
+        bassdag_fx_off,
+        bassdag_disto_off,
+        bassdag_octaver_off
+        ]
     ]
 dag_gtrpedal = PortFilter('PBCtrlIn') >> [
     ProgramFilter(13) >> gtrdag_on,
     ProgramFilter(21) >> SendOSC(slport, '/sl/3/hit', 'record') >> Discard(),
     ProgramFilter(22) >> SendOSC(slport, '/sl/3/hit', 'pause_on') >> Discard(),
     ProgramFilter(23) >> SendOSC(slport, '/sl/3/hit', 'overdub') >> Discard(),
-#    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
-#    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
+    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
+    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
 
-#    ProgramFilter(23) >> gtrdag_clean,
-#    ProgramFilter(22) >> gtrdag_disto,
-#    ProgramFilter(21) >> gtrdag_chromdelay_on,
-#    ProgramFilter(20) >> gtrdag_chromdelay_off
+    ProgramFilter(23) >> gtrdag_clean,
+    ProgramFilter(22) >> gtrdag_disto,
+    ProgramFilter(21) >> gtrdag_chromdelay_on,
+    ProgramFilter(20) >> gtrdag_chromdelay_off
     ]
 dag_vxpedal = PortFilter('PBCtrlIn') >> [
-#    ProgramFilter(13) >> gtrorl_on,
     ProgramFilter(21) >> SendOSC(slport, '/sl/5/hit', 'record') >> Discard(),
     ProgramFilter(22) >> SendOSC(slport, '/sl/5/hit', 'pause_on') >> Discard(),
     ProgramFilter(23) >> SendOSC(slport, '/sl/5/hit', 'overdub') >> Discard(),
-#    ProgramFilter(17) >> SendOSC(slport, '/sl/0/hit', 'multiply') >> Discard(),
-#    ProgramFilter(18) >> SendOSC(slport, '/sl/0/hit', 'trigger') >> Discard(),
-
-#    ProgramFilter(21) >> flutesolo_on,
-#    ProgramFilter(20) >> flutesolo_off
     ]
 
 #### Scenes ################################################
