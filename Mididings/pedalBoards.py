@@ -16,7 +16,7 @@ config(
 )
 
 hook(
-    OSCInterface(56422, 56423),
+    OSCInterface(56422, "osc.udp://CtrlOrl:56423"),
     OSCCustomInterface(56418),
     AutoRestart()
 )
@@ -146,7 +146,12 @@ gtrdag_chromdelay_off = [
 #### Bass ####
 
 # Dag
-bassdag_mute = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 1.0) >> Discard()
+bassdag_mute = [
+    SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 1.0) >> Discard(),
+    SendOSC(bassesport, '/strip/Octaver_Bass_Dag/Gain/Mute', 1.0) >> Discard(),
+    SendOSC(bassesport, '/strip/FX_Bass_Dag/Gain/Mute', 1.0) >> Discard(),
+    SendOSC(bassesport, '/strip/Disto_Bass_Dag/Gain/Mute', 1.0) >> Discard(),
+    ]
 bassdag_on = SendOSC(bassesport, '/strip/Bass_Dag/Gain/Mute', 0.0) >> Discard()
 bassdag_octaver_on = [
     SendOSC(bassesport, '/strip/Oct_Bass_Dag/Gain/Mute', 0.0),
@@ -499,7 +504,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 180),
             SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 180),
             ] >> Discard(),
-        SubSceneSwitch(2),
+#        SubSceneSwitch(2),
         Program(70) >> cseqtrigger,
         actlead_mute,
         Program(6) >> abass,
@@ -2515,9 +2520,11 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
 
         ],
     ProgramFilter(10) >> [ # Metal Bouclage basses - Bouton 10
+        [
             SendOSC(slport, '/sl/0/hit', 'record'),
-            SendOSC(slport, '/sl/1/hit', 'record'),        
-        ] >> Discard()
+            SendOSC(slport, '/sl/1/hit', 'record'),
+            ] >> Discard()
+        ],
 
     ProgramFilter(11) >> [ # Metal Alterno - Bouton 11
         Program(69) >> cseqtrigger,
