@@ -170,7 +170,9 @@ bassdag_disto_off = [
 # ORL
 bassorl_mute = [
     SendOSC(bassesport, '/strip/Bass_ORL/Gain/Mute', 1.0),
-    SendOSC(bassesport, '/strip/FX_Bass_ORL/Gain/Mute', 1.0)
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/Gain/Mute', 1.0),
+    SendOSC(bassesport, '/strip/Octaver_Bass_ORL/Gain/Mute', 1.0),
+    SendOSC(bassesport, '/strip/Disto_Bass_ORL/Gain/Mute', 1.0)
     ] >> Discard()
 bassorl_on = [
     SendOSC(bassesport, '/strip/Oct_Bass_ORL/Gain/Mute', 1.0),
@@ -1427,9 +1429,15 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
 
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_fx_off,
+        bassdag_octaver_off,
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        bassorl_disto_off,
+        bassorl_octaver_off,
+        bassorl_reverb_off,
         [
             SendOSC(qlcport, '/BC/Blue/Segment/1', 150),
             SendOSC(qlcport, '/BJ/Blue/Segment/1', 150),
@@ -1463,7 +1471,7 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         gtrdag_mute,
         gtrorl_mute,
-        bassorl_on,
+        bassorl_mute,
 
         [
             SendOSC(qlcport, '/BC/Blue/Segment/1', 0),
@@ -1523,6 +1531,8 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        bassorl_disto_on,
+        bassorl_octaver_on,
         [
             SendOSC(qlcport, '/BC/Blue/Segment/1', 255),
             SendOSC(qlcport, '/BJ/Blue/Segment/1', 255),
@@ -1549,6 +1559,8 @@ forainacte2 =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
+        bassorl_octaver_on,
+        bassorl_disto_on,
         [
             SendOSC(qlcport, '/AllStop', 1),
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
@@ -1585,6 +1597,9 @@ acte3 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
 
         bassdag_on,
+        bassdag_disto_off,
+        bassdag_octaver_off,
+        bassdag_fx_off,
         gtrorl_clean,
         gtrdag_mute,
         bassorl_mute,
