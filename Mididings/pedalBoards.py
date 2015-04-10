@@ -584,9 +584,6 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
             SendOSC(slport, '/set', 'tempo', 120),
-            
-            #			    SendOSC(slport, '/sl/2/hit', 'record'),
-            
             SendOSC(klickport, '/klick/simple/set_tempo', 120),
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
