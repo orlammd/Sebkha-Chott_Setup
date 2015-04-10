@@ -201,6 +201,7 @@ bassorl_reverb_off = [
     ] >> Discard()
 bassorl_disto_on = [
     SendOSC(bassesport, '/strip/Disto_Bass_ORL/Gain/Mute', 0.0),
+    SendOSC(bassesport, '/strip/FX_Bass_ORL/Gain/Mute', 0.0),
     SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Delay/unscaled', 0.020),
     SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/Xover/unscaled', 500),
     SendOSC(bassesport, '/strip/FX_Bass_ORL/zita-reverb/RT-low/unscaled', 1.95),
@@ -594,6 +595,9 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         bassdag_mute,
         bassorl_on,
+        bassorl_disto_off,
+        bassorl_reverb_off,
+        bassorl_octaver_off,
 
         [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 150),
@@ -647,6 +651,8 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassdag_mute,
         bassorl_on,
         bassorl_octaver_on,
+        bassorl_reverb_off,
+        bassorl_disto_off,
 
         [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 150),
@@ -692,11 +698,13 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        bassdag_on,
-        bassdag_fx_off,
-        gtrdag_mute,
+        bassdag_mute,
+        gtrdag_clean,
         gtrorl_mute,
-        bassorl_on,        
+        bassorl_on,
+        bassorl_disto_off,
+        bassorl_octaver_on,
+        bassorl_reverb_off
         ],
     ProgramFilter(6) >> [ # Bustas - Bouton 6
         Program(66) >> cseqtrigger,
@@ -720,6 +728,9 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         bassdag_mute,
         bassorl_on,
+        bassorl_reverb_off,
+        bassorl_disto_off,
+        bassorl_octaver_on,
 
         [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 150),
@@ -774,6 +785,8 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrdag_clean,
         bassdag_mute,
         bassorl_on,
+        bassorl_disto_on,
+        bassorl_octaver_off,
 
         [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
@@ -804,50 +817,6 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             
             ] >> Discard()
         ],
-    # ProgramFilter(6) >> [ # Final Couplet - Bouton 6
-    #     [
-    #         Program(19),
-    #         Program(22)
-    #         ] >> Channel(2) >> seqtrigger,
-
-    #     [
-    #         SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
-    #         SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
-    #         SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
-
-    #         SendOSC(qlcport, '/CC/Red/Segment/1', 150),
-    #         SendOSC(qlcport, '/CJ/Red/Segment/1', 150),
-    #         SendOSC(qlcport, '/CC/Green/Segment/1', 80),
-    #         SendOSC(qlcport, '/CJ/Green/Segment/1', 80),
-    #         SendOSC(qlcport, '/CC/Red/Segment/3', 150),
-    #         SendOSC(qlcport, '/CJ/Red/Segment/3', 150),
-    #         SendOSC(qlcport, '/CC/Green/Segment/3', 80),
-    #         SendOSC(qlcport, '/CJ/Green/Segment/3', 80),
-    #         SendOSC(qlcport, '/CC/Red/Segment/5', 150),
-    #         SendOSC(qlcport, '/CJ/Red/Segment/5', 150),
-    #         SendOSC(qlcport, '/CC/Green/Segment/5', 80),
-    #         SendOSC(qlcport, '/CJ/Green/Segment/5', 80),
-    #         SendOSC(qlcport, '/CC/Red/Segment/7', 150),
-    #         SendOSC(qlcport, '/CJ/Red/Segment/7', 150),
-    #         SendOSC(qlcport, '/CC/Green/Segment/7', 80),
-    #         SendOSC(qlcport, '/CJ/Green/Segment/7', 80),
-
-    #         SendOSC(qlcport, '/BC/Red/Segment/1', 120),
-    #         SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
-    #         SendOSC(qlcport, '/BC/Red/Segment/3', 120),
-    #         SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
-    #         SendOSC(qlcport, '/BC/Red/Segment/5', 120),
-    #         SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
-    #         SendOSC(qlcport, '/BC/Red/Segment/7', 120),
-    #         SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
-
-    #         SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
-    #         SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AI Couplet', 1),
-    #         SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
-    #         SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
-            
-    #         ] >> Discard()
-    #     ],
     ProgramFilter(8) >> [ # MathoMag I - Bouton 8
         Program(68) >> cseqtrigger,
         
