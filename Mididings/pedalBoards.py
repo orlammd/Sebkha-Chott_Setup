@@ -828,8 +828,6 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
             SendOSC(slport, '/set', 'tempo', 120),
             
-            #			    SendOSC(slport, '/sl/2/hit', 'record'),
-            
             SendOSC(klickport, '/klick/simple/set_tempo', 120),
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
@@ -841,6 +839,9 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassdag_on,
         bassdag_fx_off,
         bassorl_on,
+        bassorl_disto_off,
+        bassorl_reverb_off,
+        bassorl_octaver_off,
 
         [
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
@@ -876,55 +877,6 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard()
         
         ],
-#     ProgramFilter(8) >> [ # MathoMag - Bouton 8
-#         Program(69) >> cseqtrigger,
-        
-#         Program(1) >> achords,
-#         Program(1) >> abass,
-# 	Program(2) >> actlead,
-# #        actlead_mute,
-        
-#         [
-#             SendOSC(slport, '/set', 'eighth_per_cycle', 16),
-#             SendOSC(slport, '/set', 'tempo', 120),
-            
-#             #			    SendOSC(slport, '/sl/2/hit', 'record'),
-            
-#             SendOSC(klickport, '/klick/simple/set_tempo', 120),
-#             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
-#             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
-#             SendOSC(klickport, '/klick/metro/start'),
-#             ] >> Discard(),
-        
-#         bassdag_on,
-#         bassdag_fx_off,
-#         gtrdag_mute,
-#         gtrorl_mute,
-#         bassorl_on,
-
-#         [
-#             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
-
-
-#             SendOSC(qlcport, '/CC/Green/Segment/1', 120),
-#             SendOSC(qlcport, '/CJ/Green/Segment/1', 120),
-#             SendOSC(qlcport, '/CC/Green/Segment/3', 120),
-#             SendOSC(qlcport, '/CJ/Green/Segment/3', 120),
-#             SendOSC(qlcport, '/CC/Green/Segment/5', 120),
-#             SendOSC(qlcport, '/CJ/Green/Segment/5', 120),
-#             SendOSC(qlcport, '/CC/Green/Segment/7', 120),
-#             SendOSC(qlcport, '/CJ/Green/Segment/7', 120),
-
-#             SendOSC(qlcport, '/BC/Red/Segment/1', 120),
-#             SendOSC(qlcport, '/BJ/Red/Segment/1', 120),
-#             SendOSC(qlcport, '/BC/Red/Segment/3', 120),
-#             SendOSC(qlcport, '/BJ/Red/Segment/3', 120),
-#             SendOSC(qlcport, '/BC/Red/Segment/5', 120),
-#             SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
-#             SendOSC(qlcport, '/BC/Red/Segment/7', 120),
-#             SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
-#             ] >> Discard()
-#         ],
     ProgramFilter(9) >> [ # MathoMag II - Bouton 9
         Program(70) >> cseqtrigger,
         
@@ -938,8 +890,6 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
             
-            #			    SendOSC(slport, '/sl/2/hit', 'record'),
-            
             SendOSC(klickport, '/klick/simple/set_tempo', 120),
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
@@ -947,10 +897,14 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             ] >> Discard(),
         
         bassdag_on,
+        bassdag_disto_on,
+        bassdag_fx_off,
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
-        bassorl_fx_on,
+        bassorl_disto_off,
+        bassorl_octaver_off,
+        bassorl_reverb_off,
 
         [
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
@@ -994,12 +948,14 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         
-        bassdag_on,
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
-        bassorl_fx_on,
+        bassorl_disto_on,
+        bassorl_octaver_off,
         bassdag_on,
+        bassdag_disto_on,
+        bassdag_octaver_off,
 
         [
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
@@ -1039,8 +995,10 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         gtrdag_mute,
         gtrorl_mute,
         bassorl_on,
-        bassorl_fx_on,
-        bassdag_fx_on,
+        bassorl_disto_on,
+        bassorl_octaver_off,
+        bassdag_disto_on,
+        bassdag_octaver_off,
         [
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
             
