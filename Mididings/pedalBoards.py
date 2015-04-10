@@ -357,7 +357,6 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
-#        Program(66) >> cseqtrigger,
         Program(2) >> achords,
         Program(2) >> alead,
         abass_mute,
@@ -370,122 +369,6 @@ acte0 = PortFilter('PBCtrlIn') >> [
         bassorl_mute,
 
         ],
-#     ProgramFilter(2) >> [ # Intro - Bouton 2
-#         [
-#             SendOSC(slport, '/set', 'eighth_per_cycle', 7),
-#             SendOSC(slport, '/set', 'tempo', 120),
-
-#             SendOSC(klickport, '/klick/simple/set_tempo', 120),
-#             SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
-#             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
-#             SendOSC(klickport, '/klick/metro/start'),
-#             ] >> Discard(),
-#         Program(65) >> cseqtrigger,
-#         abass_mute,
-#         [
-#             NoteOn('c#-2',127),
-#             Program(3) 
-#             ] >> actlead,
-
-#         gtrorl_mute,
-#         gtrdag_mute,
-#         bassdag_mute,
-#         bassorl_mute,
-
-#         ],
-#     ProgramFilter(3) >> [ # Every Machines - Bouton 3
-#         [
-#             SendOSC(slport, '/set', 'eighth_per_cycle', 7),
-#             SendOSC(slport, '/set', 'tempo', 120),
-
-#             SendOSC(klickport, '/klick/simple/set_tempo', 120),
-#             SendOSC(klickport, '/klick/simple/set_meter', 14, 8),
-#             SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxxxXxx'),
-#             SendOSC(klickport, '/klick/metro/start'),
-#             ] >> Discard(),
-#         Program(67) >> cseqtrigger,
-#         [
-#             NoteOff('c#-2', 0),
-#             Program(3)
-#             ] >> actlead,
-#         Program(6) >> abass,
-
-#         gtrorl_mute,
-#         gtrdag_clean,
-#         bassdag_mute,
-#         bassorl_mute,
-
-
-#         [
-#             SendOSC(qlcseqport, '/Sequencer/Scene/Play', 'Entree Geminos'),
-#             ]>> Discard(),
-        
-        
-#         ],
-#     ProgramFilter(4) >> [ # Stop - Bouton 4
-#         [
-#             SendOSC(slport, '/set', 'eighth_per_cycle', 7),
-#             SendOSC(slport, '/set', 'tempo', 120),
-
-#             SendOSC(klickport, '/klick/simple/set_tempo', 120),
-#             SendOSC(klickport, '/klick/simple/set_meter', 7, 8),
-#             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
-#             SendOSC(klickport, '/klick/metro/start'),
-#             ] >> Discard(),
-#         Program(66) >> cseqtrigger,
-#         Program(2) >> achords,
-#         Program(2) >> alead,
-#         abass_mute,
-#         actlead_mute,
-#         NoteOff('c#2', 0) >> actlead,
-
-#         gtrorl_mute,
-#         gtrdag_mute,
-#         bassdag_mute,
-#         bassorl_mute,
-
-#         SendOSC(qlcport, '/Decoupes/Tyran/Dimmer', 255) >> Discard()
-        
-#         ],
-#     ProgramFilter(5) >> [ # Every Machines Full - Bouton 5
-# #        [
-# #            SendOSC(slport, '/set', 'eighth_per_cycle', 7),
-# #            SendOSC(slport, '/set', 'tempo', 110),
-
-# #            SendOSC(klickport, '/klick/simple/set_tempo', 110),
-# #            SendOSC(klickport, '/klick/simple/set_meter', 14, 8),
-# #            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxxxXxx'),
-# #            SendOSC(klickport, '/klick/metro/start'),
-# #            ] >> Discard(),
-#         [
-# 		Program(67),
-# 		Program(6)
-# 	] >> cseqtrigger,
-#         Program(3) >> actlead,
-#         Program(6) >> abass,
-#         Program(1) >> achords,
-#         Program(1) >> aclass,
-
-# 	[
-#             SendOSC(klickport, '/klick/simple/set_tempo', 120),
-#             SendOSC(klickport, '/klick/simple/set_meter', 14, 8),
-#             SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxxXxxxxXxx'),
-#             SendOSC(klickport, '/klick/metro/start'),
-# 	] >> Discard(),
-
-
-#         gtrdag_disto,
-#         gtrorl_mute,
-#         bassdag_mute,
-#         bassorl_on,
-
-#         [
-#             SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'FSF Bourrin', 1),
-#             SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
-#             SendOSC(qlcseqport, '/Sequencer/Set_bpm', 480),
-# #            SendOSC(qlcport, '/scene/introC', 0)
-#             ] >> Discard()
-#         ],
     ProgramFilter(6) >> [ # Lancement - Bouton 6
         stop,
         [
