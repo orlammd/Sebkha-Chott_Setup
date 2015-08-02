@@ -27,12 +27,13 @@ hook(
 klickport = 1234
 slport = 9951
 testport = 1111
-qlcport = ("CtrlRegie", 7770)
+qlcport = ("192.168.0.13", 7770)
 #qlcport = 7777
 #videoport
 qlcseqport = 12345 #("CtrlRegie", 12345)
-videoseqport = ("CtrlRegie", 12346)
-mainseqport = ("CtrlRegie", 12343)
+videoseqport = ("CtrlDag", 12346)
+mainseqport = ("CtrlDag", 12343)
+desktoporlport = ("CtrlOrl", 12345)
 
 # Non Mixers
 mainmixport = 6666
@@ -1007,6 +1008,8 @@ acte1 =	PortFilter('PBCtrlIn') >> [
         bassdag_disto_on,
         bassdag_octaver_off,
         [
+            SendOSC(qlcport, '/AllStop', 1),
+
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
             
             SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
@@ -1709,9 +1712,9 @@ acte3 =	PortFilter('PBCtrlIn') >> [
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 12),
             SendOSC(slport, '/set', 'tempo', 90),
-            SendOSC(klickport, '/klick/simple/set_tempo', 180),
+            SendOSC(klickport, '/klick/simple/set_tempo', 90),
             SendOSC(klickport, '/klick/simple/set_meter', 6, 8),
-            SendOSC(klickport, '/klick/simple/set_pattern', 'XxxXxx'),
+            SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
             ] >> Discard(),
         [
@@ -1912,8 +1915,10 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         Program(65) >> cseqtrigger,
      #   Program(1) >> abass,
 	abass_mute,
-        Program(8) >> alead,
-        actlead_mute,
+        Program(11) >> alead,
+	Program(8) >> achords,
+	Program(10) >> actlead,
+#        actlead_mute,
         [
             SendOSC(slport, '/set', 'eighth_per_cycle', 10),
             SendOSC(slport, '/set', 'tempo', 120),
@@ -1921,6 +1926,12 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_meter', 5, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
+
+	    SendOSC(mxsynthport, '/strip/MxChords/Gain/Mute', 1.0),
+	    SendOSC(mxsynthport, '/strip/MxCtLead/Gain/Mute', 1.0),
+
+	    SendOSC(desktoporlport, '/Desktop', 1),
+
             ] >> Discard(),
         
         bassdag_on,
@@ -2000,10 +2011,22 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassorl_reverb_off,
         bassorl_fx_off,
         [
+            SendOSC(qlcport, '/CC/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/4', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/5', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/5', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/4', 200),
+            SendOSC(qlcport, '/CJ/Red/Segment/4', 200),
+            SendOSC(qlcport, '/CC/Red/Segment/5', 200),
+            SendOSC(qlcport, '/CJ/Red/Segment/5', 200),
+
+	    SendOSC(mxsynthport, '/strip/MxChords/Gain/Mute', 0.0),
+	    SendOSC(mxsynthport, '/strip/MxCtLead/Gain/Mute', 0.0),
+
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
             
             SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
-            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 120),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 180),
 
             SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase5',1),
             ] >> Discard()
@@ -2065,10 +2088,15 @@ acte3partII =	PortFilter('PBCtrlIn') >> [
         bassorl_disto_on,
         bassorl_octaver_off,
         [
+            SendOSC(qlcport, '/AllStop', 1),
+
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
             
             SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
-            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 120),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 180),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase3',1),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase4',1),
 
             SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase5',1),
             ] >> Discard()
@@ -2343,6 +2371,28 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassorl_disto_off,
         bassorl_reverb_off,
         bassorl_octaver_off,
+        [
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
+            SendOSC(qlcport, '/BC/Green/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Green/Segment/1', 255),
+            SendOSC(qlcport, '/BC/Green/Segment/8', 255),
+            SendOSC(qlcport, '/BC/Green/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Green/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Green/Segment/1', 255),
+            SendOSC(qlcport, '/BJ/Green/Segment/8', 255),
+            SendOSC(qlcport, '/BJ/Green/Segment/8', 255),
+ 
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CJ/Blue/Segment/1', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Blue/Segment/8', 255),
+            SendOSC(qlcport, '/CC/Red/Segment/All', 255),
+            SendOSC(qlcport, '/CJ/Red/Segment/All', 255),
+            ] >> Discard(),
+
         ],
     ProgramFilter(5) >> [ # 13/8 Organic Only - Bouton 5
         stop,
@@ -2355,6 +2405,10 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_meter', 13, 8),
             SendOSC(klickport, '/klick/simple/set_pattern', 'X-x-x-x-x-x-x'),
             SendOSC(klickport, '/klick/metro/start'),
+
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 200),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 200),
+
             ] >> Discard(),        
 
         bassdag_on,
@@ -2443,6 +2497,23 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         bassdag_disto_on,
         bassdag_fx_off,
         bassdag_octaver_off,
+        [
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+            SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
+
+            SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            
+            SendOSC(qlcseqport, '/Sequencer/Trigger', 1),
+            SendOSC(qlcseqport, '/Sequencer/Set_bpm', 180),
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase3',1),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase4',1),
+
+            SendOSC(qlcseqport, '/Sequencer/Sequence/Enable', 'AII Chase5',1),
+
+            ] >> Discard()
+
+
         ],
     ProgramFilter(8) >> [ # 13/8 Prog en G - Bouton 8
         Program(67) >> cseqtrigger,
