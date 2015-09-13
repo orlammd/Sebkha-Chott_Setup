@@ -21,7 +21,7 @@
 	Mixer_Strip 0xE create :name "Vocals" :width "narrow" :tab "fader" :color 867006554 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0
 	Chain 0xF create :strip 0xE :tab "chain"
 	JACK_Module 0x10 create :parameter_values "0,000000:2,000000" :is_default 1 :chain 0xF :active 1
-	Gain_Module 0x11 create :parameter_values "-15,000000:0,000000" :is_default 1 :chain 0xF :active 1
+	Gain_Module 0x11 create :parameter_values "-24,500000:0,000000" :is_default 1 :chain 0xF :active 1
 	Meter_Module 0x12 create :is_default 1 :chain 0xF :active 1
 	JACK_Module 0x13 create :parameter_values "2,000000:0,000000" :is_default 1 :chain 0xF :active 1
 	Mixer_Strip 0x2C create :name "MxDrums" :width "narrow" :tab "fader" :color 517524977 :gain_mode 0 :mute_mode 0 :group 0x7 :auto_input "" :manual_connection 0

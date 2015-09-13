@@ -2552,7 +2552,7 @@ acte3partIII =	PortFilter('PBCtrlIn') >> [
         Program(10) >> actlead,
         
         [
-            SendOSC(slport, '/set', 'eighth_per_cycle', 14),
+            SendOSC(slport, '/set', 'eighth_per_cycle', 7),
             SendOSC(slport, '/set', 'tempo', 180),
             
             SendOSC(slport, '/sl/2/hit', 'pause_on'),
