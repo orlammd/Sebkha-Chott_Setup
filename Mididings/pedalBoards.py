@@ -29,9 +29,10 @@ slport = 9951
 testport = 1111
 qlcport = ("192.168.0.13", 7770)
 #qlcport = 7777
-#videoport
+videoport = ("192.168.0.112", 56418)
+videoseqport = 12346
 qlcseqport = 12345 #("CtrlRegie", 12345)
-videoseqport = ("CtrlDag", 12346)
+#videoseqport = ("CtrlDag", 12346)
 mainseqport = ("CtrlDag", 12343)
 desktoporlport = ("CtrlOrl", 12345)
 
@@ -381,6 +382,8 @@ acte0 = PortFilter('PBCtrlIn') >> [
     ProgramFilter(6) >> [ # Lancement - Bouton 6
         stop,
         [
+
+
             SendOSC(slport, '/set', 'eighth_per_cycle', 7),
             SendOSC(slport, '/set', 'tempo', 120),
 
@@ -398,6 +401,15 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/CC/Blue/Segment/5', 255),
             SendOSC(qlcport, '/CJ/Red/Segment/5', 255),
             SendOSC(qlcport, '/CJ/Blue/Segment/5', 255),
+
+            SendOSC(videoseqport, '/Sequencer/DisableAll', 1),
+
+            SendOSC(videoport, '/pyta/slide/alpha', 99, 0.95),
+            SendOSC(videoport, '/pyta/slide/rgb', 99, 0, 0, 0),
+            SendOSC(videoport, '/pyta/slide/visible', 99, 1),
+            SendOSC(videoseqport, '/Sequencer/Set_bpm', 480),
+            SendOSC(videoseqport, '/Sequencer/Trigger', 1),
+            SendOSC(videoseqport, '/Sequencer/Sequence/Enable', 'CoffeeNoise', 1)
             ] >> Discard(),
 
         gtrdag_mute,
