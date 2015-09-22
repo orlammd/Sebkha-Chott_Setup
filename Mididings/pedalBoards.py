@@ -29,8 +29,8 @@ slport = 9951
 testport = 1111
 qlcport = ("192.168.0.13", 7770)
 #qlcport = 7777
-videoport = ("192.168.0.112", 56418)
-videoseqport = 12346
+videoCport = ("192.168.0.112", 56418)
+videoCseqport = 12346
 qlcseqport = 12345 #("CtrlRegie", 12345)
 #videoseqport = ("CtrlDag", 12346)
 mainseqport = ("CtrlDag", 12343)
@@ -402,14 +402,14 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/CJ/Red/Segment/5', 255),
             SendOSC(qlcport, '/CJ/Blue/Segment/5', 255),
 
-            SendOSC(videoseqport, '/Sequencer/DisableAll', 1),
-
-            SendOSC(videoport, '/pyta/slide/alpha', 99, 0.95),
-            SendOSC(videoport, '/pyta/slide/rgb', 99, 0, 0, 0),
-            SendOSC(videoport, '/pyta/slide/visible', 99, 1),
-            SendOSC(videoseqport, '/Sequencer/Set_bpm', 480),
-            SendOSC(videoseqport, '/Sequencer/Trigger', 1),
-            SendOSC(videoseqport, '/Sequencer/Sequence/Enable', 'CoffeeNoise', 1)
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
+            SendOSC(videoCport, '/pyta/slide/alpha', 99, 0.95),
+            SendOSC(videoCport, '/pyta/slide/rgb', 99, 0, 0, 0),
+            SendOSC(videoCport, '/pyta/slide/visible', 99, 1),
+            SendOSC(videoCseqport, '/Sequencer/Set_bpm', 480),
+            SendOSC(videoCseqport, '/Sequencer/Trigger', 1),
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'CoffeeNoise', 1)
             ] >> Discard(),
 
         gtrdag_mute,
@@ -429,6 +429,15 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_meter', 7, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxxxxx'),
             SendOSC(klickport, '/klick/metro/start'),
+
+
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 79, 1, 0, 0), 
+            SendOSC(videoCport, '/pyta/slide/visible', 79, 1),
+            SendOSC(videoCseqport, '/Sequencer/Set_bpm', 1800),
+            SendOSC(videoCseqport, '/Sequencer/Trigger', 1),
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'A0 Refrain Alpha', 1)
             ] >> Discard(),
         Program(69) >> cseqtrigger,
         actlead_mute,
@@ -482,6 +491,15 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 180),
             SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 180),
             SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 180),
+
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 79, 0.15, 0, 0.15), 
+            SendOSC(videoCport, '/pyta/slide/visible', 79, 1),
+            SendOSC(videoCseqport, '/Sequencer/Set_bpm', 1800),
+            SendOSC(videoCseqport, '/Sequencer/Trigger', 1),
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'A0 Refrain Alpha', 1)
+            
             ] >> Discard(),
         Program(70) >> cseqtrigger,
         actlead_mute,
