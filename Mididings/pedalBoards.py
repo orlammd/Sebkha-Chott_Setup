@@ -267,6 +267,8 @@ stop = [
         [
             SendOSC(qlcport, '/AllStop', 1),
             SendOSC(qlcseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
             ] >> Discard()
 ]
 
@@ -534,6 +536,18 @@ acte0 = PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 180),
             SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 180),
             SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 180),
+
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
+            SendOSC(videoCseqport, '/Sequencer/Set_bpm', 960),
+            SendOSC(videoCseqport, '/Sequencer/Trigger', 1),
+            SendOSC(videoCport, '/pyta/slide/visible', 79, 1),
+            SendOSC(videoCport, '/pyta/slide/rgb', 79, 1, 1, 1),
+            SendOSC(videoCport, '/pyta/slide/visible', 99, 1),
+            SendOSC(videoCport, '/pyta/slide/rgb', 99, 0, 0, 0),
+            SendOSC(videoCseqport, '/Sequencer/Scene/Play', 'A0 Say Hello'), 
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'A0 Say Hello', 1),
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'A0 Say Hello Alpha', 1)            
             ] >> Discard(),
 #        SubSceneSwitch(2),
         Program(70) >> cseqtrigger,
@@ -552,7 +566,7 @@ acte0 = PortFilter('PBCtrlIn') >> [
         bassdag_disto_off,
         bassdag_fx_off,
 
-        [
+        [ #TODO : vérifier ce que ça fout là
             SendOSC(qlcport, '/stop', 1),
             SendOSC(qlcport, '/scene/36orlViolet', 1),
             SendOSC(qlcport, '/scene/36yulaViolet', 1)
