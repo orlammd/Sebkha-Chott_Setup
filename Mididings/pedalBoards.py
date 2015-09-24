@@ -694,6 +694,8 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/scene/flip36yulaBlanc', 1),
 
             SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'A1 Gals Grouille', 1),
+            SendOSC(videoCseqport, '/Sequencer/Set_bpm', 960),
             SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
             SendOSC(videoCport, '/pyta/slide/rgb', 79, 1, 0, 0), 
             SendOSC(videoCport, '/pyta/slide/visible', 79, 1)
@@ -1046,6 +1048,10 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/BJ/Red/Segment/5', 120),
             SendOSC(qlcport, '/BC/Red/Segment/7', 120),
             SendOSC(qlcport, '/BJ/Red/Segment/7', 120),
+
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+	    SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
+
             ] >> Discard()
         ],
     ProgramFilter(10) >> [ # DeathoDeb - Bouton 10
@@ -1088,7 +1094,9 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/CJ/Blue/Segment/All', 200),
             SendOSC(qlcport, '/CC/Green/Segment/All', 200),
             SendOSC(qlcport, '/CJ/Green/Segment/All', 200),
-            
+
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCport, '/pyta/slide/visible', -1, 0),            
             ] >> Discard()
         ],
     ProgramFilter(11) >> [ # Forain I / Strange World - Bouton 11
@@ -1108,6 +1116,13 @@ acte1 =	PortFilter('PBCtrlIn') >> [
             SendOSC(klickport, '/klick/simple/set_meter', 4, 4),
             SendOSC(klickport, '/klick/simple/set_pattern', 'Xxxx'),
             SendOSC(klickport, '/klick/metro/start'),
+
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'A1 Gals Grouille', 1),
+            SendOSC(videoCseqport, '/Sequencer/Set_bpm', 960),
+            SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 79, 1, 0, 0), 
+            SendOSC(videoCport, '/pyta/slide/visible', 79, 1)
             ] >> Discard(),
 
         bassdag_on,
