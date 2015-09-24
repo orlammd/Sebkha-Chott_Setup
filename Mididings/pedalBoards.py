@@ -912,7 +912,7 @@ acte1 =	PortFilter('PBCtrlIn') >> [
 
             SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
             SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
-            SendOSC(videoCport, '/pyta/slide/rgb', 79, 0.2, 0, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 79, 1, 0, 0),
 	    SendOSC(videoCport, '/pyta/slide/scale', 79, 800, 800, 0),
 	    SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', "A1 StrangeWorld Sortie Reggae", 1), 
 	    SendOSC(videoCseqport, '/Sequencer/Set_bpm', 960),
@@ -954,7 +954,17 @@ acte1 =	PortFilter('PBCtrlIn') >> [
 
             SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
 	    SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
-            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'AI Liba Libanese', 1),
+            SendOSC(videoCport, '/pyta/slide/rgb', 80, 0, 0.5, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 81, 0, 0.5, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 82, 0, 0.5, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 83, 0, 0.5, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 84, 0, 0.5, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 85, 0, 0.5, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 86, 0, 0.5, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 87, 0, 0.5, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 88, 0, 0.5, 0),
+            SendOSC(videoCport, '/pyta/slide/rgb', 89, 0, 0.5, 0),
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'A1 Liba Libanese', 1),
             SendOSC(videoCseqport, '/Sequencer/Trigger', 1),
             SendOSC(videoCseqport, '/Sequencer/Set_bpm', 480),
 
