@@ -29,7 +29,7 @@ slport = 9951
 testport = 1111
 qlcport = ("192.168.0.13", 7770)
 #qlcport = 7777
-videoCport = ("192.168.0.112", 56418)
+videoCport = ("192.168.0.110", 56418)
 videoCseqport = 12346
 qlcseqport = 12345 #("CtrlRegie", 12345)
 #videoseqport = ("CtrlDag", 12346)
@@ -1230,7 +1230,18 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 0),
             SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 0),
             SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 0),
-     
+
+
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'A2 Had Gadya Grouille', 1),
+            SendOSC(videoCseqport, '/Sequencer/Sequence/Enable', 'A2 Had Gadya Grouille Bis', 1),
+            SendOSC(videoCseqport, '/Sequencer/Set_bpm', 480),
+            SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
+            SendOSC(videoCport, '/pyta/slide/visible', 99, 1),
+            SendOSC(videoCport, '/pyta/slide/alpha', 99, 0.85),
+            SendOSC(videoCport, '/pyta/slide/visible', 70, 1),
+            SendOSC(videoCport, '/pyta/slide/alpha', 70, 0.6),
+
             ] >> Discard()
         ],
     ProgramFilter(4) >> [ # Filtre Pont Had Gadya & suite - Bouton 4
