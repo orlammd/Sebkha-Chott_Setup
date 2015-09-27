@@ -1282,7 +1282,11 @@ acte2 =	PortFilter('PBCtrlIn') >> [
             SendOSC(qlcport, '/CC/Blue/Segment/8', 200),
             SendOSC(qlcport, '/Decoupes/Jeannot/Dimmer', 255),
             SendOSC(qlcport, '/Decoupes/Cour/Dimmer', 255),
-            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255)
+            SendOSC(qlcport, '/Decoupes/Jardin/Dimmer', 255),
+
+            SendOSC(videoCseqport, '/Sequencer/DisableAll', 1),
+            SendOSC(videoCport, '/pyta/slide/visible', -1, 0),
+            SendOSC(videoCseqport, '/Sequencer/Scene/Play', 'AII HG2')
 
             ] >> Discard()
         ],
